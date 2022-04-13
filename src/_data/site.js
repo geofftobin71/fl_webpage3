@@ -14,7 +14,7 @@ module.exports = {
   description: site_data.description,
   alt: "Flowers by Floriade",
   logo: "/icons/floriade-icon-round-512.png",
-  social_image: "/site/floriade-socialmedia-image.jpg",
+  social_image: "https://res.cloudinary.com/floriade/image/upload/v1636664313/site/floriade-socialmedia-image.jpg",
   header_image: site_data.header_image,
   phone: site_data.phone,
   phone_intl: site_data.phone.replace("0", "+64").replaceAll(" ", ""),

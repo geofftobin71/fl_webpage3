@@ -1,12 +1,15 @@
-*, ::before, ::after { box-sizing:border-box; }
+*, *::before, *::after { box-sizing:border-box; }
 
 html {
-  scroll-behavior:smooth;
   height:-webkit-fill-available;
   line-height:1.5;
   -webkit-text-size-adjust:100%;
   -moz-text-size-adjust:100%;
   text-size-adjust:100%;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -18,7 +21,7 @@ body {
   flex-direction:column;
 }
 
-body, h1, h2, h3, h4, p, ul[class], ol[class], figure, blockquote, dl, dd {
+body, h1, h2, h3, h4, p, li, ul[role="list"], ol[role="list"], figure, figcaption, blockquote, dl, dd {
   margin:0;
   padding:0;
 }
@@ -57,35 +60,39 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display:block;
 }
 
-nav ul,
-ul[class],
-ol[class] {
+ul[role="list"],
+ol[role="list"] {
   padding:0;
   list-style:none;
 }
 
-nav li:before,
-ul[class] li:before,
-ol[class] li:before {
-  content:"\200B";
-  position:absolute;
-}
-
-a {
-  color:inherit;
+a:not([class]) {
+  color:currentColor;
   text-decoration:none;
 }
 
-a:hover {
+[href]:hover {
   text-decoration:underline;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
 }
 
 img:not([alt]) {
   border:4px solid red;
 }
 
+input, button, textarea, select {
+  font: inherit;
+}
+
 @media (prefers-reduced-motion:reduce) {
-  *, ::before, ::after {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
     animation-delay:-1ms !important;
     animation-duration:1ms !important;
     animation-iteration-count:1 !important;

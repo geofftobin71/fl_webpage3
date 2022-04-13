@@ -1,6 +1,6 @@
 {% set metaTitle = title + " - " + site.name %}
 {% set metaDesc = description or site.description %}
-{% set metaImage = (site.url + (social_image or site.social_image)) %}
+{% set metaImage = social_image or site.social_image %}
 {% set currentUrl = (site.url + page.url) %}
 
 {% if page.url == "/" %}
