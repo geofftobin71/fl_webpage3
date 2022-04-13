@@ -1,2 +1,5 @@
 src/_includes/partials/meta-info.njk - check against Learn 11ty
 src/_includes/css/reset.css - check against Learn 11ty
+sanity check social image path in meta-info
+aria-hidden on svg icons
+<a href="/" aria-label="{{ site.name }} - home"> on home links
