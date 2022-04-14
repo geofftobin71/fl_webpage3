@@ -8,15 +8,21 @@
   --size-900: 4.2rem;
 }
 
+/*
 img {
   max-width: min(55rem, 100%);
 }
+*/
 
 figcaption {
   font-size: var(--size-300);
-
   font-style: italic;
   margin-top: 1rem;
+}
+
+figcaption > p {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 blockquote {
@@ -35,7 +41,6 @@ body {
   color: #252525;
   line-height: 1.5;
   font-family: Georgia, serif;
-  padding: 2rem 0;
 }
 
 :focus {
@@ -93,13 +98,12 @@ h3 {
 
 .post {
   --flow-space: var(--size-700);
-
-  width: 90vw;
-  width: clamp(16rem, 90vw, 70rem);
+  width: 100%;
+  max-width: 85ch;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .post time {
@@ -118,6 +122,19 @@ h3 {
 .post figure,
 .post figure + * {
   --flow-space: var(--size-900);
+}
+
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+.full-bleed > * {
+  max-width: 100ch;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 45em) {
@@ -142,8 +159,18 @@ h3 {
     max-width: 40ch;
   }
 
+  .post {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
   .post time {
     font-size: var(--size-600);
+  }
+
+  .full-bleed > * {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
