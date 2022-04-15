@@ -1,16 +1,59 @@
 {% extends "layouts/base.njk" %} 
+
+{% block head %}
+  {{ super() }}
+  {% set css %}
+  {% include "css/header.css" %}
+  {% include "css/aspect-ratio.css" %}
+  {% endset %}
+  <style>
+    {{ css | cssmin | safe }}
+  </style>
+{% endblock %}
+
 {% block content %}
-  <article>
-    <h1>{{ title }}</h1>
-    <nav>
+  <header>
+    <h1>{{ title | safe }}</h1>
+    <p>{{ site.tagline_html | safe }}</p>
+    <br>
+    <nav class="main-menu">
       <ul role="list">
-        {% for item in navigation.items %}
+        {% for item in navigation %}
           <li>
             <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>{{ item.text }}</a>
           </li>
         {% endfor %}
       </ul>
     </nav>
-    {{ content | safe }}
-  </article>
+  </header>
+  <hr>
+
+  <style>
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.gallery img {
+  object-fit: cover;
+}
+  </style>
+
+  <main>
+  <div style="width:100%;max-width:1200px;margin-left:auto;margin-right:auto">
+    {% for item in homepage_grid %}
+      <a href="{{ item.url }}">
+      <div class="gallery">
+        <div class="aspect-ratio-square" style="order:{{ 1 - loop.index0 % 2 }}">
+          <div style="background-color:rgba(0,0,0,0.05);display:grid;justify-content:center;align-items:center">
+            <h2>{{ item.text }}</h2>
+          </div>
+        </div>
+        <div class="aspect-ratio-square" style="order:{{ loop.index0 % 2 }}">
+          <img src="{{ item.image }}" alt="">
+        </div>
+      </div>
+      </a>
+    {% endfor %}
+  </div>
+  </main>
 {% endblock %}

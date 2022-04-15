@@ -1,0 +1,27 @@
+[
+  {
+    "text": "Home",
+    "url": "/",
+    "image": "https://picsum.photos/seed/1/800/600"
+  },
+  {
+    "text": "About",
+    "url": "/about-us/",
+    "image": "https://picsum.photos/seed/2/800/600"
+  },
+  {
+    "text": "Work",
+    "url": "/work/",
+    "image": "https://picsum.photos/seed/3/800/600"
+  },
+  {
+    "text": "Blog",
+    "url": "/blog/",
+    "image": "https://picsum.photos/seed/4/800/600"
+  },
+  {
+    "text": "Contact",
+    "url": "/contact/",
+    "image": "https://picsum.photos/seed/5/800/600"
+  }
+]
