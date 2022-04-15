@@ -1,5 +1,5 @@
 const live_url = "http://dev.floriade.co.nz"
-const local_url = "http://168.138.10.72:8080";
+const local_url = "http://168.138.11.112:8080";
 
 const site_data = require("./site_data.json");
 

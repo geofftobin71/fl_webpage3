@@ -1,4 +1,5 @@
 :root {
+  --size-200: 0.5625rem;
   --size-300: 0.75rem;
   --size-400: 1rem;
   --size-500: 1.33rem;
@@ -6,29 +7,6 @@
   --size-700: 2.36rem;
   --size-800: 3.15rem;
   --size-900: 4.2rem;
-}
-
-/*
-img {
-  max-width: min(55rem, 100%);
-}
-*/
-
-figcaption {
-  font-size: var(--size-300);
-  font-style: italic;
-  margin-top: 1rem;
-}
-
-figcaption > p {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-blockquote {
-  padding-left: var(--size-600);
-  border-left: 5px solid;
-  font-style: italic;
 }
 
 ::selection {
@@ -50,6 +28,33 @@ body {
 
 main:focus {
   outline: none;
+}
+
+img {
+  max-height: 90vh;
+}
+
+figure > img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figcaption {
+  font-style: italic;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+figcaption > p {
+  font-size: var(--size-200);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+blockquote {
+  padding-left: var(--size-600);
+  border-left: 5px solid;
+  font-style: italic;
 }
 
 h1,
@@ -119,23 +124,27 @@ h3 {
   --flow-space: var(--size-400);
 }
 
-.post figure,
-.post figure + * {
-  --flow-space: var(--size-900);
-}
-
 .full-bleed {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
 
-.full-bleed > * {
+.post .full-bleed > * {
   max-width: 100ch;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
 }
+
+.post .full-bleed,
+.post .full-bleed + *,
+.post figure,
+.post figure + * {
+  --flow-space: var(--size-900);
+}
+
+/* Tablet or bigger */
 
 @media (min-width: 45em) {
   h1 {
@@ -150,12 +159,12 @@ h3 {
     font-size: var(--size-500);
   }
 
-  figcaption {
-    font-size: var(--size-400);
+  figcaption > p {
+    font-size: var(--size-300);
   }
 
   blockquote p {
-    font-size: var(--size-600);
+    font-size: var(--size-500);
     max-width: 40ch;
   }
 
@@ -164,11 +173,13 @@ h3 {
     padding-right: 1.5rem;
   }
 
+  /*
   .post time {
     font-size: var(--size-600);
   }
+  */
 
-  .full-bleed > * {
+  .post .full-bleed > * {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
