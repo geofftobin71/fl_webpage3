@@ -1,0 +1,30 @@
+:root {
+{% for token, value in tokens.colors %}
+  --{{ token | slugify }}:{{ value }};
+{%- endfor %}
+}
+
+{% for token, value in tokens.colors %}
+.{{ token | slugify | replace("color-", "bg-") }} { background-color:{{ value }} }
+{%- endfor %}
+
+.bg-alt {
+  color:var(--color-primary);
+}
+
+{% for token, value in tokens.colors %}
+.{{ token | slugify }} { color:{{ value }} }
+{%- endfor %}
+
+{% for token, value in tokens.colors %}
+.{{ token | slugify | replace("color-", "border-") }} { border:1px solid {{ value }} }
+{%- endfor %}
+.border-debug-red { border:1px solid #FF0000 }
+.border-debug-green { border:1px solid #00FF00 }
+.border-debug-blue { border:1px solid #0000FF }
+
+body {
+  color:var(--color-dark);
+  background-color:var(--color-light);
+}
+

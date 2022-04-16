@@ -1,8 +1,14 @@
 header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header nav ul {
   display: flex;
-  justify-content: space-around;
+}
+
+header nav ul li {
+  margin-left: 1em;
+  margin-right: 1em;
 }

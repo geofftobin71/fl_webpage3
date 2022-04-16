@@ -1,27 +1,27 @@
 [
   {
     "text": "Home",
-    "url": "/",
-    "image": "https://picsum.photos/seed/1/800/600"
+    "image": "/",
+    "image": "/v1596539325/fresh-flowers/fresh-flowers-by-floriade-00049.jpg"
   },
   {
     "text": "About",
-    "url": "/about-us/",
-    "image": "https://picsum.photos/seed/2/800/600"
+    "image": "/about-us/",
+    "image": "/v1596539324/fresh-flowers/fresh-flowers-by-floriade-00050.jpg"
   },
   {
     "text": "Work",
-    "url": "/work/",
-    "image": "https://picsum.photos/seed/3/800/600"
+    "image": "/work/",
+    "image": "/v1596539324/fresh-flowers/fresh-flowers-by-floriade-00047.jpg"
   },
   {
     "text": "Blog",
-    "url": "/blog/",
-    "image": "https://picsum.photos/seed/4/800/600"
+    "image": "/blog/",
+    "image": "/v1596539323/fresh-flowers/fresh-flowers-by-floriade-00048.jpg"
   },
   {
     "text": "Contact",
-    "url": "/contact/",
-    "image": "https://picsum.photos/seed/5/800/600"
+    "image": "/contact/",
+    "image": "/v1596539322/fresh-flowers/fresh-flowers-by-floriade-00029.jpg"
   }
 ]

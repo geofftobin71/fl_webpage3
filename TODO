@@ -1,7 +1,5 @@
-center text
-nbsp headings
+a link colors
 
-src/_includes/css/reset.css - check against Learn 11ty
 aria-hidden on svg icons
 <a href="/" aria-label="{{ site.name }} - home"> on home links
-Fonts in global.css
+SITEMAP

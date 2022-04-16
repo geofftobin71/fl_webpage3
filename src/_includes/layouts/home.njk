@@ -4,7 +4,6 @@
   {{ super() }}
   {% set css %}
   {% include "css/header.css" %}
-  {% include "css/aspect-ratio.css" %}
   {% endset %}
   <style>
     {{ css | cssmin | safe }}
@@ -16,7 +15,7 @@
     <h1>{{ title | safe }}</h1>
     <p>{{ site.tagline_html | safe }}</p>
     <br>
-    <nav class="main-menu">
+    <nav>
       <ul role="list">
         {% for item in navigation %}
           <li>
@@ -29,31 +28,83 @@
   <hr>
 
   <style>
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.gallery img {
-  object-fit: cover;
-}
+  .split-pair {
+    display: grid;
+    grid-template-columns:1fr;
+    position: relative;
+  }
+  .split-pair > * {
+    overflow: hidden;
+  }
+  .split-pair img {
+    object-fit: cover;
+  }
+  @media (min-width: 750px) {
+    .split-pair {
+      grid-template-columns: 1fr 1fr;
+    }
+    .split-pair:nth-child(odd) > *:nth-child(odd) {
+      order:2
+    }
+    .split-pair:nth-child(odd) > *:nth-child(even) {
+      order:1
+    }
+  }
+
+  .breakout-button {
+    font-family: var(--font-family-alt);
+    font-weight: 600;
+    padding: 0.6rem 2rem;
+    background: transparent;
+    color: currentColor;
+    border: 1px solid;
+    transition: background 100ms ease;
+    position: static;
+    text-decoration: none;
+  }
+  .breakout-button,
+  .breakout-button::before {
+      cursor: pointer;
+  }
+  .breakout-button::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .breakout-button:focus {
+    outline: none;
+  }
+
+  .breakout-button:hover {
+    background: #333333;
+  }
+  .breakout-button:focus::before {
+    outline: 1px solid #ffffff;
+    outline-offset: -0.8rem;
+  }
+
   </style>
 
   <main>
   <div style="width:100%;max-width:1200px;margin-left:auto;margin-right:auto">
     {% for item in homepage_grid %}
-      <a href="{{ item.url }}">
-      <div class="gallery">
-        <div class="aspect-ratio-square" style="order:{{ 1 - loop.index0 % 2 }}">
-          <div style="background-color:rgba(0,0,0,0.05);display:grid;justify-content:center;align-items:center">
-            <h2>{{ item.text }}</h2>
+      <div class="split-pair">
+        <figure>
+          <div style="background-image:url('{% lqip path=item.image, params='/focus=auto/cover=1:1' %}')">
+            <noscript><img width="1024" height="1024" src="{% twic path=item.image, params='/focus=auto/cover=1024x1024' %}" alt="" /></noscript>
+            <img width="1024" height="1024" src="{% placeholder 1024,1024 %}" data-twic-src="{% twic_dyn path=item.image %}" data-twic-focus="auto" data-twic-transform="cover=1:1/max" data-twic-step="50" data-twic-bot="cover=1024x1024" alt="" />
           </div>
-        </div>
-        <div class="aspect-ratio-square" style="order:{{ loop.index0 % 2 }}">
-          <img src="{{ item.image }}" alt="">
+        </figure>
+        <div style="position:static;background-color:rgba(0,0,0,0.05);display:grid;justify-content:center;align-items:center">
+          <a class="breakout-button" href="{{ item.url }}"><h2>{{ item.text }}</h2></a>
         </div>
       </div>
-      </a>
     {% endfor %}
   </div>
   </main>
+  {% include "partials/footer.njk" %}
 {% endblock %}

@@ -1,0 +1,111 @@
+:root {
+  --button-bg:var(--color-button);
+  --button-fg:var(--color-light);
+  --button-border:var(--color-button);
+  --button-hover-bg:var(--color-alt);
+  --button-hover-fg:var(--color-button);
+  --button-hover-border:var(--color-button);
+  --button-focus:var(--color-primary);
+
+  --button-radius:0.5rem;
+}
+
+.bg-alt {
+  --button-fg:var(--color-light);
+  --button-hover-bg:var(--color-light);
+}
+
+a.button {
+  text-decoration:none;
+}
+
+button {
+  margin:0;
+  border:none;
+  background-color:transparent;
+  font-family:inherit;
+  font-size:var(--size-400);
+  padding:0;
+  cursor:pointer;
+}
+
+a.button,
+button.button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background-color:var(--button-bg);
+  color:var(--button-fg);
+  border:3px solid var(--button-border);
+  border-radius:var(--button-radius);
+  text-align:center;
+  text-transform:lowercase;
+  line-height:1;
+  font-family:var(--font-family-alt);
+  font-weight: 700;
+}
+
+a.button:not(.icon-button),
+button.button:not(.icon-button) {
+  padding:0.6em 1.5em;
+  min-height:44px;
+}
+
+@media (hover:hover) {
+  a.button:active,
+  button.button:active,
+  a.button:hover,
+  button.button:hover {
+    --button-bg:var(--button-hover-bg);
+    --button-fg:var(--button-hover-fg);
+    --button-border:var(--button-hover-border);
+  }
+}
+
+a.button:active,
+button.button:active {
+  transform:scale(0.95);
+}
+
+button:focus {
+  outline:2px solid transparent;
+  box-shadow:0 0 0 2px currentcolor;
+  border-radius:4px;
+  box-shadow:0 0 0 2px var(--button-focus);
+}
+
+a.button:focus,
+button.button:focus {
+  outline:2px solid transparent;
+  box-shadow:0 0 0 2px var(--button-focus);
+}
+
+a.button[disabled], a.button[disabled]:hover, a.button[disabled]:focus, a.button[disabled]:active,
+button.button[disabled], button.button[disabled]:hover, button.button[disabled]:focus, button.button[disabled]:active {
+  cursor:not-allowed;
+  background-color:var(--disabled-bg);
+  color:var(--disabled-fg);
+  border-color:var(--disabled-fg);
+  box-shadow:none;
+}
+
+.button-icon {
+  line-height:1;
+  width:1em;
+  height:1em;
+  margin-right:0.5em;
+}
+
+a.icon-button,
+button.icon-button {
+  width:2.5rem;
+  height:2.5rem;
+  border-radius:50%;
+  padding:0.45em;
+}
+
+.icon-button-icon {
+  width:100%;
+  height:100%;
+}
+

@@ -2,18 +2,39 @@
   --size-200: 0.64rem;
   --size-300: 0.8rem;
   --size-400: 1rem;
+  --size-500: 1.25rem;
+  --size-600: 1.56rem;
+  --size-700: 1.95rem;
+  --size-800: 2.44rem;
+  --size-900: 3.05rem;
   /*
+  --size-200: 0.56rem;
+  --size-300: 0.75rem;
+  --size-400: 1rem;
   --size-500: 1.33rem;
   --size-600: 1.77rem;
   --size-700: 2.36rem;
   --size-800: 3.15rem;
   --size-900: 4.2rem;
   */
-  --size-500: 1.25rem;
-  --size-600: 1.563rem;
-  --size-700: 1.953rem;
-  --size-800: 2.441rem;
-  --size-900: 3.052rem;
+
+  /* --font-family-base: Georgia, serif; */
+  --font-family-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  --font-family-alt: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+
+  --radius:0.4rem;
+
+  --disabled-bg:transparent;
+  --disabled-fg:rgba(0,0,0,0.2);
+
+  --section-padding:7.5vh;
+
+  --error-color:#CC0000;
+  --error-background:#FFDDDD;
+  --error-link:#FF0000;
+  --error-link-hover:#DD0000;
+  --info-color:#008800;
+  --info-background:#CCEECC;
 }
 
 ::selection {
@@ -21,11 +42,25 @@
   background: rgba(0, 0, 0, 0.99);
 }
 
+html[data-modal-active="true"] {
+  touch-action:none;
+  -ms-scroll-chaining:none;
+  overscroll-behavior:none;
+  -webkit-overflow-scrolling:auto;
+  overflow:hidden;
+}
+
+[data-modal-active="true"] body {
+  touch-action:none;
+  -ms-scroll-chaining:none;
+  overscroll-behavior:none;
+  -webkit-overflow-scrolling:auto;
+  overflow:hidden;
+}
+
 body {
-  background: #f3f3f3;
-  color: #252525;
   line-height: 1.5;
-  font-family: Georgia, serif;
+  font-family: var(--font-family-base);
 }
 
 :focus {
@@ -41,13 +76,15 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-family: var(--font-family-alt);
   line-height: 1.3;
 }
 
 h1,
-h2 {
-  font-weight: 900;
+h2,
+h3,
+h4 {
+  font-weight: 700;
 }
 
 h1 {
@@ -77,58 +114,166 @@ h3 {
 }
 
 img {
-  max-height: 90vh;
+  max-height: 85vh;
 }
 
-figure > img {
-  margin-left: auto;
-  margin-right: auto;
+a {
+  border:2px solid transparent;
+}
+
+a:focus {
+  outline:2px solid transparent;
+  box-shadow:0 0 0 2px currentcolor;
+  border-radius:4px;
+}
+
+a.nofocus:focus,
+.logo a:focus {
+  box-shadow:none;
+  border-radius:0;
 }
 
 figcaption {
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-family: var(--font-family-alt);
+  font-size: var(--size-200);
   margin-top: 0.5rem;
   text-align: center;
 }
 
 figcaption > p {
   max-width: 80ch;
-  font-size: var(--size-200);
   margin-left: auto;
   margin-right: auto;
 }
 
 blockquote {
-  padding-left: var(--size-600);
-  border-left: 5px solid;
-  font-style: italic;
+  font-family:var(--font-family-base);
+  background-color:var(--color-alt);
+  color:var(--color-primary);
+  --box-padding:var(--size-400);
+  padding:var(--box-padding);
+  border:1px solid var(--color-shade3);
+  border-radius:var(--box-border-radius, 0.4rem);
+  border-width:var(--box-border-width, 1px);
+  text-align:center;
+  box-shadow:0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.bg-alt blockquote {
+  background-color:var(--color-light);
+}
+
+@media screen and (min-width:450px) {
+  blockquote {
+    --box-padding:var(--size-700);
+  }
+}
+
+blockquote p::before {
+  font-family:var(--font-family-base);
+  font-size:3em;
+  color:var(--color-shade3);
+  content:open-quote;
+  display:inline;
+  height:0;
+  line-height:0;
+  left:-0.05em;
+  position:relative;
+  top:0.4em;
+}
+
+blockquote p::after {
+  font-family:var(--font-family-base);
+  font-size:3em;
+  color:var(--color-shade3);
+  content:close-quote;
+  display:inline;
+  height:0;
+  line-height:0;
+  left:0.05em;
+  position:relative;
+  top:0.4em;
+}
+
+blockquote footer {
+  display:block;
+  font-family:var(--font-family-alt);
+  color:var(--color-shade2);
+  text-align:right;
+}
+
+blockquote footer:before {
+  content:"\2014 \2009";
+}
+
+section {
+  position:relative;
+  padding-top:var(--section-padding);
+  padding-bottom:var(--section-padding);
+}
+
+* + section {
+  border-top:1px solid var(--color-shade3);
+}
+
+figure > div {
+  background-size:contain;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+
+[data-twic-src] {
+  opacity:0;
+}
+
+.twic-done {
+  opacity:1;
+  transition: opacity 500ms linear;
+}
+
+.invisible {
+  visibility:hidden;
+}
+
+.noviz {
+  clip:rect(0 0 0 0);
+  clip-path:inset(50%);
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  position:absolute;
+  white-space:nowrap;
+}
+
+.info,
+.error {
+  font-family:var(--font-family-alt);
+  text-align:center;
+  text-transform:lowercase;
+  border:1px solid currentcolor;
+  border-radius:var(--radius, 0.4rem);
+  margin-left:auto;
+  margin-right:auto;
+  padding:0.25em 0.5em;
+}
+
+.info {
+  color:var(--info-color);
+  background-color:var(--info-background);
+}
+
+.error {
+  color:var(--error-color);
+  background-color:var(--error-background);
+}
+
+.flow > * {
+  margin-top:0;
+  margin-bottom:0;
 }
 
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
-}
-
-.post {
-  --flow-space: var(--size-700);
-  width: 100%;
-  max-width: 85ch;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.post time {
-  --flow-space: var(--size-400);
-  display: block;
-}
-
-.post :is(h2, h3) {
-  --flow-space: var(--size-900);
-}
-
-.post :is(h2, h3) + * {
-  --flow-space: var(--size-400);
 }
 
 .full-bleed {
@@ -136,24 +281,7 @@ blockquote {
   margin-left: calc(50% - 50vw);
 }
 
-.post .full-bleed > * {
-  max-width: 100ch;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.post .full-bleed,
-.post .full-bleed + *,
-.post figure,
-.post figure + * {
-  --flow-space: var(--size-900);
-}
-
-/* Tablet or bigger */
-
-@media (min-width: 45em) {
+@media (min-width: 750px) {
   h1 {
     font-size: var(--size-900);
   }
@@ -166,23 +294,13 @@ blockquote {
     font-size: var(--size-500);
   }
 
-  figcaption > p {
+  figcaption {
     font-size: var(--size-300);
   }
 
   blockquote p {
     font-size: var(--size-500);
     max-width: 40ch;
-  }
-
-  .post {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .post .full-bleed > * {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
   }
 }
 
