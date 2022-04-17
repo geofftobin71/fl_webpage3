@@ -1,51 +1,51 @@
 .blog-post {
-  --flow-space: var(--size-700);
-  width: 100%;
-  max-width: 85ch;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  --flow-space:var(--size-700);
+  width:100%;
+  max-width:85ch;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:1rem;
+  padding-right:1rem;
 }
 
 .blog-post figure > img {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .blog-post time {
-  --flow-space: var(--size-400);
-  display: block;
+  --flow-space:var(--size-400);
+  display:block;
 }
 
 .blog-post :is(h2, h3) {
-  --flow-space: var(--size-900);
+  --flow-space:var(--size-900);
 }
 
 .blog-post :is(h2, h3) + * {
-  --flow-space: var(--size-400);
+  --flow-space:var(--size-400);
 }
 
 .blog-post .full-bleed > * {
-  max-width: 100ch;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: auto;
-  margin-right: auto;
+  max-width:100ch;
+  padding-left:1rem;
+  padding-right:1rem;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .blog-post .full-bleed,
 .blog-post .full-bleed + *,
 .blog-post figure,
 .blog-post figure + * {
-  --flow-space: var(--size-900);
+  --flow-space:var(--size-900);
 }
 
-@media (min-width: 750px) {
+@media (min-width:750px) {
   .blog-post,
   .blog-post .full-bleed > * {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left:1.5rem;
+    padding-right:1.5rem;
   }
 }
 

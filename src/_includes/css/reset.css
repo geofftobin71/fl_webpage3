@@ -9,7 +9,7 @@ html {
 }
 
 html:focus-within {
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
 }
 
 body {
@@ -69,14 +69,11 @@ ol[role="list"] {
 a:not([class]) {
   color:currentColor;
   text-decoration:none;
+  text-decoration-skip-ink:auto;
 }
 
 [href]:hover {
   text-decoration:underline;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
 }
 
 img:not([alt]) {
@@ -84,12 +81,12 @@ img:not([alt]) {
 }
 
 input, button, textarea, select {
-  font: inherit;
+  font:inherit;
 }
 
 @media (prefers-reduced-motion:reduce) {
   html:focus-within {
-    scroll-behavior: auto;
+    scroll-behavior:auto;
   }
 
   *, *::before, *::after {

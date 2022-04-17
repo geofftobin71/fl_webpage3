@@ -4,9 +4,9 @@ grid-template-areas:"location hours follow" "contact hours subscribe";} } #foote
 <hr>
 <footer id="page-footer" class="bg-alt">
   <section class="wrapper page-wrapper" style="padding-top:2em;padding-bottom:2em">
-    <div class="horizontal center middle" style="width:48px;margin:0 auto">
-      <button title="Scroll to Top" aria-label="Scroll to Top" class="color-primary req-js cursor-pointer" style="width:24px" onclick="(function(){document.querySelector('#top').scrollIntoView({behavior:'smooth'});})();return false;" >{{ '/src/svg/chevron-up.svg' | svgContents | safe }}</button>
-      <noscript><a href="#top" class="nofocus" role="button" tabindex="0" title="Scroll to Top" aria-label="Scroll to Top" style="display:block;width:24px">{{ '/src/svg/chevron-up.svg' | svgContents | safe }}</a></noscript>
+    <div class="horizontal center middle">
+      <button title="Scroll to Top" aria-label="Scroll to Top" class="color-primary req-js cursor-pointer font-size-500" onclick="(function(){document.querySelector('#top').scrollIntoView({behavior:'smooth'});})();return false;" >{{ '/src/svg/chevron-up.svg' | svgContents | safe }}</button>
+      <noscript><a href="#top" class="nofocus font-size-500" role="button" tabindex="0" title="Scroll to Top" aria-label="Scroll to Top" style="display:block">{{ '/src/svg/chevron-up.svg' | svgContents | safe }}</a></noscript>
     </div>
     <div class="three-columns">
       <div id="footer-location" class="vertical center flow">
@@ -22,11 +22,11 @@ grid-template-areas:"location hours follow" "contact hours subscribe";} } #foote
       </div>
       <div id="footer-follow" class="vertical center flow">
         <h4 class="text-lowercase">Follow us</h4>
-        <div class="horizontal space-between color-dark" style="width:150px;margin-top:1.5em;height:2rem">
-          <a href="{{ site.facebook }}" target="_blank" rel="noopener" style="width:16px" title="Follow us on Facebook" aria-label="Follow us on Facebook">{{ '/src/svg/facebook-f.svg' | svgContents | safe }}</a>
-          <a href="{{ site.instagram }}" target="_blank" rel="noopener" style="width:24px" title="Follow us on Instagram" aria-label="Follow us on Instagram">{{ '/src/svg/instagram.svg' | svgContents | safe }}</a>
-          <a href="{{ site.pinterest }}" target="_blank" rel="noopener" style="width:24px" title="Pin us on Pinterest" aria-label="Pin us on Pinterest">{{ '/src/svg/pinterest.svg' | svgContents | safe }}</a>
-          <a href="{{ site.google_page }}" target="_blank" rel="noopener" style="width:24px" title="Find us on Google" aria-label="Find us on Google">{{ '/src/svg/google.svg' | svgContents | safe }}</a>
+        <div class="horizontal space-between color-dark" style="width:150px;margin-top:1.5em">
+          <a href="{{ site.facebook }}" target="_blank" rel="noopener" class="social-icon" title="Follow us on Facebook" aria-label="Follow us on Facebook">{{ '/src/svg/facebook-f.svg' | svgContents | safe }}</a>
+          <a href="{{ site.instagram }}" target="_blank" rel="noopener" class="social-icon" title="Follow us on Instagram" aria-label="Follow us on Instagram">{{ '/src/svg/instagram.svg' | svgContents | safe }}</a>
+          <a href="{{ site.pinterest }}" target="_blank" rel="noopener" class="social-icon" title="Pin us on Pinterest" aria-label="Pin us on Pinterest">{{ '/src/svg/pinterest.svg' | svgContents | safe }}</a>
+          <a href="{{ site.google_page }}" target="_blank" rel="noopener" class="social-icon" title="Find us on Google" aria-label="Find us on Google">{{ '/src/svg/google.svg' | svgContents | safe }}</a>
         </div>
       </div>
       <div id="footer-hours" class="vertical center flow">

@@ -122,6 +122,18 @@ module.exports = eleventyConfig => {
     return array.find(element => element.date === date);
   });
 
+  eleventyConfig.addFilter("urldecode", (string) => {
+    return decodeURIComponent(string.replace(/\+/g, ' '));
+  });
+
+  eleventyConfig.addFilter("iconTextButton", (svg) => {
+    return (svg) ? svg.replace('<svg ', '<svg class="button-icon" aria-hidden="true" focusable="false" ') : '';
+  });
+
+  eleventyConfig.addFilter("iconButton", (svg) => {
+    return (svg) ? svg.replace('<svg ', '<svg class="icon-button-icon" aria-hidden="true" focusable="false" ') : '';
+  });
+
   eleventyConfig.addNunjucksShortcode("twic", function(args) {
     let path = (args.path) ? args.path : "";
     path = path.replace(site.cloudinary_url,"");

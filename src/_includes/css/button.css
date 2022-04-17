@@ -42,7 +42,7 @@ button.button {
   text-transform:lowercase;
   line-height:1;
   font-family:var(--font-family-alt);
-  font-weight: 700;
+  font-weight:700;
 }
 
 a.button:not(.icon-button),

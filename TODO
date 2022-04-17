@@ -1,4 +1,5 @@
 a link colors
+gap above footer on noscript
 
 aria-hidden on svg icons
 <a href="/" aria-label="{{ site.name }} - home"> on home links

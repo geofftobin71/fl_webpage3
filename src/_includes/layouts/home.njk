@@ -90,12 +90,15 @@
   </style>
 
   <main>
+  <div>
+    <p>Hello {{ '/src/svg/bars.svg' | svgContents | safe }}</p>
+  </div>
   <div style="width:100%;max-width:1200px;margin-left:auto;margin-right:auto">
     {% for item in homepage_grid %}
       <div class="split-pair">
         <figure>
           <div style="background-image:url('{% lqip path=item.image, params='/focus=auto/cover=1:1' %}')">
-            <noscript><img width="1024" height="1024" src="{% twic path=item.image, params='/focus=auto/cover=1024x1024' %}" alt="" /></noscript>
+            {# <noscript><img width="1024" height="1024" src="{% twic path=item.image, params='/focus=auto/cover=1024x1024' %}" alt="" /></noscript> #}
             <img width="1024" height="1024" src="{% placeholder 1024,1024 %}" data-twic-src="{% twic_dyn path=item.image %}" data-twic-focus="auto" data-twic-transform="cover=1:1/max" data-twic-step="50" data-twic-bot="cover=1024x1024" alt="" />
           </div>
         </figure>
