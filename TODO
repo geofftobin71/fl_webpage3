@@ -1,6 +1,5 @@
-a link colors
-gap above footer on noscript
-
-aria-hidden on svg icons
 <a href="/" aria-label="{{ site.name }} - home"> on home links
 SITEMAP
+gap above footer on noscript
+Check for --step-*
+github daily build

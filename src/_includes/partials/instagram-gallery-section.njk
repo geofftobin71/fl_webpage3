@@ -1,0 +1,59 @@
+{# ----- Instagram Thumbnails ----- #}
+
+{% set instagram_images = instagram_gallery | sortISO8601 | reverse | head(12) %}
+<style>#instagram-grid{display:grid;gap:0.5em;grid-template-columns:1fr 1fr;}@media screen and (min-width:750px){ #instagram-grid{grid-template-columns:1fr 1fr 1fr;} }@media screen and (min-width:950px) and (orientation:landscape){ #instagram-grid{grid-template-columns:1fr 1fr 1fr 1fr;} }@media screen and (min-width:1400px){ #instagram-grid{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;} }</style>
+<section>
+  <div class="wrapper page-wrapper flow" style="--flow-space:2em">
+    <h2 class="heading">Instagram</h2>
+    <div class="horizontal center"><a href="{{ site.instagram }}" class="button" role="button" target="_blank" rel="noopener">Follow us</a></div>
+    <div>
+      <ul role="list" class="instagram-grid" id="instagram-grid">
+        {% for item in instagram_images -%}
+          {% set thumbnail_path = (item.thumbnail_url or item.media_url) %}
+          <li class="hover-scale">
+            <figure>
+              <div class="round border-faint" style="background-image:url('{% insta_lqip path=thumbnail_path, params='/focus=auto/cover=1:1' %}')">
+                <noscript><a href="{% insta_twic path=thumbnail_path %}" style="height:100%;display:block"><img class="round cursor-pointer" src="{% insta_twic path=thumbnail_path, params='/focus=auto/cover=450x450' %}" width="450" height="450" alt="{{ item.caption | urldecode }}" /></a></noscript>
+                <img class="round cursor-pointer" data-twic-src="image:instagram{{ thumbnail_path | replace(site.match_url,"") | safe }}" data-twic-focus="auto" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=450x450" alt="{{ item.caption | urldecode }}" onclick="openLightbox('#item{{ loop.index }}')" src="{% placeholder 450,450 %}" />
+              </div>
+            </figure>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{# ----- Instagram Lightbox ----- #}
+
+<div id="lightbox" class="slider-controls">
+  <ul role="list" class="slider">
+    {% for item in instagram_images -%}
+      {% set thumbnail_path = (item.thumbnail_url or item.media_url) %}
+      <li id="item{{ loop.index }}" class="slider-item">
+        <figure class="horizontal center middle">
+          <div style="background-image:url('{% insta_lqip path=thumbnail_path, params='/focus=auto/cover=1:1' %}')">
+            <img data-twic-src="image:instagram{{ thumbnail_path | replace(site.match_url,"") | safe }}" data-twic-focus="auto" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=1440x1440" alt="{{ item.caption | urldecode }}" src="{% placeholder 1440,1440 %}" />
+          </div>
+          <figcaption class="wrapper text-wrapper">
+            <div class="text-center text-shadow">
+              <h4>{{ item.caption | urldecode }}</h4>
+            </div>
+          </figcaption>
+        </figure>
+      </li>
+      {%- endfor %}
+  </ul>
+  <nav class="toggle-captions" onclick="toggleCaptions()">
+    <span role="button" style="width:var(--step-1)" title="Toggle Captions" aria-label="Toggle Captions">{{ '/src/svg/comment-o.svg' | svgContents | safe }}</span>
+  </nav>
+  <nav class="close" onclick="closeLightbox()">
+    <span role="button" style="width:var(--step-1)" title="Close" aria-label="Close">{{ '/src/svg/close.svg' | svgContents | safe }}</span>
+  </nav>
+  <nav class="prev" onclick="scrollToPrevItem('#lightbox')">
+    <span role="button" style="width:var(--step-1)" title="Previous" aria-label="Previous">{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span>
+  </nav>
+  <nav class="next" onclick="scrollToNextItem('#lightbox')">
+    <span role="button" style="width:var(--step-1)" title="Next" aria-label="Next">{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span>
+  </nav>
+</div>

@@ -114,12 +114,29 @@ module.exports = eleventyConfig => {
     return DateTime.fromJSDate(dateObj).toFormat("yyyy-LL-dd");
   });
 
+  eleventyConfig.addFilter("sortISO8601", (array) => {
+    return array.sort((a, b) => {
+      return (a.timestamp < b.timestamp) ? -1 : ((a.timestamp > b.timestamp) ? 1 : 0);
+    });
+  });
+
   eleventyConfig.addFilter("twelveHourTime", (string) => {
     return DateTime.fromFormat(string, "HH:mm").toFormat("h:mma");
   });
 
   eleventyConfig.addFilter("findSpecialDay", (array, date) => {
     return array.find(element => element.date === date);
+  });
+
+  eleventyConfig.addFilter("head", (array, n) => {
+    if(!Array.isArray(array) || array.length === 0) {
+      return [];
+    }
+    if( n < 0 ) {
+      return array.slice(n);
+    }
+
+    return array.slice(0, n);
   });
 
   eleventyConfig.addFilter("urldecode", (string) => {
@@ -170,38 +187,69 @@ module.exports = eleventyConfig => {
     const params = (args.params) ? args.params : "";
     const lqip_path = `${site.twic_url}${path}?twic=v1${params}/output=preview`;
 
-    return EleventyFetch(lqip_path, {duration:"1y",type:"text"})
-      .then(data => {
-        const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
-        return (lqip);
-      })
-      .catch(err => {
-        console.error("LQIP error: ", err);
-        return (lqip_path);
-      });
+    try {
+      return EleventyFetch(lqip_path, {duration:"1y",type:"text"})
+        .then(data => {
+          const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+          return (lqip);
+        });
+    } catch(err) {
+      console.error("LQIP error: ", err);
+      return (lqip_path);
+    }
   });
 
   eleventyConfig.addNunjucksAsyncShortcode("placeholder", async function(width,height) {
     const placeholder_path = `${site.twic_url}/v1/placeholder:${width}x${height}:transparent`;
 
-    return EleventyFetch(placeholder_path, {duration:"1y",type:"text"})
-      .then(data => {
-        const placeholder = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
-        return (placeholder);
-      })
-      .catch(err => {
-        console.error("placeholder error: ", err);
-        return (placeholder_path);
-      });
+    try {
+      return EleventyFetch(placeholder_path, {duration:"1y",type:"text"})
+        .then(data => {
+          const placeholder = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+          return (placeholder);
+        });
+    } catch(err) {
+      console.error("placeholder error: ", err);
+      return (placeholder_path);
+    }
   });
 
-	return {
-		markdownTemplateEngine: 'njk',
-		dataTemplateEngine: 'njk',
-		htmlTemplateEngine: 'njk',
-		dir: {
-			input: 'src',
-			output: 'dist'
-		}
-	};
+  eleventyConfig.addNunjucksShortcode("insta_twic", function(args) {
+    let path = (args.path) ? args.path : "";
+    let params = (args.params) ? args.params : "";
+    if(args.sizes) {
+      return args.sizes.map(function(size) {
+        return path.replace(site.match_url, site.twic_url + "/instagram").replace("?", "?twic=v1/resize-max=" + size + params + "&").concat(" " + size + "w");
+      }).join(',');
+    } else {
+      return path.replace(site.match_url, site.twic_url + "/instagram").replace("?", "?twic=v1" + params + "&");
+    }
+  });
+
+  eleventyConfig.addNunjucksAsyncShortcode("insta_lqip", async function(args) {
+    let path = (args.path) ? args.path : "";
+    const params = (args.params) ? args.params : "";
+    const lqip_path = path.replace(site.match_url, site.twic_url + "/instagram").replace("?", "?twic=v1" + params + "/output=preview&");
+
+    try {
+      return EleventyFetch(lqip_path, {duration:"1y",type:"text"})
+        .then(data => {
+          const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+          return (lqip);
+        });
+    } catch(err) {
+      console.error("LQIP error: ", err);
+      return (lqip_path);
+    }
+  });
+
+  return {
+    markdownTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
+    dir: {
+      input: 'src',
+      output: 'dist'
+    }
+  };
 };
