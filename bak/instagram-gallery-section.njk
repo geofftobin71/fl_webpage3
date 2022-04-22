@@ -17,7 +17,6 @@
 <input class="slider-selector" type="radio" name="slider" id="slide-{{ loop.index }}">
 {% endfor %}
 <input class="slider-close" type="radio" name="slider" id="close" checked>
-<input class="slider-captions" type="checkbox" id="captions">
 
 <div class="slider-lightbox slider-container">
   <ul role="list" class="slider">
@@ -26,16 +25,15 @@
       <li class="slider-item">
         <noscript><img src="{% insta_twic path=image_path %}" alt="{{ item.caption | urldecode }}"></noscript>
         <img src="{% insta_lqip path=image_path %}" alt="{{ item.caption | urldecode }}" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1440x1440" >
-        <p class="slider-caption">{{ item.caption | urldecode }}</p>
+        <p>{{ item.caption | urldecode }}</p>
       </li>
       {% endfor %}
   </ul>
-  <label role="button" class="slider-control slider-control-close" for="close" title="Close" aria-label="Close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
-  <label role="button" class="slider-control slider-control-captions" for="captions" title="Toggle Captions" aria-label="Toggle Captions">{{ '/src/svg/comment-o.svg' | svgContents | safe }}</label>
+  <label class="slider-control slider-control-close" for="close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
   {% for item in instagram_images -%}
     <div class="slider-controls">
-      {% if not loop.first %}<label role="button" class="slider-control slider-control-prev" for="slide-{{ loop.index - 1 }}" title="Previous" aria-label="Previous"><span>{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span></label>{% endif %} 
-        {% if not loop.last %}<label role="button" class="slider-control slider-control-next" for="slide-{{ loop.index + 1 }}" title="Next" aria-label="Next"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
+      {% if not loop.first %}<label class="slider-control slider-control-prev" for="slide-{{ loop.index - 1 }}"><span>{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span></label>{% endif %}
+        {% if not loop.last %}<label class="slider-control slider-control-next" for="slide-{{ loop.index + 1 }}"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
     </div>
   {% endfor %}
 </div>
@@ -52,9 +50,9 @@
         {% for item in instagram_images -%}
           {% set image_path = (item.thumbnail_url or item.media_url) %}
           <li class="hover-scale">
-            <label role="button" class="slider-link" for="slide-{{ loop.index }}">
-              <noscript><img class="round border-faint" src="{% insta_twic path=image_path, params='/cover=480x480' %}" width="480" height="480" alt="{{ item.caption | urldecode }}"></noscript>
-              <img src="{% insta_lqip path=image_path, params="/cover=480x480" %}" class="round border-faint" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=480x480" alt="{{ item.caption | urldecode }}">
+            <label for="slide-{{ loop.index }}">
+              <noscript><img class="round border-faint cursor-pointer" src="{% insta_twic path=image_path, params='/cover=480x480' %}" width="480" height="480" alt="{{ item.caption | urldecode }}"></noscript>
+              <img src="{% insta_lqip path=image_path, params="/cover=480x480" %}" class="round border-faint cursor-pointer" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=480x480" alt="{{ item.caption | urldecode }}">
             </label>
           </li>
         {% endfor %}
