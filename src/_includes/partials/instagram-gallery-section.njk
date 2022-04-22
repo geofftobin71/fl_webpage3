@@ -11,12 +11,24 @@
 {% endfor %}
 </style>
 
+{# Lightbox #}
+
 {% for item in instagram_images -%}
 <input class="slider-selector" type="radio" name="slider" id="slide-{{ loop.index }}">
 {% endfor %}
 <input class="slider-close" type="radio" name="slider" id="close" checked>
 
 <div class="slider-lightbox slider-container">
+  <ul role="list" class="slider">
+    {% for item in instagram_images -%}
+      {% set image_path = (item.thumbnail_url or item.media_url) %}
+      <li class="slider-item">
+        <noscript><img src="{% insta_twic path=image_path %}" alt="{{ item.caption | urldecode }}"></noscript>
+        <img src="{% insta_lqip path=image_path %}" alt="{{ item.caption | urldecode }}" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1440x1440" >
+        <p>{{ item.caption | urldecode }}</p>
+      </li>
+      {% endfor %}
+  </ul>
   <label class="slider-control slider-control-close" for="close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
   {% for item in instagram_images -%}
     <div class="slider-controls">
@@ -24,16 +36,9 @@
         {% if not loop.last %}<label class="slider-control slider-control-next" for="slide-{{ loop.index + 1 }}"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
     </div>
   {% endfor %}
-  <ul role="list" class="slider">
-    {% for item in instagram_images -%}
-      <li class="slider-item">
-        {% set image_path = (item.thumbnail_url or item.media_url) %}
-        <noscript><img src="{% insta_twic path=image_path %}" alt="{{ item.caption | urldecode }}"></noscript>
-        <img src="{% insta_lqip path=image_path %}" alt="{{ item.caption | urldecode }}" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1440x1440" >
-      </li>
-      {% endfor %}
-  </ul>
 </div>
+
+{# Thumbnail Grid #}
 
 <style>#instagram-grid{display:grid;gap:0.5em;grid-template-columns:1fr 1fr;}@media screen and (min-width:750px){ #instagram-grid{grid-template-columns:1fr 1fr 1fr;} }@media screen and (min-width:950px) and (orientation:landscape){ #instagram-grid{grid-template-columns:1fr 1fr 1fr 1fr;} }@media screen and (min-width:1400px){ #instagram-grid{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;} }</style>
 <section>
