@@ -4,6 +4,7 @@
   {{ super() }}
   {% set css %}
   {% include "css/header.css" %}
+  {% include "css/slider.css" %}
   {% endset %}
   <style>
     {{ css | cssmin | safe }}
@@ -39,7 +40,7 @@
   .split-pair img {
     object-fit: cover;
   }
-  @media (min-width: 750px) {
+  @media screen and (min-width: 750px) {
     .split-pair {
       grid-template-columns: 1fr 1fr;
     }
@@ -111,8 +112,7 @@
     {% endfor %}
   </div>
   #}
-  {# include "partials/instagram-gallery-section.njk" #}
-  {% include "partials/carousel.njk" %}
+  {% include "partials/instagram-gallery-section.njk" %}
   </main>
   {% include "partials/footer.njk" %}
 {% endblock %}

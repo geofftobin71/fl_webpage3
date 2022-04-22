@@ -51,7 +51,7 @@ button.button:not(.icon-button) {
   min-height:44px;
 }
 
-@media (hover:hover) {
+@media screen and (hover:hover) {
   a.button:active,
   button.button:active,
   a.button:hover,
