@@ -10,13 +10,14 @@
     {% set css %}
     {% include "css/reset.css" %}
     {% include "css/global.css" %}
+    {% include "css/blog-post.css" %}
     {% endset %}
     <style>
       {{ css | cssmin | safe }}
     </style>
   </head>
   <body>
-    <article class="[ post ] [ flow ]">
+    <article class="[ blog-post ] [ flow ]">
       <h1>Tips and notes about freelancing</h1>
       <time datetime="2020-07-31"><em>31st July, 2020</em></time>
                                 <p>

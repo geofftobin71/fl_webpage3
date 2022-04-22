@@ -140,7 +140,8 @@ figcaption {
   text-align:center;
 }
 
-figcaption > p {
+figcaption p {
+  font-size:var(--size-200);
   max-width:80ch;
   margin-left:auto;
   margin-right:auto;
@@ -157,6 +158,9 @@ blockquote {
   border-width:var(--box-border-width, 1px);
   text-align:center;
   box-shadow:0 0 20px rgba(0, 0, 0, 0.1);
+  width:max-content;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .bg-alt blockquote {
@@ -334,7 +338,8 @@ figure > div {
     font-size:var(--size-500);
   }
 
-  figcaption {
+  figcaption,
+  figcaption p {
     font-size:var(--size-300);
   }
 
