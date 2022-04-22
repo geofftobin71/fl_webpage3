@@ -35,9 +35,7 @@ function scrollToNextItem(id) {
   let itemWidth = document.querySelector(id + ' .slider-item').clientWidth;
   if(scroller.scrollLeft < (scroller.scrollWidth - itemWidth)) {
     scroller.scrollBy({left: itemWidth, top: 0, behavior:'smooth'});
-  } /* else {
-    scroller.scrollTo({left: 0, top: 0, behavior:'auto'});
-  } */
+  }
 }
 
 function scrollToPrevItem(id) {
@@ -45,9 +43,7 @@ function scrollToPrevItem(id) {
   let itemWidth = document.querySelector(id + ' .slider-item').clientWidth;
   if(scroller.scrollLeft > 0) {
     scroller.scrollBy({left: -itemWidth, top: 0, behavior:'smooth'});
-  } /* else {
-    scroller.scrollTo({left: scroller.scrollWidth, top: 0, behavior:'auto'});
-  } */
+  }
 }
 
 function toggleCaptions() {

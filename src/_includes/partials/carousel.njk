@@ -1,0 +1,138 @@
+{% set instagram_images = instagram_gallery | sortISO8601 | reverse | head(12) %}
+
+<style>
+.zlider-container {
+  position:relative;
+  overflow:hidden;
+}
+.zlider-lightbox {
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:2;
+  background-color:black;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.zlider {
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  padding: 0;
+  margin: 0;
+  transition: transform 500ms cubic-bezier(0.5,0.0,0.5,1.0);
+  display:flex;
+}
+.zlider-item {
+  flex:1 0 100%;
+  max-width:none;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0.5em;
+}
+.zlider-item noscript {
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.zlider-item img {
+  object-fit:contain;
+  max-height:100%;
+}
+.zlider-controls {
+  display:none;
+}
+.zlider-control {
+  position:absolute;
+  z-index:3;
+  font-size:var(--size-500);
+  color:white;
+  background-color:rgba(0,0,0,0.5);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:50%;
+  padding:0.375em;
+  display:flex;
+  align-items:center;
+  jusitfy-content:center;
+  text-align:center;
+}
+.zlider-control::before {
+  content:''
+  border:1px solid red;
+  height:100%;
+  width:100%;
+}
+.zlider-control-prev {
+  top:50%;
+  left:0.25em;
+  transform:translateY(-50%);
+}
+.zlider-control-next {
+  top:50%;
+  right:0.25em;
+  transform:translateY(-50%);
+}
+.zlider-control-prev > span {
+  transform:translateX(-0.1em);
+}
+.zlider-control-next > span {
+  transform:translateX(0.1em);
+}
+.zlider-control-close {
+  top:0.25em;
+  right:0.25em;
+}
+{% for item in instagram_images -%}
+  .zlider-selector:nth-of-type({{ loop.index }}):checked ~ .zlider-container .zlider {
+    transform: translateX({{ -loop.index0 * 100 }}%);
+}
+  .zlider-selector:nth-of-type({{ loop.index }}):checked ~ .zlider-container .zlider-controls:nth-of-type({{ loop.index }}) {
+    display:block;
+  }
+{% endfor %}
+.zlider-container {
+  display:none;
+}
+.zlider-selector:checked ~ .zlider-container {
+  display:block;
+}
+@media (min-width:750px) {
+  .zlider-item {
+    padding:1em;
+  }
+  .zlider-control {
+    font-size:var(--size-600);
+  }
+}
+</style>
+
+{% for item in instagram_images -%}
+<input class="zlider-selector" type="radio" name="zlider" id="slide-{{ loop.index }}" />
+{% endfor %}
+<input class="zlider-close" type="radio" name="zlider" id="close" checked />
+
+<div class="zlider-lightbox zlider-container">
+  <label class="zlider-control zlider-control-close" for="close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
+  {% for item in instagram_images -%}
+    <div class="zlider-controls">
+      {% if not loop.first %}<label class="zlider-control zlider-control-prev" for="slide-{{ loop.index - 1 }}"><span>{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span></label>{% endif %}
+        {% if not loop.last %}<label class="zlider-control zlider-control-next" for="slide-{{ loop.index + 1 }}"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
+    </div>
+  {% endfor %}
+  <ul role="list" class="zlider">
+    {% for item in instagram_images -%}
+      <li class="zlider-item">
+        {% set image_path = (item.thumbnail_url or item.media_url) %}
+        <noscript><img src="{% insta_twic path=image_path %}" alt="{{ item.caption | urldecode }}"></noscript>
+        <img src="{% insta_lqip path=image_path %}" alt="{{ item.caption | urldecode }}" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1440x1440" >
+      </li>
+      {% endfor %}
+  </ul>
+</div>

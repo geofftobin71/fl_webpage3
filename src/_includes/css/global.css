@@ -232,6 +232,7 @@ figure > div {
 .font-size-800 { font-size:var(--size-800); }
 .font-size-900 { font-size:var(--size-900); }
 
+/*
 [data-twic-src] {
   opacity:0;
 }
@@ -240,6 +241,7 @@ figure > div {
   opacity:1;
   transition:opacity 500ms linear; /* 1s; */
 }
+*/
 
 .invisible {
   visibility:hidden;

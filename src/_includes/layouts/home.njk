@@ -4,7 +4,6 @@
   {{ super() }}
   {% set css %}
   {% include "css/header.css" %}
-  {% include "css/slider.css" %}
   {% endset %}
   <style>
     {{ css | cssmin | safe }}
@@ -91,13 +90,18 @@
   </style>
 
   <main>
+  {#
   <div style="width:100%;max-width:1200px;margin-left:auto;margin-right:auto">
     {% for item in homepage_grid %}
       <div class="split-pair">
         <figure>
           <div style="background-image:url('{% lqip path=item.image, params='/focus=auto/cover=1:1' %}')">
-            <noscript><img width="1024" height="1024" src="{% twic path=item.image, params='/focus=auto/cover=1024x1024' %}" alt="" /></noscript>
-            <img width="1024" height="1024" src="{% placeholder 1024,1024 %}" data-twic-src="{% twic_dyn path=item.image %}" data-twic-focus="auto" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=1024x1024" alt="" />
+            {% if loop.index < 3 %}
+              <img width="1200" height="1200" src="{% twic path=item.image, params='/focus=auto/cover=1200x1200' %}" alt="" loading="eager" />
+            {% else %}
+              <noscript><img width="1200" height="1200" src="{% twic path=item.image, params='/focus=auto/cover=1200x1200' %}" alt="" /></noscript>
+              <img width="1200" height="1200" src="{% placeholder 1200,1200 %}" data-twic-src="{% twic_dyn path=item.image %}" data-twic-focus="auto" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=1200x1200" alt="" />
+            {% endif %}
           </div>
         </figure>
         <div style="position:static;background-color:rgba(0,0,0,0.05);display:grid;justify-content:center;align-items:center">
@@ -106,7 +110,9 @@
       </div>
     {% endfor %}
   </div>
-  {% include "partials/instagram-gallery-section.njk" %}
+  #}
+  {# include "partials/instagram-gallery-section.njk" #}
+  {% include "partials/carousel.njk" %}
   </main>
   {% include "partials/footer.njk" %}
 {% endblock %}
@@ -114,7 +120,6 @@
 {% block foot %}
   {{ super() }}
   {% set js %}
-  {% include "js/slider.js" %}
   {% endset %}
 
   <script>
