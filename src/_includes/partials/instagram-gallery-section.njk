@@ -4,7 +4,7 @@
 {% for item in instagram_images -%}
   .slider-selector:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
     transform: translateX({{ -loop.index0 * 100 }}%);
-}
+  }
   .slider-selector:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider-controls:nth-of-type({{ loop.index }}) {
     display:block;
   }
@@ -14,7 +14,7 @@
 {# Lightbox #}
 
 {% for item in instagram_images -%}
-<input class="slider-selector" type="radio" name="slider" id="slide-{{ loop.index }}">
+  <input class="slider-selector" type="radio" name="slider" id="slide-{{ loop.index }}">
 {% endfor %}
 <input class="slider-close" type="radio" name="slider" id="close" checked>
 <input class="slider-captions" type="checkbox" id="captions">
@@ -28,14 +28,14 @@
         <img src="{% insta_lqip path=image_path %}" alt="{{ item.caption | urldecode }}" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1440x1440" >
         <p class="slider-caption">{{ item.caption | urldecode }}</p>
       </li>
-      {% endfor %}
+    {% endfor %}
   </ul>
   <label role="button" class="slider-control slider-control-close" for="close" title="Close" aria-label="Close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
   <label role="button" class="slider-control slider-control-captions" for="captions" title="Toggle Captions" aria-label="Toggle Captions">{{ '/src/svg/comment-o.svg' | svgContents | safe }}</label>
   {% for item in instagram_images -%}
     <div class="slider-controls">
       {% if not loop.first %}<label role="button" class="slider-control slider-control-prev" for="slide-{{ loop.index - 1 }}" title="Previous" aria-label="Previous"><span>{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span></label>{% endif %} 
-        {% if not loop.last %}<label role="button" class="slider-control slider-control-next" for="slide-{{ loop.index + 1 }}" title="Next" aria-label="Next"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
+      {% if not loop.last %}<label role="button" class="slider-control slider-control-next" for="slide-{{ loop.index + 1 }}" title="Next" aria-label="Next"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
     </div>
   {% endfor %}
 </div>
@@ -44,7 +44,7 @@
 
 <style>#instagram-grid{display:grid;gap:0.5em;grid-template-columns:1fr 1fr;}@media screen and (min-width:750px){ #instagram-grid{grid-template-columns:1fr 1fr 1fr;} }@media screen and (min-width:950px) and (orientation:landscape){ #instagram-grid{grid-template-columns:1fr 1fr 1fr 1fr;} }@media screen and (min-width:1400px){ #instagram-grid{grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;} }</style>
 <section>
-  <div class="wrapper page-wrapper flow" style="--flow-space:2em">
+  <div class="wrapper flow" style="--flow-space:2em">
     <h2 class="heading">Instagram</h2>
     <div class="horizontal center"><a href="{{ site.instagram }}" class="button" role="button" target="_blank" rel="noopener">{{ '/src/svg/instagram.svg' | svgContents | safe }}&nbsp;&nbsp;Follow us</a></div>
     <div>

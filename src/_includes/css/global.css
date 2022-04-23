@@ -176,7 +176,7 @@ blockquote {
 blockquote p::before {
   font-family:var(--font-family-base);
   font-size:3em;
-  color:var(--color-shade3);
+  color:var(--color-shade2);
   content:open-quote;
   display:inline;
   height:0;
@@ -189,7 +189,7 @@ blockquote p::before {
 blockquote p::after {
   font-family:var(--font-family-base);
   font-size:3em;
-  color:var(--color-shade3);
+  color:var(--color-shade2);
   content:close-quote;
   display:inline;
   height:0;
@@ -216,9 +216,11 @@ section {
   padding-bottom:var(--section-padding);
 }
 
+/*
 * + section {
   border-top:1px solid var(--color-shade3);
 }
+*/
 
 figure > div {
   overflow: hidden;

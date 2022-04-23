@@ -1,5 +1,5 @@
 <style>#page-footer,#page-footer p{font-size:var(--size-300)} #page-footer{margin-top:auto}.three-columns{display:grid;gap:2.5em 0;grid-template-columns:1fr;grid-template-areas:"location" "contact" "follow" "hours" "subscribe";}@media screen and (min-width: 721px){.three-columns{gap:1.5em 0;grid-template-columns:1fr 1fr 1fr;
-grid-template-areas:"location hours follow" "contact hours subscribe";} } #footer-location{grid-area:location;} #footer-contact{grid-area:contact;} #footer-follow{grid-area:follow;} #footer-hours{grid-area:hours} #footer-subscribe{grid-area:subscribe} section > * + * {margin-top:2em;} .policies{display:grid;grid-template-columns:1fr;margin:0.5em auto 0 auto;} @media screen and (min-width:750px){.policies{max-width:500px;grid-template-columns:1fr 1fr 1fr;} }</style>
+grid-template-areas:"location hours follow" "contact hours subscribe";} } #footer-location{grid-area:location;} #footer-contact{grid-area:contact;} #footer-follow{grid-area:follow;} #footer-hours{grid-area:hours} #footer-subscribe{grid-area:subscribe} #page-footer section > * + * {margin-top:2em;} .policies{display:grid;grid-template-columns:1fr;margin:0.5em auto 0 auto;} @media screen and (min-width:750px){.policies{max-width:500px;grid-template-columns:1fr 1fr 1fr;} }</style>
 
 <hr>
 <footer id="page-footer" class="bg-alt">
@@ -10,18 +10,18 @@ grid-template-areas:"location hours follow" "contact hours subscribe";} } #foote
     </div>
     <div class="three-columns">
       <div id="footer-location" class="vertical center flow">
-        <h4 class="text-lowercase">Location</h4>
+        <h4>Location</h4>
         <a href="{{ site.google_maps }}" title="Open in Google Maps" aria-label="Open in Google Maps" target="_blank" rel="noopener">
           <p>{{ site.address }}<br>{{ site.address_locality }}, {{ site.address_region }}, {{ site.address_postcode }}<br>New Zealand</p>
         </a>
       </div>
       <div id="footer-contact" class="vertical center flow">
-        <h4 class="text-lowercase">Contact us</h4>
+        <h4>Contact us</h4>
         <p><a href="{{ site.mailto_obf | safe }}?subject=Flowers Enquiry" title="Send us a message" aria-label="Send us a message">{{ site.email_obf | safe }}</a></p>
         <p><a href="tel:{{ site.phone_intl }}" title="Call now" aria-label="Call now">{{ site.phone }}</a></p>
       </div>
       <div id="footer-follow" class="vertical center flow">
-        <h4 class="text-lowercase">Follow us</h4>
+        <h4>Follow us</h4>
         <div class="horizontal space-between color-dark" style="width:150px;margin-top:1.5em">
           <a href="{{ site.facebook }}" target="_blank" rel="noopener" class="social-icon" title="Follow us on Facebook" aria-label="Follow us on Facebook">{{ '/src/svg/facebook-f.svg' | svgContents | safe }}</a>
           <a href="{{ site.instagram }}" target="_blank" rel="noopener" class="social-icon" title="Follow us on Instagram" aria-label="Follow us on Instagram">{{ '/src/svg/instagram.svg' | svgContents | safe }}</a>
@@ -30,11 +30,11 @@ grid-template-areas:"location hours follow" "contact hours subscribe";} } #foote
         </div>
       </div>
       <div id="footer-hours" class="vertical center flow">
-        <h4 class="text-lowercase">Hours</h4>
+        <h4>Hours</h4>
         {% include "partials/shop-hours.njk" %}
       </div>
       <div id="footer-subscribe" class="vertical center flow" style="border:2px solid red">
-        <h4 class="text-lowercase">Subscribe to our Mailing List</h4>
+        <h4>Subscribe to our Mailing List</h4>
         <div id="mc_embed_signup" class="width100">
           <form action="https://floriade.us16.list-manage.com/subscribe/post?u=86cd330db9cb5b7a033dae205&amp;id=d73ce91674" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div id="mc_embed_signup_scroll" class="vertical center flow">

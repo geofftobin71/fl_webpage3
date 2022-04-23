@@ -1,0 +1,89 @@
+{% set slider_reviews = reviews | shuffle | head(5) %}
+
+<style>
+.split-overlap {
+  --overlap:7.5vmin;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+.split-overlap .content {
+  background-color:var(--color-alt);
+  margin-right:calc(-1 * var(--overlap));
+  overflow:hidden;
+}
+.split-overlap .image {
+  display:flex;
+  align-items:center;
+  justify-content:start;
+  padding-right:0.5em;
+  z-index:1;
+}
+.split-overlap .content,
+.split-overlap .image {
+  padding-top:var(--overlap);
+  padding-bottom:var(--overlap);
+}
+.split-overlap .content > * {
+  transform:translateX(calc(-0.5 * var(--overlap)));
+}
+</style>
+
+<style>
+.split-overlap .slider-item {
+  padding:0;
+  height:auto;
+}
+.split-overlap blockquote {
+  border:none;
+  box-shadow:none;
+  padding:0;
+}
+.split-overlap blockquote p,
+.split-overlap blockquote footer {
+  font-size:var(--size-300);
+  max-width:40ch;
+}
+{% for review in slider_reviews -%}
+  .slider-selector:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
+    transform: translateX({{ -loop.index0 * 100 }}%);
+  }
+  .slider-selector:nth-of-type({{ loop.index }}):checked ~ .dot-container .slider-dot:nth-of-type({{ loop.index }}) {
+    opacity:1;
+  }
+{% endfor %}
+}
+</style>
+
+<section class="split-overlap wrapper page-wrapper" style="padding:0">
+  <div class="content vertical center middle flow">
+    <h2 class="heading">Reviews</h2>
+    {% for review in slider_reviews -%}
+      <input class="slider-selector" type="radio" name="review" id="review-{{ loop.index }}" {{ 'checked' if loop.first }}>
+    {% endfor %}
+    <div class="slider-container">
+      <ul role="list" class="slider" style="position:static">
+        {% for review in slider_reviews %}
+          <li class="slider-item">
+            <blockquote class="flow">
+              <p>
+              {{ review.review }}
+              </p>
+              <footer>
+                {{ review.name }}
+              </footer>
+            </blockquote>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="dot-container horizontal center">
+      {% for review in slider_reviews %}
+        <label role="button" class="slider-dot" for="review-{{ loop.index }}" style="margin-left:0.5em;margin-right:0.5em">{{ '/src/svg/circle.svg' | svgContents | safe }}</label>
+      {% endfor %}
+    </div>
+    <a class="button" role="button" href="/reviews" style="--flow-space:2em">Read more Reviews</a>
+  </div>
+  <div class="image">
+    <img src="https://ay65paiy.twic.pics/instagram/v/t51.29350-15/278421760_2500647370069774_3891803092009551351_n.jpg?twic=v1&_nc_cat=103&ccb=1-5&_nc_sid=8ae9d6&_nc_ohc=bbo__K16KF8AX_htBmt&_nc_ht=scontent-syd2-1.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AT90ecFXdacjSmlRf3BR73neeGSbUq0gqZBudE-5Drhdxg&oe=6267BDE1" alt="Loving these gorgeous photos of newlyweds Eileen and Liam. Don’t they look so happy?  Photos by @jinalgovindphotography Wedding venue @tarurekaestate">
+  </div>
+</section>

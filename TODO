@@ -1,6 +1,5 @@
 <a href="/" aria-label="{{ site.name }} - home"> on home links
 SITEMAP
-gap above footer on noscript
 Check for --step-*
 github daily build
-noscript scrollbar styles
+blog post images
