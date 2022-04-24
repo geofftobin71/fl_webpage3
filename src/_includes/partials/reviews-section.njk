@@ -5,6 +5,8 @@
   --overlap:7.5vmin;
   display:grid;
   grid-template-columns:1fr 1fr;
+  padding:0;
+  padding-right:1em;
 }
 .split-overlap .content {
   background-color:var(--color-alt);
@@ -15,20 +17,18 @@
   display:flex;
   align-items:center;
   justify-content:start;
-  padding-right:0.5em;
   z-index:1;
 }
 .split-overlap .content,
 .split-overlap .image {
+  padding-left:0;
+  padding-right:0;
   padding-top:var(--overlap);
   padding-bottom:var(--overlap);
 }
 .split-overlap .content > * {
   transform:translateX(calc(-0.5 * var(--overlap)));
 }
-</style>
-
-<style>
 .split-overlap .slider-item {
   padding:0;
   height:auto;
@@ -40,9 +40,54 @@
 }
 .split-overlap blockquote p,
 .split-overlap blockquote footer {
-  font-size:var(--size-300);
+  font-size:var(--size-400);
   max-width:40ch;
 }
+@media screen and (max-width:950px) {
+  .split-overlap {
+    grid-template-columns:100%;
+    padding-left:1em;
+  }
+  .split-overlap .content {
+    margin-right:0;
+    margin-bottom:calc(-1 * var(--overlap));
+    padding-bottom:calc(2 * var(--overlap));
+  }
+  .split-overlap .image {
+    padding-top:0;
+    padding-bottom:0;
+    justify-content:center;
+  }
+  .split-overlap .content,
+  .split-overlap .image {
+    padding-left:var(--overlap);
+    padding-right:var(--overlap);
+  }
+  .split-overlap .content > * {
+    transform:translateX(0);
+  }
+}
+@media screen and (orientation:portrait) and (max-width:750px) {
+  .split-overlap {
+    --overlap:2em;
+    padding-left:0;
+    padding-right:0;
+  }
+  .split-overlap .content,
+  .split-overlap .image {
+    padding-left:1em;
+    padding-right:1em;
+  }
+  .split-overlap blockquote p,
+  .split-overlap blockquote footer {
+    font-size:var(--size-300);
+    padding-left:1em;
+    padding-right:1em;
+  }
+}
+</style>
+
+<style>
 {% for review in slider_reviews -%}
   .slider-selector:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
     transform: translateX({{ -loop.index0 * 100 }}%);
@@ -54,7 +99,7 @@
 }
 </style>
 
-<section class="split-overlap wrapper page-wrapper" style="padding:0">
+<section class="split-overlap wrapper page-wrapper">
   <div class="content vertical center middle flow">
     <h2 class="heading">Reviews</h2>
     {% for review in slider_reviews -%}

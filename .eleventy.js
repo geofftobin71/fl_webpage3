@@ -198,7 +198,7 @@ module.exports = eleventyConfig => {
     const lqip_path = `${site.twic_url}${path}?twic=v1${params}/output=preview`;
 
     try {
-      return EleventyFetch(lqip_path, {duration:"1y",type:"text"})
+      return EleventyFetch(lqip_path, {duration:"1y",type:"text",verbose:true})
         .then(data => {
           const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
           return (lqip);
@@ -213,7 +213,7 @@ module.exports = eleventyConfig => {
     const placeholder_path = `${site.twic_url}/v1/placeholder:${width}x${height}:transparent`;
 
     try {
-      return EleventyFetch(placeholder_path, {duration:"1y",type:"text"})
+      return EleventyFetch(placeholder_path, {duration:"1y",type:"text",verbose:true})
         .then(data => {
           const placeholder = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
           return (placeholder);
@@ -242,7 +242,7 @@ module.exports = eleventyConfig => {
     const lqip_path = path.replace(site.match_url, site.twic_url + "/instagram").replace("?", "?twic=v1" + params + "/output=preview&");
 
     try {
-      return EleventyFetch(lqip_path, {duration:"1y",type:"text"})
+      return EleventyFetch(lqip_path, {duration:"1y",type:"text",verbose:true})
         .then(data => {
           const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
           return (lqip);
