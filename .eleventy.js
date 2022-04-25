@@ -83,6 +83,22 @@ module.exports = eleventyConfig => {
     return array;
   });
 
+  eleventyConfig.addFilter("removeLongReviews", (array, limit) => {
+    let filtered = [];
+    for (let i = 0; i < array.length; ++i) {
+      if(array[i].review.length <= limit) { filtered[filtered.length] = array[i]; }
+    }
+    return filtered;
+  });
+
+  eleventyConfig.addFilter("filterWeddingReviews", (array, wedding) => {
+    let filtered = [];
+    for (let i = 0; i < array.length; ++i) {
+      if(array[i].wedding == wedding) { filtered[filtered.length] = array[i]; }
+    }
+    return filtered;
+  });
+
   eleventyConfig.addFilter("cssmin", (code) => {
     if(site.dev) { return code; }
 

@@ -289,13 +289,13 @@ figure > div {
   font-family:var(--font-family-alt);
   text-align:center;
   /* text-transform:lowercase; */
-  color:var(--color-shade2);
+  color:var(--color-shade1);
   margin-left:auto;
   margin-right:auto;
 }
 
 .bg-alt .heading {
-  color:var(--color-shade1);
+  color:var(--color-primary);
 }
 
 .flow > * {
