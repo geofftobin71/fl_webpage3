@@ -5,6 +5,7 @@
   {% set css %}
   {% include "css/header.css" %}
   {% include "css/slider.css" %}
+  {% include "css/postcard.css" %}
   {% endset %}
   <style>
     {{ css | cssmin | safe }}
@@ -115,6 +116,10 @@
     {% endfor %}
   </div>
   #}
+  {% include "partials/reviews-section.njk" %}
+  {% set left = true %}
+  {% include "partials/reviews-section.njk" %}
+  {% set left = false %}
   {% include "partials/reviews-section.njk" %}
   {% include "partials/instagram-gallery-section.njk" %}
   </main>

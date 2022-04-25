@@ -174,29 +174,17 @@ blockquote {
 }
 
 blockquote p::before {
-  font-family:var(--font-family-base);
-  font-size:3em;
-  color:var(--color-shade2);
-  content:open-quote;
-  display:inline;
-  height:0;
-  line-height:0;
-  left:-0.05em;
+  content:url('data:image/svg+xml;utf8, <svg width="0.8em" height="0.8em" aria-hidden="true" focusable="false" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path fill="%23818D89" d="M832 960v384q0 80-56 136t-136 56h-384q-80 0-136-56t-56-136v-704q0-104 40.5-198.5t109.5-163.5 163.5-109.5 198.5-40.5h64q26 0 45 19t19 45v128q0 26-19 45t-45 19h-64q-106 0-181 75t-75 181v32q0 40 28 68t68 28h224q80 0 136 56t56 136zm896 0v384q0 80-56 136t-136 56h-384q-80 0-136-56t-56-136v-704q0-104 40.5-198.5t109.5-163.5 163.5-109.5 198.5-40.5h64q26 0 45 19t19 45v128q0 26-19 45t-45 19h-64q-106 0-181 75t-75 181v32q0 40 28 68t68 28h224q80 0 136 56t56 136z"/></svg>');
+  margin-right:0.5em;
   position:relative;
-  top:0.4em;
+  display:inline;
 }
 
 blockquote p::after {
-  font-family:var(--font-family-base);
-  font-size:3em;
-  color:var(--color-shade2);
-  content:close-quote;
-  display:inline;
-  height:0;
-  line-height:0;
-  left:0.05em;
+  content:url('data:image/svg+xml;utf8, <svg width="0.8em" height="0.8em" aria-hidden="true" focusable="false" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path fill="%23818D89" d="M832 320v704q0 104-40.5 198.5t-109.5 163.5-163.5 109.5-198.5 40.5h-64q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h64q106 0 181-75t75-181v-32q0-40-28-68t-68-28h-224q-80 0-136-56t-56-136v-384q0-80 56-136t136-56h384q80 0 136 56t56 136zm896 0v704q0 104-40.5 198.5t-109.5 163.5-163.5 109.5-198.5 40.5h-64q-26 0-45-19t-19-45v-128q0-26 19-45t45-19h64q106 0 181-75t75-181v-32q0-40-28-68t-68-28h-224q-80 0-136-56t-56-136v-384q0-80 56-136t136-56h384q80 0 136 56t56 136z"/></svg>');
+  margin-left:0.5em;
   position:relative;
-  top:0.4em;
+  display:inline;
 }
 
 blockquote footer {

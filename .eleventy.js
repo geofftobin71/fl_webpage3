@@ -8,6 +8,7 @@ const jsonminify = require("jsonminify");
 const markdown = require("markdown-it")({ html: true }).disable("code");
 const svgContents = require("eleventy-plugin-svg-contents");
 const EleventyFetch = require("@11ty/eleventy-fetch");
+const crypto = require('crypto');
 
 delete require.cache[require.resolve('./src/_data/site.js')];
 const site = require("./src/_data/site.js");
@@ -44,6 +45,11 @@ markdown.renderer.rules.image = function (tokens, idx, options, env, self) {
     + caption + '</figure>';
 }
 
+function uniqueId(length) {
+  const buf = crypto.randomBytes(length/2);
+  return buf.toString('hex');
+}
+
 module.exports = eleventyConfig => {
 
   eleventyConfig.setLibrary("md", markdown);
@@ -71,6 +77,10 @@ module.exports = eleventyConfig => {
     }
 
     return content;
+  });
+
+  eleventyConfig.addFilter("uniqueId", (length) => {
+    return uniqueId(length);
   });
 
   eleventyConfig.addFilter("shuffle", (array) => {
