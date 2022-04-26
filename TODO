@@ -1,5 +1,7 @@
+fix caption scroll on phone - modal js
+
 <a href="/" aria-label="{{ site.name }} - home"> on home links
 SITEMAP
 Check for --step-*
 github daily build
-blog post images
+blog post images template - .eleventy.js

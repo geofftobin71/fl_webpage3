@@ -64,7 +64,7 @@ module.exports = eleventyConfig => {
   // eleventyConfig.addPassthroughCopy("./src/fonts");
   // eleventyConfig.addPassthroughCopy("./src/images");
   // eleventyConfig.addPassthroughCopy("./src/icons");
-  // eleventyConfig.addPassthroughCopy("./admin");
+  eleventyConfig.addPassthroughCopy("./admin");
 
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
     if((!site.dev) && outputPath && outputPath.endsWith(".html")) {

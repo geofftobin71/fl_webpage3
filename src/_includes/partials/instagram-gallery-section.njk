@@ -1,11 +1,12 @@
 {% set instagram_images = instagram_gallery | sortISO8601 | reverse | head(12) %}
+{% set uid = 8 | uniqueId %}
 
 <style>
 {% for item in instagram_images -%}
-  .slider-selector:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
+  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
     transform: translateX({{ -loop.index0 * 100 }}%);
   }
-  .slider-selector:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider-controls:nth-of-type({{ loop.index }}) {
+  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider-controls:nth-of-type({{ loop.index }}) {
     display:block;
   }
 {% endfor %}
@@ -14,10 +15,10 @@
 {# Lightbox #}
 
 {% for item in instagram_images -%}
-  <input class="slider-selector" type="radio" name="slider" id="slide-{{ loop.index }}">
+  <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="slider-{{ uid }}" id="slide-{{ uid }}-{{ loop.index }}">
 {% endfor %}
-<input class="slider-close" type="radio" name="slider" id="close" checked>
-<input class="slider-captions" type="checkbox" id="captions">
+<input class="slider-close" type="radio" name="slider-{{ uid }}" id="close-{{ uid }}" checked>
+<input class="slider-captions" type="checkbox" id="captions-{{ uid }}">
 
 <div class="slider-lightbox slider-container">
   <ul role="list" class="slider">
@@ -30,12 +31,12 @@
       </li>
     {% endfor %}
   </ul>
-  <label role="button" class="slider-control slider-control-close" for="close" title="Close" aria-label="Close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
-  <label role="button" class="slider-control slider-control-captions" for="captions" title="Toggle Captions" aria-label="Toggle Captions">{{ '/src/svg/comment-o.svg' | svgContents | safe }}</label>
+  <label role="button" class="slider-control slider-control-close" for="close-{{ uid }}" title="Close" aria-label="Close">{{ '/src/svg/close.svg' | svgContents | safe }}</label>
+  <label role="button" class="slider-control slider-control-captions" for="captions-{{ uid }}" title="Toggle Captions" aria-label="Toggle Captions">{{ '/src/svg/comment-o.svg' | svgContents | safe }}</label>
   {% for item in instagram_images -%}
     <div class="slider-controls">
-      {% if not loop.first %}<label role="button" class="slider-control slider-control-prev" for="slide-{{ loop.index - 1 }}" title="Previous" aria-label="Previous"><span>{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span></label>{% endif %} 
-      {% if not loop.last %}<label role="button" class="slider-control slider-control-next" for="slide-{{ loop.index + 1 }}" title="Next" aria-label="Next"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
+      {% if not loop.first %}<label role="button" class="slider-control slider-control-prev" for="slide-{{ uid }}-{{ loop.index - 1 }}" title="Previous" aria-label="Previous"><span>{{ '/src/svg/chevron-left.svg' | svgContents | safe }}</span></label>{% endif %} 
+      {% if not loop.last %}<label role="button" class="slider-control slider-control-next" for="slide-{{ uid }}-{{ loop.index + 1 }}" title="Next" aria-label="Next"><span>{{ '/src/svg/chevron-right.svg' | svgContents | safe }}</span></label>{% endif %}
     </div>
   {% endfor %}
 </div>
@@ -52,7 +53,7 @@
         {% for item in instagram_images -%}
           {% set image_path = (item.thumbnail_url or item.media_url) %}
           <li class="hover-scale">
-            <label role="button" class="slider-link" for="slide-{{ loop.index }}">
+            <label role="button" class="slider-link" for="slide-{{ uid }}-{{ loop.index }}">
               <noscript><img class="round border-faint" src="{% insta_twic path=image_path, params='/cover=480x480' %}" width="480" height="480" alt="{{ item.caption | urldecode }}"></noscript>
               <img src="{% insta_lqip path=image_path, params="/cover=480x480" %}" class="round border-faint" data-twic-src="image:instagram{{ image_path | replace(site.match_url,"") | safe }}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-bot="cover=480x480" alt="{{ item.caption | urldecode }}">
             </label>

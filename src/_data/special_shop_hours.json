@@ -1,16 +1,14 @@
-{
-  "special_shop_hours": [
-    {
-      "date": "2022-01-02",
-      "opens_at": "11:30",
-      "closes_at": "17:00",
-      "closed": false,
-      "pickup": true
-    },
-    {
-      "date": "2022-01-05",
-      "delivery": false,
-      "pickup": true
-    }
-  ]
-}
+[
+  {
+    "date": "2022-01-02",
+    "opens_at": "11:30",
+    "closes_at": "17:00",
+    "closed": false,
+    "pickup": true
+  },
+  {
+    "date": "2022-01-05",
+    "delivery": false,
+    "pickup": true
+  }
+]
