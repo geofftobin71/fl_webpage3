@@ -3,7 +3,7 @@
   {% set days = [ monday, monday.plus({days:1}), monday.plus({days:2}), monday.plus({days:3}), monday.plus({days:4}), monday.plus({days:5}), monday.plus({days:6}) ] %}
   {% for day in days %}
     {% set rsh = regular_shop_hours[ day.weekdayLong | lower ] %}
-    {% set ssh = special_shop_hours.special_shop_hours | findSpecialDay(day.toFormat("yyyy-LL-dd")) %}
+    {% set ssh = special_shop_hours | findSpecialDay(day.toFormat("yyyy-LL-dd")) %}
     {% if ssh %}
       {% if ssh.closed %}
         <tr><td>{{ day.weekdayLong }}&nbsp;</td><td><i><b>&nbsp;{{ ssh.closed_message or rsh.closed_message or "Closed" }}{# {{ day.toFormat("dd LLL") }} #}</b></i></td></tr>
