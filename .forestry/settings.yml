@@ -5,6 +5,10 @@ admin_path: admin
 webhook_url: 
 sections:
 - type: document
+  path: src/_data/banner_message.json
+  label: Banner Message
+  match: "**/*"
+- type: document
   path: src/_data/site_data.json
   label: Site Data
 upload_dir: ''
