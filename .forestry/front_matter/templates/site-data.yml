@@ -23,3 +23,5 @@ fields:
 - type: text
   name: address_postcode
   label: address_postcode
+pages:
+- src/_data/site_data.json
