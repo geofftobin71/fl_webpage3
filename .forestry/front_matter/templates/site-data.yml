@@ -1,0 +1,25 @@
+---
+label: Site Data
+hide_body: true
+fields:
+- type: textarea
+  name: description
+  label: description
+- type: file
+  name: header_image
+  label: header_image
+- type: text
+  name: phone
+  label: phone
+- type: text
+  name: address
+  label: address
+- type: text
+  name: address_locality
+  label: address_locality
+- type: text
+  name: address_region
+  label: address_region
+- type: text
+  name: address_postcode
+  label: address_postcode
