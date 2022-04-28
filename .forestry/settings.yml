@@ -3,7 +3,11 @@ new_page_extension: md
 auto_deploy: false
 admin_path: admin
 webhook_url: 
-sections: 
+sections:
+- type: document
+  path: src/_data/site_data.json
+  label: Site Data
+  match: "**/*"
 upload_dir: ''
 public_path: https://res.cloudinary.com/floriade/image/upload
 front_matter_path: ''
