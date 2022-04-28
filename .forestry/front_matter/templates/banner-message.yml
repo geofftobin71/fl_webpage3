@@ -11,3 +11,5 @@ fields:
     schema:
       format: markdown
   label: message
+pages:
+- src/_data/banner_message.json
