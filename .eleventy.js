@@ -9,6 +9,8 @@ const markdown = require("markdown-it")({ html: true }).disable("code");
 const svgContents = require("eleventy-plugin-svg-contents");
 const EleventyFetch = require("@11ty/eleventy-fetch");
 const crypto = require('crypto');
+const glob = require("glob");
+const fs = require("fs");
 
 delete require.cache[require.resolve('./src/_data/site.js')];
 const site = require("./src/_data/site.js");
@@ -52,6 +54,26 @@ function uniqueId(length) {
 
 module.exports = eleventyConfig => {
 
+  eleventyConfig.on('eleventy.before', () => {
+
+    // Create Unique IDs for shop items
+    glob('./src/shop/**/*.md', (err, files) => {
+      if(err) {
+        console.log(err);
+      } else {
+        files.forEach((file) => {
+          let prevStats = fs.statSync(file);
+          let data = fs.readFileSync(file, 'utf8');
+          while(data.includes('XXXXXXXX')) {
+            data = data.replace('XXXXXXXX',uniqueId(8));
+          }
+          fs.writeFileSync(file, data);
+          fs.utimesSync(file, prevStats.atime, prevStats.mtime);
+        });
+      }
+    });
+  });
+
   eleventyConfig.setLibrary("md", markdown);
 
   eleventyConfig.addPlugin(svgContents);
@@ -81,6 +103,10 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.addFilter("uniqueId", (length) => {
     return uniqueId(length);
+  });
+
+  eleventyConfig.addFilter("idHash", (s) => {
+    crypto.createHash('md5').update(s).digest('hex');
   });
 
   eleventyConfig.addFilter("shuffle", (array) => {
@@ -277,6 +303,14 @@ module.exports = eleventyConfig => {
       console.error("LQIP error: ", err);
       return (lqip_path);
     }
+  });
+
+  eleventyConfig.addCollection("shop_products", (collection) => {
+    return collection.getFilteredByGlob("src/shop/products/*.md");
+  });
+
+  eleventyConfig.addCollection("shop_categories", (collection) => {
+    return collection.getFilteredByGlob("src/shop/categories/*.md");
   });
 
   return {

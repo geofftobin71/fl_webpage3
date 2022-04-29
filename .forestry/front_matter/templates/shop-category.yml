@@ -13,6 +13,8 @@ fields:
 - type: text
   name: title
   label: Name
+  config:
+    required: true
 - name: prices
   type: field_group_list
   fields:
@@ -23,19 +25,19 @@ fields:
     label: id
     hidden: true
     default: XXXXXXXX
-  - name: title
+  - name: label
     type: text
     config:
       required: false
-    label: Name
+    label: Label
   - name: price
     type: number
     label: Price
     description: ''
-    default: 0
+    default: 1
     required: true
     config:
-      min: 
+      min: 1
       max: 
       step: 
   - name: disabled
@@ -44,7 +46,7 @@ fields:
   config:
     min: 1
     max: 
-    labelField: title
+    labelField: label
   label: Prices
 - type: boolean
   name: disabled

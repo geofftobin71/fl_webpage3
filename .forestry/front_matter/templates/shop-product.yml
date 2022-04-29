@@ -13,9 +13,10 @@ fields:
 - type: text
   name: title
   label: Name
+  config:
+    required: true
 - name: category
   type: select
-  default: []
   config:
     required: true
     options: []
@@ -31,4 +32,7 @@ fields:
 pages:
 - src/shop/products/avant-garde-bouquet.md
 - src/shop/products/original-milk-chocolate.md
+- src/shop/products/subtle-pastels-bouquet.md
+- src/shop/products/vibrant-colours-bouquet.md
+- src/shop/products/vintage-dried-bouquet.md
 - src/shop/products/wild-rustic-bouquet.md

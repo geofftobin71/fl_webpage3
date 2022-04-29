@@ -1,0 +1,19 @@
+---
+permalink: php/shop_products.php
+sitemap:
+  ignore: true
+---
+<?php
+$shop_products = [
+  {% for product in collections.shop_products %}
+    [
+      "id" => "{{ product.data.id }}",
+      "title" => "{{ product.data.title }}",
+      "disabled" => {{ product.data.disabled or 'false' }},
+      "category" => "{{ product.data.category }}"
+    ]{{',' if not loop.last }}
+  {% endfor %}
+];
+// header('Content-Type: application/json');
+// echo json_encode($shop_products, JSON_PRETTY_PRINT);
+?>

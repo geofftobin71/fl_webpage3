@@ -1,0 +1,29 @@
+---
+permalink: php/shop_categories.php
+sitemap:
+  ignore: true
+---
+<?php
+  $shop_categories = [
+  {% for category in collections.shop_categories %}
+    [
+      "id" => "{{ category.data.id }}",
+      "title" => "{{ category.data.title }}",
+      "disabled" => {{ category.data.disabled or 'false' }},
+      "inputPath" => "{{ category.inputPath | replace('./','') }}",
+      "prices" => [
+        {% for price in category.data.prices %}
+          [
+            "id" => "{{ price.id }}",
+            {%- if price.label %}"label" => "{{ price.label }}",{% endif %}
+            "price" => {{ price.price }},
+            "disabled" => {{ price.disabled or 'false' }}
+          ]{{',' if not loop.last }}
+        {% endfor %}
+      ]
+    ]{{',' if not loop.last }}
+  {% endfor %}
+  ];
+// header('Content-Type: application/json');
+// echo json_encode($shop_categories, JSON_PRETTY_PRINT);
+?>

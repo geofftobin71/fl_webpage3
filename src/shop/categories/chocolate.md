@@ -1,9 +1,9 @@
 ---
+id: 0ff9e2de
 disabled: false
 title: Chocolate
 prices:
-- id: XXXXXXXX
-  title: "$15"
+- id: c38814fc
   price: 15
 
 ---

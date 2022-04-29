@@ -1,21 +1,17 @@
 ---
+id: 1bc45bb3
 disabled: false
 title: Dried Flowers
 prices:
-- id: XXXXXXXX
+- id: e6d5a261
   price: 75
-  title: "$75"
-- id: XXXXXXXX
+- id: f3b4dbd3
   price: 100
-  title: "$100"
-- id: XXXXXXXX
+- id: 6e6ab42a
   price: 150
-  title: "$150"
-- id: XXXXXXXX
+- id: 4ec91b96
   price: 200
-  title: "$200"
-- id: XXXXXXXX
+- id: a5819d4f
   price: 250
-  title: "$250"
 
 ---
