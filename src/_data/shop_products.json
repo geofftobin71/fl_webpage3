@@ -2,43 +2,53 @@
   "shop_products": [
     {
       "disabled": false,
-      "name": "Vibrant Colours Bouquet"
+      "name": "Vibrant Colours Bouquet",
+      "category": "shop_categories"
     },
     {
       "disabled": false,
-      "name": "Subtle Pastels Bouquet"
+      "name": "Subtle Pastels Bouquet",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Avant-garde Bouquet"
+      "name": "Avant-garde Bouquet",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Vintage Dried Bouquet"
+      "name": "Vintage Dried Bouquet",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Wild Rustic Bouquet"
+      "name": "Wild Rustic Bouquet",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Raspberry Milk Chocolate"
+      "name": "Raspberry Milk Chocolate",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Coconut Milk Chocolate"
+      "name": "Coconut Milk Chocolate",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Original Milk Chocolate"
+      "name": "Original Milk Chocolate",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Salted Caramel Dark Chocolate"
+      "name": "Salted Caramel Dark Chocolate",
+      "category": ""
     },
     {
       "disabled": false,
-      "name": "Peru Dark Chocolate"
+      "name": "Peru Dark Chocolate",
+      "category": ""
     }
   ],
   "category": ""
