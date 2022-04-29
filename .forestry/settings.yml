@@ -5,6 +5,10 @@ admin_path: admin
 webhook_url: 
 sections:
 - type: document
+  path: src/_data/shop_categories.json
+  label: Shop Categories
+  match: "**/*"
+- type: document
   path: src/_data/shop_products.json
   label: Shop Products
 - type: document
