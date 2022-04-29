@@ -5,10 +5,17 @@ admin_path: admin
 webhook_url: 
 sections:
 - type: directory
+  path: src/shop/categories
+  label: Shop Categories
+  create: documents
+  match: "*.md"
+- type: directory
   path: src/shop/products
   label: Shop Products
   create: documents
   match: "*.md"
+  templates:
+  - shop-product
 - type: document
   path: src/_data/banner_message.json
   label: Banner Message
