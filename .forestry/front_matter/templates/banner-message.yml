@@ -10,6 +10,6 @@ fields:
     wysiwyg: true
     schema:
       format: markdown
-  label: message
+  label: Message
 pages:
 - src/_data/banner_message.json

@@ -4,24 +4,24 @@ hide_body: true
 fields:
 - type: textarea
   name: description
-  label: description
+  label: SEO Meta Description
 - type: file
   name: header_image
-  label: header_image
+  label: Default Header Image
 - type: text
   name: phone
-  label: phone
+  label: Phone
 - type: text
   name: address
-  label: address
+  label: Address
 - type: text
   name: address_locality
-  label: address_locality
+  label: Address Locality
 - type: text
   name: address_region
-  label: address_region
+  label: Address Region
 - type: text
   name: address_postcode
-  label: address_postcode
+  label: Postcode
 pages:
 - src/_data/site_data.json
