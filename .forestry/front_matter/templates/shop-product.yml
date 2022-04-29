@@ -21,3 +21,5 @@ fields:
       file: 
       path: 
   label: Category
+pages:
+- src/shop/products/avant-garde-bouquet.md
