@@ -23,4 +23,5 @@ fields:
   label: Category
 pages:
 - src/shop/products/avant-garde-bouquet.md
+- src/shop/products/original-milk-chocolate.md
 - src/shop/products/wild-rustic-bouquet.md
