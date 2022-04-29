@@ -3,6 +3,13 @@ label: Shop Product
 hide_body: true
 display_field: title
 fields:
+- name: id
+  type: text
+  config:
+    required: false
+  label: id
+  hidden: true
+  default: XXXXXXXX
 - type: boolean
   name: disabled
   label: Disabled
