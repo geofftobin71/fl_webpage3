@@ -1,6 +1,6 @@
 ---
 disabled: false
-name: Subtle Pastels Bouquet
+title: Subtle Pastels Bouquet
 category: src/shop/categories/fresh-flowers.md
 
 ---

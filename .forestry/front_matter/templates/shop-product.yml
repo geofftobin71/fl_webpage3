@@ -1,13 +1,13 @@
 ---
 label: Shop Product
 hide_body: true
-display_field: name
+display_field: title
 fields:
 - type: boolean
   name: disabled
   label: Disabled
 - type: text
-  name: name
+  name: title
   label: Name
 - name: category
   type: select

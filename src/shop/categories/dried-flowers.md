@@ -1,4 +1,4 @@
 ---
 disabled: false
-name: 'Dried Flowers'
+title: 'Dried Flowers'
 ---

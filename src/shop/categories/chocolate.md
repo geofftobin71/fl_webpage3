@@ -1,4 +1,4 @@
 ---
 disabled: false
-name: 'Chocolate'
+title: 'Chocolate'
 ---
