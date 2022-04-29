@@ -21,15 +21,3 @@ fields:
       file: 
       path: 
   label: Category
-- name: test
-  type: select
-  default: []
-  config:
-    required: false
-    options: []
-    source:
-      type: documents
-      section: shop-categories
-      file: 
-      path: 
-  label: Test
