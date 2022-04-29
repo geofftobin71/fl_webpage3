@@ -12,5 +12,17 @@ fields:
   - type: text
     name: name
     label: Name
+  - name: category
+    type: select
+    default: []
+    config:
+      required: false
+      options: []
+      source:
+        type: pages
+        section: shop-categories
+        file: 
+        path: 
+    label: Category
 pages:
 - src/_data/shop_products.json
