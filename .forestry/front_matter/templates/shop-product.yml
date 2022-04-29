@@ -9,3 +9,27 @@ fields:
 - type: text
   name: name
   label: Name
+- name: category
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: pages
+      section: shop-categories
+      file: 
+      path: 
+  label: Category
+- name: test
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: documents
+      section: shop-categories
+      file: 
+      path: 
+  label: Test
