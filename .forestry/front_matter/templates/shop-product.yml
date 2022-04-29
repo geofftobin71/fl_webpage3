@@ -1,6 +1,7 @@
 ---
 label: Shop Product
-hide_body: true
+hide_body: false
+display_field: name
 fields:
 - type: boolean
   name: disabled
