@@ -4,6 +4,11 @@ auto_deploy: false
 admin_path: admin
 webhook_url: 
 sections:
+- type: directory
+  path: src/shop/products
+  label: Shop Products
+  create: documents
+  match: "*.md"
 - type: document
   path: src/_data/banner_message.json
   label: Banner Message
