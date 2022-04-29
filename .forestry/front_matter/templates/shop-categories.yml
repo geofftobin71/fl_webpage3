@@ -3,12 +3,12 @@ label: Shop Categories
 hide_body: true
 fields:
 - type: field_group_list
-  name: Shop categories
-  label: Shop categories
+  name: shop_categories
+  label: Shop Categories
   fields:
   - type: boolean
     name: disabled
-    label: disabled
+    label: Disabled
   - type: text
     name: name
-    label: name
+    label: Name
