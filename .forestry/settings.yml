@@ -9,6 +9,8 @@ sections:
   label: Shop Categories
   create: documents
   match: "*.md"
+  templates:
+  - shop-category
 - type: directory
   path: src/shop/products
   label: Shop Products
