@@ -10,9 +10,6 @@ fields:
   label: id
   hidden: true
   default: XXXXXXXX
-- type: boolean
-  name: disabled
-  label: Disabled
 - type: text
   name: title
   label: Name
@@ -26,9 +23,6 @@ fields:
     label: id
     hidden: true
     default: XXXXXXXX
-  - name: disabled
-    type: boolean
-    label: Disabled
   - name: title
     type: text
     config:
@@ -44,8 +38,14 @@ fields:
       min: 
       max: 
       step: 
+  - name: disabled
+    type: boolean
+    label: Disabled
   config:
     min: 1
     max: 
-    labelField: 
+    labelField: title
   label: Prices
+- type: boolean
+  name: disabled
+  label: Disabled
