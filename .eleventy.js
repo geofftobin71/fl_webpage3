@@ -85,7 +85,8 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy({"./src/favicon/*.webmanifest" : "/"});
   // eleventyConfig.addPassthroughCopy("./src/fonts");
   // eleventyConfig.addPassthroughCopy("./src/images");
-  // eleventyConfig.addPassthroughCopy("./src/icons");
+  eleventyConfig.addPassthroughCopy("./src/icons");
+  eleventyConfig.addPassthroughCopy("./src/php");
   eleventyConfig.addPassthroughCopy("./admin");
 
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {

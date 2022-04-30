@@ -13,25 +13,7 @@
 {% endblock %}
 
 {% block content %}
-  <header>
-    <h1 class="heading">{{ title | safe }}</h1>
-    <p class="heading">{{ site.tagline_html | safe }}</p>
-    <br>
-    <nav>
-      <ul role="list">
-        {% for item in navigation %}
-          <li>
-            <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>{{ item.text }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </header>
-  <br>
-  <br>
-  <br>
-  
-
+  {% include "partials/header.njk" %}
   <style>
   .split-pair {
     display: grid;
