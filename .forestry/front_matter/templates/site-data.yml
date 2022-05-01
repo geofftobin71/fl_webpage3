@@ -5,11 +5,13 @@ fields:
 - type: textarea
   name: description
   label: Description
-  description: Default SEO meta description. Appears on Google search results.<br>Used if a page doesn't define it's own Meta Description.
+  description: Default SEO meta description. Appears on Google search results.<br>Used
+    if a page doesn't define it's own Meta Description.
 - type: file
   name: header_image
   label: Header Image
-  description: Default Header Image.<br>Used if a page doesn't define it's own Header Image.
+  description: Default Header Image.<br>Used if a page doesn't define it's own Header
+    Image.
 - type: text
   name: phone
   label: Phone
