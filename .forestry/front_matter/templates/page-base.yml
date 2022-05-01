@@ -5,7 +5,7 @@ fields:
 - type: text
   name: title
   label: Title
-  description: The Title of the page. Appears in the page header and on the browser tab<br>eg. <em>Page Title =&gt; https:%2F%2Ffloriade.co.nz%2Fpage-title</em><br>( Don't put a full-stop at the end )
+  description: The Title of the page. Appears in the page header and on the browser tab<br>eg. <em>Awesome Page Title =&gt; https://floriade.co.nz/awesome-page-title</em><br>( Don't put a full-stop at the end )
 - type: text
   name: description
   label: Description
