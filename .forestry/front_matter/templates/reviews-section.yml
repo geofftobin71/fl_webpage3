@@ -19,3 +19,4 @@ fields:
 - name: alternate_background_color
   type: boolean
   label: Alternate Background Color
+  description: Only if no image defined.
