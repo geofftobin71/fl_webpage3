@@ -11,6 +11,7 @@ page_sections:
   button:
     text: Read more
     url: "/"
+  heading: The Walrus and the Carpenter
 - template: reviews-section
   image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
 - template: reviews-section
