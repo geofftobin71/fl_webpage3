@@ -1,0 +1,15 @@
+{% set section_heading = section.heading %}
+{% set section_text = section.text %}
+{% set section_alternate_background_color = section.alternate_background_color %}
+{% set section_button_text = section.button.text %}
+{% set section_button_url = section.button.url %}
+
+<section {{ 'class="bg-alt"' | safe if (section_alternate_background_color) }}>
+  <article class="wrapper vertical center flow">
+    {% if section_heading %}<h2 class="heading">{{ section_heading }}</h2>{% endif %}
+    {% markdown section_text %}
+    {% if section_button_text %}
+      <a class="button" role="button" href="{{ section_button_url }}"{{ ' target="_blank" rel="noopener"' | safe if (section_button_url | externalLink) }}>{{ section_button_text }}</a>
+    {% endif %}
+  </article>
+</section>

@@ -3,7 +3,7 @@
 {% set section_alt = section.alt %}
 {% set section_image_left = section.image_left %}
 
-{% if section_image %}
+{% ifAsync section_image %}
   <section class="postcard {{ 'left' if section_image_left }} top wrapper page-wrapper">
     <article class="content vertical center middle flow">
       {{ postcard_content | safe }}
@@ -16,7 +16,7 @@
     </div>
   </section>
 {% else %}
-  <section class="postcard" {# 'class="bg-alt"' | safe if section_alternate_background_color #}>
+  <section class="postcard_content{{ ' bg-alt' | safe if section_alternate_background_color }}">
     <article class="wrapper vertical center flow">
       {{ postcard_content | safe }}
     </article>

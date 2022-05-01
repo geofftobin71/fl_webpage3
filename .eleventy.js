@@ -241,9 +241,16 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
+  /*
   eleventyConfig.addAsyncShortcode("markdown", async (content) => {
     const md = await markdown.render(content);
     return md;
+  });
+  */
+
+  eleventyConfig.addNunjucksAsyncFilter("markdown", async function(content, callback) {
+    const md = await markdown.render(content);
+    callback(null, md);
   });
 
   eleventyConfig.addNunjucksAsyncShortcode("lqip", async function(args) {

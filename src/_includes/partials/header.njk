@@ -1,7 +1,7 @@
 {% if banner_message.message %}
-  {% set message = banner_message.message | addNbsp %}
+  {% set message = banner_message.message | markdown | trim | addNbsp | safe %}
   <aside class="banner-message">
-    {% markdown message %}
+    {{ message }}
   </aside>
 {% endif %}
 <div class="site-menu">
@@ -26,7 +26,7 @@
     <img src="{% twic path=image_path, params='/resize=1024/focus=auto/cover=3:1' %}" style="background-image:url('{% lqip path=image_path, params='/focus=auto/cover=3:1' %}')" alt="" />
     </picture>
   </figure>
-  <div class="content">
+  <div class="content wrapper page-wrapper">
     <figure class="logo">
       <a href="/" aria-label="{{ site.name }} home" style="display:block" tabindex="-1">
         <img src="/icons/floriade-logo.png" width="320" height="269" alt="Floriade logo" loading="eager" decoding="async" />

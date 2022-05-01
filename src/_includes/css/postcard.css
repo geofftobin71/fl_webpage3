@@ -9,7 +9,7 @@
   background-color:var(--color-alt);
   margin-right:calc(-1 * var(--overlap));
   overflow:hidden;
-  box-shadow:inset 0 0 20vmin rgba(94,106,101,0.15);
+  box-shadow:inset 0 0 20vmin rgba(94,106,101,0.1);
 }
 .postcard .image {
   display:flex;
@@ -27,21 +27,26 @@
 .postcard .content > * {
   transform:translateX(calc(-0.5 * var(--overlap)));
 }
-.postcard .slider {
+.postcard .slider,
+.postcard_content .slider {
   position:static;
 }
-.postcard .slider-item {
+.postcard .slider-item,
+.postcard_content .slider-item {
   padding:0;
   height:auto;
 }
-.postcard blockquote {
+.postcard blockquote,
+.postcard_content blockquote {
   border:none;
   box-shadow:none;
   background-color:transparent;
   padding:0;
 }
 .postcard blockquote p,
-.postcard blockquote footer {
+.postcard blockquote footer,
+.postcard_content blockquote p,
+.postcard_content blockquote footer {
   font-size:var(--size-400);
   max-width:40ch;
 }

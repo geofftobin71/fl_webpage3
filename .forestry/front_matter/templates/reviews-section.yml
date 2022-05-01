@@ -16,3 +16,6 @@ fields:
   type: boolean
   label: Image on Left
   description: Defaults to on the Right.
+- name: alternate_background_color
+  type: boolean
+  label: Alternate Background Color
