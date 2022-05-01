@@ -90,6 +90,13 @@
   padding:0.25em;
 }
 
+@media screen and (max-width:750px) {
+  .banner-message {
+    padding-left:2em;
+    padding-right:2em;
+  }
+}
+
 .banner-message strong {
   color:var(--color-shade3);
   font-size:120%;

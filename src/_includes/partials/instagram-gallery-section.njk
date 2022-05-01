@@ -15,9 +15,9 @@
 {# Lightbox #}
 
 {% for item in instagram_images -%}
-  <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="slider-{{ uid }}" id="slide-{{ uid }}-{{ loop.index }}">
+  <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="slider-{{ uid }}" id="slide-{{ uid }}-{{ loop.index }}" onclick="modalOn()">
 {% endfor %}
-<input class="slider-close" type="radio" name="slider-{{ uid }}" id="close-{{ uid }}" checked>
+<input class="slider-close" type="radio" name="slider-{{ uid }}" id="close-{{ uid }}" checked onclick="modalOff()">
 <input class="slider-captions" type="checkbox" id="captions-{{ uid }}">
 
 <div class="slider-lightbox slider-container">
@@ -63,3 +63,4 @@
     </div>
   </div>
 </section>
+<script>function modalOn(){document.documentElement.setAttribute('data-modal-active',true);}function modalOff(){document.documentElement.setAttribute('data-modal-active',false);}</script>

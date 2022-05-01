@@ -5,12 +5,14 @@
 .slider-lightbox {
   position:fixed;
   top:0;
-  bottom:0;
   left:0;
-  right:0;
-  z-index:12;
+  width:100vw;
+  height:100vh;
+  /* bottom:0; */
+  /* right:0; */
+  z-index:22;
   background-color:black;
-  border:1px solid rgba(255,255,255,0.1); // DEBUG
+  /* border:1px solid rgba(255,255,255,0.1); */
 }
 .slider {
   position:absolute;
@@ -61,7 +63,7 @@
   text-shadow:0 0 2px rgba(0,0,0,0.5), 0 0 8px rgba(0,0,0,0.2);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  z-index:13;
+  z-index:23;
   max-height:6.25em;
   overflow-y:auto;
   display:block;
@@ -72,7 +74,7 @@
 }
 .slider-control {
   position:absolute;
-  z-index:14;
+  z-index:24;
   font-size:var(--size-500);
   color:white;
   background-color:rgba(0,0,0,0.5);
