@@ -1,0 +1,35 @@
+{% extends "layouts/base.njk" %} 
+
+{% block head %}
+  {{ super() }}
+  {% set css %}
+  {% include "css/header.css" %}
+  {% include "css/slider.css" %}
+  {% include "css/postcard.css" %}
+  {% endset %}
+  <style>
+    {{ css | cssmin | safe }}
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% include "partials/header.njk" %}
+  <main>
+  {% include "partials/reviews-section.njk" %}
+  {% set left = true %}
+  {% include "partials/reviews-section.njk" %}
+  {% set left = false %}
+  {% include "partials/reviews-section.njk" %}
+  {% include "partials/instagram-gallery-section.njk" %}
+  </main>
+  {% include "partials/footer.njk" %}
+{% endblock %}
+
+{% block foot %}
+  {{ super() }}
+  {% set js %}
+  {% endset %}
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+{% endblock %}
