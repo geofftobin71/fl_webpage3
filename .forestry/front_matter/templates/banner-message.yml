@@ -9,7 +9,7 @@ fields:
     required: false
     wysiwyg: true
     schema:
-      format: markdown
+      format: html-blocks
   label: Message
 pages:
 - src/_data/banner_message.json
