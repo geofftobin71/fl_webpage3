@@ -3,6 +3,9 @@ label: Text Section
 hide_body: true
 display_field: text
 fields:
+- name: heading
+  type: text
+  label: Heading
 - name: text
   type: textarea
   default: ''
