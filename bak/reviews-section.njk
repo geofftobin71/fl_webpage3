@@ -1,0 +1,51 @@
+{% set section_wedding = section.wedding %}
+{% set section_image = section.image %}
+{% set section_image_left = section.image_left %}
+
+{% set slider_reviews = reviews | filterWeddingReviews(section_wedding or false) | removeLongReviews(300) | shuffle | head(5) %}
+{% set uid = 8 | uniqueId %}
+
+<style>
+{% for review in slider_reviews -%}
+  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
+    transform: translateX({{ -loop.index0 * 100 }}%);
+  }
+  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .dot-container .slider-dot:nth-of-type({{ loop.index }}) {
+    opacity:1;
+  }
+{% endfor %}
+}
+</style>
+
+<section class="postcard {{ 'left' if section_image_left }} top wrapper page-wrapper">
+  <article class="content vertical center middle flow">
+    <h2 class="heading">Reviews</h2>
+    {% for review in slider_reviews -%}
+      <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="review-{{ uid }}" id="review-{{uid }}-{{ loop.index }}" {{ 'checked' if loop.first }}>
+    {% endfor %}
+    <div class="slider-container">
+      <ul role="list" class="slider">
+        {% for review in slider_reviews %}
+          <li class="slider-item">
+            <blockquote class="flow">
+              <p>{{ review.review }}</p>
+              <footer>{{ review.name }}</footer>
+            </blockquote>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="dot-container horizontal center">
+      {% for review in slider_reviews %}
+        <label role="button" class="slider-dot" for="review-{{uid }}-{{ loop.index }}">{{ '/src/svg/circle.svg' | svgContents | safe }}</label>
+      {% endfor %}
+    </div>
+    <a class="button" role="button" href="/reviews">Read more Reviews</a>
+  </article>
+  <div class="image">
+    {% set image_path = section_image or site.header_image %}
+    {% set alt_text = 'Flowers by Floriade' %}
+    <noscript><img src="{% twic path=image_path, params='/contain=1024x1024' %}" alt="{{ alt_text }}"></noscript>
+    <img src="{% lqip path=image_path %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1024x1024" >
+  </div>
+</section>

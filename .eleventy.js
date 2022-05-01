@@ -184,7 +184,7 @@ module.exports = eleventyConfig => {
   });
 
   eleventyConfig.addFilter("externalLink", (string) => {
-    return string.startsWith("http");
+    return string && string.startsWith("http");
   });
 
   eleventyConfig.addFilter("twelveHourTime", (string) => {

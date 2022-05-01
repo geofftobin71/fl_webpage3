@@ -43,6 +43,7 @@ button.button {
   line-height:1;
   font-family:var(--font-family-alt);
   font-weight:700;
+  margin-top:2rem;
 }
 
 a.button:not(.icon-button),

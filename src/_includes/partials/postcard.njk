@@ -1,0 +1,15 @@
+{% set section_image = section.image %}
+{% set section_alt = section.alt %}
+{% set section_image_left = section.image_left %}
+
+<section class="postcard {{ 'left' if section_image_left }} top wrapper page-wrapper">
+  <article class="content vertical center middle flow">
+    {{ postcard_content | safe }}
+  </article>
+  <div class="image">
+    {% set image_path = section_image or site.header_image %}
+    {% set alt_text = section_alt or site.alt %}
+    <noscript><img src="{% twic path=image_path, params='/contain=1024x1024' %}" alt="{{ alt_text }}"></noscript>
+    <img src="{% lqip path=image_path %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="max" data-twic-step="40" data-twic-bot="contain=1024x1024" >
+  </div>
+</section>
