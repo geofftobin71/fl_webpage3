@@ -5,6 +5,13 @@ admin_path: admin
 webhook_url: 
 sections:
 - type: directory
+  path: src/pages
+  label: Pages
+  create: documents
+  match: "**/*.md"
+  templates:
+  - page
+- type: directory
   path: src/shop/categories
   label: Shop Categories
   create: documents

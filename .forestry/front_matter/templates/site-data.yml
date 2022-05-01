@@ -4,10 +4,12 @@ hide_body: true
 fields:
 - type: textarea
   name: description
-  label: SEO Meta Description
+  label: Description
+  description: Default SEO meta description. Appears on Google search results.<br>Used if a page doesn't define it's own Meta Description.
 - type: file
   name: header_image
-  label: Default Header Image
+  label: Header Image
+  description: Default Header Image.<br>Used if a page doesn't define it's own Header Image.
 - type: text
   name: phone
   label: Phone

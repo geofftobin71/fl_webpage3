@@ -5,3 +5,8 @@ SITEMAP
 Check for --step-*
 github daily build
 blog post images template - .eleventy.js
+
+main_menu.json
+regular_shop_hours.json
+reviews.json
+special_shop_hours.json

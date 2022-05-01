@@ -1,0 +1,25 @@
+---
+label: Page Base
+hide_body: true
+fields:
+- type: text
+  name: title
+  label: Title
+  description: The Title of the page. Appears in the page header and on the browser tab
+    eg. <em>title-of-the-page</em><br>( Don't put a full-stop at the end )
+- type: text
+  name: description
+  label: Description
+  description: SEO meta description. Appears on Google search results.
+- name: header_image
+  type: file
+  config:
+    maxSize: 64
+  label: Header Image
+  description: The background image for the page header.
+- name: header_title
+  type: text
+  config:
+    required: false
+  label: Page Header Title
+  description: Override the page title on the header.
