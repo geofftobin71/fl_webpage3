@@ -13,7 +13,7 @@ fields:
     required: false
     wysiwyg: true
     schema:
-      format: markdown
+      format: html-blocks
   label: Text
 - name: button
   type: field_group
@@ -31,7 +31,7 @@ fields:
   config:
     maxSize: 64
   label: Image
-  description: The image next to the Reviews.
+  description: The image next to the Text.
 - name: image_left
   type: boolean
   label: Image on Left
@@ -39,3 +39,4 @@ fields:
 - name: alternate_background_color
   type: boolean
   label: Alternate Background Color
+  description: Only if no image defined.
