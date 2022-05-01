@@ -5,10 +5,14 @@ fields:
 - name: wedding
   type: boolean
   label: Wedding Reviews
-  description: Select only Wedding Reviews (or not)
+  description: Select only Wedding Reviews (or not).
 - name: image
   type: file
   config:
     maxSize: 64
   label: Image
   description: The image next to the reviews.
+- name: image_left
+  type: boolean
+  label: Image on Left
+  description: Defaults to on the Right.

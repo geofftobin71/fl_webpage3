@@ -15,11 +15,14 @@
 {% block content %}
   {% include "partials/header.njk" %}
   <main>
-  {% include "partials/reviews-section.njk" %}
-  {% set left = true %}
-  {% include "partials/reviews-section.njk" %}
-  {% set left = false %}
-  {% include "partials/reviews-section.njk" %}
+  {% asyncAll section in page_sections %}
+  {% ifAsync section.template %}
+    {% set debug = page.fileSlug + ' : ' + section.template %}
+    {{ debug | log }}
+    {% set partial = 'partials/' + section.template + '.njk' %}
+    {% include partial %}
+  {% endif %}
+  {% endall %}
   {% include "partials/instagram-gallery-section.njk" %}
   </main>
   {% include "partials/footer.njk" %}
