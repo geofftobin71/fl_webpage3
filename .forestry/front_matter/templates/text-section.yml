@@ -1,0 +1,28 @@
+---
+label: Text Section
+hide_body: true
+display_field: text
+fields:
+- name: text
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Text
+- name: button
+  type: field_group
+  label: Button
+  config: {}
+  fields:
+  - name: text
+    type: text
+    label: Text
+  - name: url
+    type: text
+    label: URL
+- name: alternate_background_color
+  type: boolean
+  label: Alternate Background Color

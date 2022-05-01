@@ -12,6 +12,7 @@ fields:
   type: blocks
   label: Page Sections
   template_types:
+  - text-section
   - reviews-section
   config:
     min: 

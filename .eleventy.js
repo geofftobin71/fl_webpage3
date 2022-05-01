@@ -183,6 +183,10 @@ module.exports = eleventyConfig => {
     });
   });
 
+  eleventyConfig.addFilter("externalLink", (string) => {
+    return string.startsWith("http");
+  });
+
   eleventyConfig.addFilter("twelveHourTime", (string) => {
     return DateTime.fromFormat(string, "HH:mm").toFormat("h:mma");
   });

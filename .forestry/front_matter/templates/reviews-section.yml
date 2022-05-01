@@ -11,7 +11,7 @@ fields:
   config:
     maxSize: 64
   label: Image
-  description: The image next to the reviews.
+  description: The image next to the Reviews.
 - name: image_left
   type: boolean
   label: Image on Left
