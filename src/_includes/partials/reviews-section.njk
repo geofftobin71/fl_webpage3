@@ -1,5 +1,4 @@
-{% set section_wedding = section.wedding %}
-{% set slider_reviews = reviews | filterWeddingReviews(section_wedding or false) | removeLongReviews(300) | shuffle | head(5) %}
+{% set slider_reviews = reviews | filterWeddingReviews(section.wedding or false) | removeLongReviews(300) | shuffle | head(5) %}
 {% set uid = 8 | uniqueId %}
 
 <style>

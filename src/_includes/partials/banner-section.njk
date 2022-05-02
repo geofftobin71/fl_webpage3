@@ -1,0 +1,14 @@
+{% set image_path = section.image or site.header_image %}
+<section style="--section-padding:15vh">
+  <div class="wrapper vertical center flow text-center">
+    {% ifAsync section.heading %}<h2>{{ section.heading | addNbsp | safe }}</h2>{% endif %}
+    {% ifAsync section.subheading %}<p class="subheading">{{ section.subheading | addNbsp | safe }}</p>{% endif %}
+    {% ifAsync section.button.text %}
+      <a class="button" role="button" href="{{ section.button.url }}"{{ ' target="_blank" rel="noopener"' | safe if (section.button.url | externalLink) }}>{{ section.button.text }}</a>
+    {% endif %}
+  </div>
+  <figure class="background">
+      <noscript><img src="{% twic path=image_path, params='/cover=1024x1024' %}" alt=""></noscript>
+      <img src="{% lqip path=image_path, params='/cover=1:1' %}" alt="" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover/max" data-twic-step="40" data-twic-bot="cover=1024x1024" >
+  </figure>
+</section>

@@ -13,6 +13,7 @@ fields:
   label: Page Sections
   template_types:
   - text-section
+  - banner-section
   - reviews-section
   - instagram-gallery-section
   config:

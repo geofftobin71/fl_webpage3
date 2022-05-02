@@ -1,5 +1,5 @@
 {% if banner_message.message %}
-  {% set message = banner_message.message | trim | addNbsp | safe %}
+  {% set message = banner_message.message | addNbsp | safe %}
   <aside class="banner-message">
     {{ message }}
   </aside>

@@ -1,14 +1,8 @@
-{% set section_heading = section.heading %}
-{% set section_alternate_background_color = section.alternate_background_color %}
-{% set section_button_text = section.button.text %}
-{% set section_button_url = section.button.url %}
-{% set section_text = section.text %}
-
 {% set postcard_content %}
-{% ifAsync section_heading %}<h2 class="heading">{{ section_heading }}</h2>{% endif %}
-{% ifAsync section_text %}{{ section_text | trim | addNbsp | safe }}{% endif %}
-{% ifAsync section_button_text %}
-  <a class="button" role="button" href="{{ section_button_url }}"{{ ' target="_blank" rel="noopener"' | safe if (section_button_url | externalLink) }}>{{ section_button_text }}</a>
+{% ifAsync section.heading %}<h2 class="heading">{{ section.heading | addNbsp | safe }}</h2>{% endif %}
+{% ifAsync section.text %}{{ section.text | addNbsp | safe }}{% endif %}
+{% ifAsync section.button.text %}
+  <a class="button" role="button" href="{{ section.button.url }}"{{ ' target="_blank" rel="noopener"' | safe if (section.button.url | externalLink) }}>{{ section.button.text }}</a>
 {% endif %}
 {% endset %}
 {% include 'partials/postcard.njk' %}
