@@ -25,7 +25,7 @@ page_sections:
     assumenda ducimus Expedita cupiditate similique dolorum harum veritatis, est,
     eius expedita. <em>Praesentium sint dolore</em> itaque ullam asperiores! In voluptatibus
     ea eveniet minima tempore repellendus quo.</p>"
-  image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
+  image: "/v1650068260/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/tsx6jbgtk03gc3w1m9cc.jpg"
   image_left: true
 - template: instagram-gallery-section
 
