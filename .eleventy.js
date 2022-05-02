@@ -8,6 +8,7 @@ const jsonminify = require("jsonminify");
 const markdown = require("markdown-it")({ html: true }).disable("code");
 const svgContents = require("eleventy-plugin-svg-contents");
 const EleventyFetch = require("@11ty/eleventy-fetch");
+const juice = require('juice');
 const crypto = require('crypto');
 const glob = require("glob");
 const fs = require("fs");
@@ -89,6 +90,15 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy("./src/php");
   eleventyConfig.addPassthroughCopy("./admin");
 
+  eleventyConfig.addTransform("juice", (content, outputPath) => {
+    if(outputPath && outputPath.startsWith("dist/php/email")) {
+      let juiced = juice(content);
+      return juiced;
+    }
+
+    return content;
+  });
+
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
     if((!site.dev) && outputPath && outputPath.endsWith(".html")) {
       let minified = htmlmin.minify(content, {
@@ -106,8 +116,8 @@ module.exports = eleventyConfig => {
     return uniqueId(length);
   });
 
-  eleventyConfig.addFilter("idHash", (s) => {
-    crypto.createHash('md5').update(s).digest('hex');
+  eleventyConfig.addFilter("idHash", (str) => {
+    crypto.createHash('md5').update(str).digest('hex');
   });
 
   eleventyConfig.addFilter("shuffle", (array) => {
@@ -159,8 +169,11 @@ module.exports = eleventyConfig => {
     return jsonminify(code);
   });
 
+  eleventyConfig.addFilter("unslash", (str) => {
+    return str.replaceAll("\\","");
+  });
+
   eleventyConfig.addFilter("addNbsp", (str) => {
-    if (!str) { return; }
     let title = str.trim();
     title = title.replace(/((.*)\s(.*))$/g, "$2&nbsp;$3");
     title = title.replace(/"(.*)"/g, '\\"$1\\"');

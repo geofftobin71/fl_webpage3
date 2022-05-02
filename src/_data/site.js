@@ -7,6 +7,8 @@ module.exports = {
   environment: process.env.MY_ENVIRONMENT || "development",
   url: (process.env.MY_ENVIRONMENT !== "production") ? local_url : live_url,
   short_url: ((process.env.MY_ENVIRONMENT !== "production") ? local_url : live_url).replace(/^https?:\/\//,''),
+  live_url: live_url,
+  short_live_url: live_url.replace(/^https?:\/\//,''),
   dev: process.env.MY_ENVIRONMENT !== "production",
   name: "Floriade",
   tagline: "fresh & dried flowers for any occasion",
