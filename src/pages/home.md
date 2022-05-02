@@ -27,5 +27,6 @@ page_sections:
     ea eveniet minima tempore repellendus quo.</p>"
   image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
   image_left: true
+- template: instagram-gallery-section
 
 ---
