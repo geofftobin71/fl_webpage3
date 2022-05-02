@@ -1,6 +1,6 @@
 {% set postcard_content %}
 {% ifAsync section.heading %}<h2 class="heading">{{ section.heading | addNbsp | safe }}</h2>{% endif %}
-{% ifAsync section.text %}{{ section.text | addNbsp | safe }}{% endif %}
+{% ifAsync section.text %}{{ section.text | addNbsp | safe | unslash | safe }}{% endif %}
 {% ifAsync section.button.text %}
   <a class="button" role="button" href="{{ section.button.url }}"{{ ' target="_blank" rel="noopener"' | safe if (section.button.url | externalLink) }}>{{ section.button.text }}</a>
 {% endif %}
