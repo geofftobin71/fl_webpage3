@@ -246,12 +246,12 @@ module.exports = eleventyConfig => {
     const md = await markdown.render(content);
     return md;
   });
-  */
 
   eleventyConfig.addNunjucksAsyncFilter("markdown", async function(content, callback) {
     const md = await markdown.render(content);
     callback(null, md);
   });
+  */
 
   eleventyConfig.addNunjucksAsyncShortcode("lqip", async function(args) {
     let path = (args.path) ? args.path : "";

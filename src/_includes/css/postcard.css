@@ -43,6 +43,13 @@
   background-color:transparent;
   padding:0;
 }
+.postcard p {
+  max-width:38ch;
+}
+.postcard p,
+.postcard_content p {
+  text-align:center;
+}
 .postcard blockquote p,
 .postcard blockquote footer,
 .postcard_content blockquote p,
@@ -50,7 +57,7 @@
   font-size:var(--size-400);
   max-width:40ch;
 }
-@media screen and (orientation:landscape) and (min-width:750px) {
+@media screen and (orientation:landscape) and (min-width:950px) {
   .postcard.left {
     padding-right:0;
     padding-left:1em;
@@ -113,10 +120,21 @@
     padding-left:1em;
     padding-right:1em;
   }
+  .postcard p,
   .postcard blockquote p,
-  .postcard blockquote footer {
+  .postcard blockquote footer,
+  .postcard_content blockquote p,
+  .postcard_content blockquote footer {
     max-width:38ch;
     padding-left:1em;
     padding-right:1em;
+  }
+}
+@media screen and (orientation:portrait) and (max-width:350px) {
+  .postcard blockquote p,
+  .postcard blockquote footer,
+  .postcard_content blockquote p,
+  .postcard_content blockquote footer {
+    max-width:34ch;
   }
 }

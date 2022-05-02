@@ -2,11 +2,11 @@
 {% set section_alternate_background_color = section.alternate_background_color %}
 {% set section_button_text = section.button.text %}
 {% set section_button_url = section.button.url %}
-{% set section_text = section.text | safe %}
+{% set section_text = section.text %}
 
 {% set postcard_content %}
 {% ifAsync section_heading %}<h2 class="heading">{{ section_heading }}</h2>{% endif %}
-{{ section_text }}
+{% ifAsync section_text %}{{ section_text | trim | addNbsp | safe }}{% endif %}
 {% ifAsync section_button_text %}
   <a class="button" role="button" href="{{ section_button_url }}"{{ ' target="_blank" rel="noopener"' | safe if (section_button_url | externalLink) }}>{{ section_button_text }}</a>
 {% endif %}

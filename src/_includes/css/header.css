@@ -92,14 +92,14 @@
 
 @media screen and (max-width:750px) {
   .banner-message {
-    padding-left:2em;
-    padding-right:2em;
+    padding-left:3em;
+    padding-right:3em;
   }
 }
 
 .banner-message strong {
   color:var(--color-shade3);
-  font-size:120%;
+  font-size:110%;
 }
 
 .banner-message p {

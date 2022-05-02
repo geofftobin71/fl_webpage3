@@ -2,7 +2,7 @@
 label: Site Data
 hide_body: true
 fields:
-- type: textarea
+- type: text
   name: description
   label: Description
   description: Default SEO meta description. Appears on Google search results.<br>Used
