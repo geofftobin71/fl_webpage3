@@ -14,6 +14,7 @@ fields:
   template_types:
   - text-section
   - reviews-section
+  - instagram-gallery-section
   config:
     min: 
     max: 
