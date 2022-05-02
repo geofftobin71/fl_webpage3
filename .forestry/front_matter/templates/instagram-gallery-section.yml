@@ -2,3 +2,9 @@
 label: Instagram Gallery Section
 hide_body: true
 fields:
+- name: dummy
+  type: text
+  config:
+    required: false
+  label: dummy
+  hidden: true
