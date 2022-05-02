@@ -4,12 +4,12 @@ subheading: fresh & dried flowers for any occasion
 permalink: "/"
 page_sections:
 - template: text-section
-  text: "<p><strong>Lorem aliquam</strong> tempore impedit molestias reprehenderit
+  text: <p><strong>Lorem aliquam</strong> tempore impedit molestias reprehenderit
     sit Corporis ipsam assumenda possimus harum dolorem. Est cum vitae ratione eligendi
-    ipsa provident Quia vero minus quod repellat assumenda ducimus Expedita cupiditate
+    ipsa provident Quia vero minus “quod repellat” assumenda ducimus Expedita cupiditate
     similique dolorum harum veritatis, est, eius expedita. Praesentium sint dolore
-    itaque ullam asperiores! In voluptatibus ea eveniet minima tempore repellendus
-    quo.</p>"
+    itaque ullam asperiores! In <a href="https://google.com" title="Link">voluptatibus</a>
+    ea eveniet minima tempore repellendus quo.</p>
   button:
     text: Read more
     url: http://google.com
@@ -19,7 +19,8 @@ page_sections:
   image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
 - template: banner-section
   heading: Awesome Heading
-  subheading: Elit natus odit eveniet voluptas error dignissimos Id repudiandae rerum architecto suscipit sint perspiciatis! Qui cum reprehenderit id itaque recusandae.
+  subheading: Elit natus odit eveniet voluptas error dignissimos Id repudiandae rerum
+    architecto suscipit sint perspiciatis! Qui cum reprehenderit id itaque recusandae.
   button:
     text: Button
     url: http://google.com
