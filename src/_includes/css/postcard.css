@@ -6,7 +6,6 @@
   padding-right:1em;
 }
 .postcard .content {
-  background-color:var(--color-alt);
   margin-right:calc(-1 * var(--overlap));
   overflow:hidden;
   box-shadow:inset 0 0 20vmin rgba(94,106,101,0.1);
