@@ -59,6 +59,7 @@
 .header .subheading {
   font-family:var(--font-family-alt);
   font-size:var(--size-500);
+  font-weight:700;
   text-align:right;
 }
 
@@ -148,7 +149,7 @@
   padding:0;
   font-family:var(--font-family-alt);
   font-size:var(--size-400);
-  font-weight:bold;
+  font-weight:700;
 }
 
 .site-menu li {

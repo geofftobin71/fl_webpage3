@@ -19,7 +19,10 @@ page_sections:
   image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
 - template: banner-section
   heading: Awesome Heading
-  subheading: This is the subheading
+  subheading: Elit natus odit eveniet voluptas error dignissimos Id repudiandae rerum architecto suscipit sint perspiciatis! Qui cum reprehenderit id itaque recusandae.
+  button:
+    text: Button
+    url: http://google.com
   image: "/v1632544038/instagram/floriade_wellington_17852103851620163.jpg"
 - template: reviews-section
   alternate_background_color: true

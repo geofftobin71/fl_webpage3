@@ -232,6 +232,8 @@ figure > div {
 .font-size-800 { font-size:var(--size-800); }
 .font-size-900 { font-size:var(--size-900); }
 
+.font-bold { font-weight:700; }
+
 /*
 [data-twic-src] {
   opacity:0;
