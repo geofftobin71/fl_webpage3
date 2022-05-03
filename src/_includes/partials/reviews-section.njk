@@ -1,7 +1,7 @@
 {% set slider_reviews = reviews | filterWeddingReviews(section.wedding or false) | removeLongReviews(300) | shuffle | head(5) %}
 {% set uid = 8 | uniqueId %}
 
-<style>
+{% set css %}
 {% for review in slider_reviews -%}
   .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
     transform: translateX({{ -loop.index0 * 100 }}%);
@@ -10,7 +10,9 @@
     opacity:1;
   }
 {% endfor %}
-}
+{% endset %}
+<style>
+{{ css | cssmin | safe }}
 </style>
 
 {% set postcard_content %}

@@ -1,7 +1,7 @@
 {% set instagram_images = instagram_gallery | sortISO8601 | reverse | head(12) %}
 {% set uid = 8 | uniqueId %}
 
-<style>
+{% set css %}
 {% for item in instagram_images -%}
   .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
     transform: translateX({{ -loop.index0 * 100 }}%);
@@ -10,6 +10,9 @@
     display:block;
   }
 {% endfor %}
+{% endset %}
+<style>
+{{ css | cssmin | safe }}
 </style>
 
 {# Lightbox #}
