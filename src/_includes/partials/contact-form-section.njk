@@ -3,43 +3,48 @@
 <form id="contact-form" class="req-js width100 flow">
   <div>
     <label for="name"><h4 class="heading text-left" style="padding-left:0.5em">Name</h4></label>
-    <input required class="input" id="name" name="name" type="text" autocomplete="name" data-error="Name is required" placeholder="Your Name">
+    <input required class="input" id="name" name="name" type="text" autocomplete="name" data-error="Name is required" placeholder="Your Name" onfocus="hideError">
   </div>
-  <div hidden class="noviz" aria-hidden="true">
-    <label for="password"><h4 class="heading text-left" style="padding-left:0.5em">Password</h4></label>
-    <input tabindex="-1" class="input" id="password" name="password" type="text" autocomplete="false" placeholder="Password">
+  <div style="position:absolute;left:-5000px" aria-hidden="true">
+    <label for="phone"><h4 class="heading text-left" style="padding-left:0.5em">Phone</h4></label>
+    <input tabindex="-1" class="input" id="phone" name="phone" type="text" value="" autocomplete="false" placeholder="Phone">
   </div>
   <div>
     <label for="email"><h4 class="heading text-left" style="padding-left:0.5em">Email</h4></label>
-    <input required class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" data-error="Email is required" placeholder="Your Email address">
+    <input required class="input" id="email" name="email" type="email" autocomplete="email" inputmode="email" data-error="Email is required" placeholder="Your Email address" onfocus="hideError">
   </div>
   <div>
     <label for="message"><h4 class="heading text-left" style="padding-left:0.5em">Message</h4></label>
-    <textarea required class="input" id="message" name="message" data-error="Message is required" placeholder="{{ section.message or 'How can we help you?' }}" rows="6"></textarea>
+    <textarea required class="input" id="message" name="message" data-error="Message is required" placeholder="{{ section.message or 'How can we help you?' }}" rows="6" onfocus="hideError"></textarea>
   </div>
   <input id="subject" name="subject" type="hidden" value="{{ section.email_subject or 'Flowers Enquiry' }}">
   <input id="heading" name="heading" type="hidden" value="{{ section.email_heading or 'Thankyou for contacting Floriade' }}">
+  {#
   <input id="recaptcha-site-key" name="recaptcha-site-key" type="hidden" value="{{ env.RECAPTCHA_SITE_KEY }}">
   <input id="gRecaptchaResponse" name="g-recaptcha-response" type="hidden">
+  #}
 
   <div class="vertical center flow">
-    <p class="req-js font-size-200 text-center">Protected by reCAPTCHA &nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/en/policies/privacy/">Privacy</a> &nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/en/policies/terms/">Terms</a></p>
-    <button id="submit-button" class="button" type="submit">
+    {# <p class="req-js font-size-200 text-center">Protected by reCAPTCHA &nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/en/policies/privacy/">Privacy</a> &nbsp;&nbsp;&nbsp;<a href="https://www.google.com/intl/en/policies/terms/">Terms</a></p> #}
+    <button disabled id="submit-button" class="button" type="submit">
       <span id="email-icon" class="button-icon">{{ '/src/svg/envelope-o.svg' | svgContents | safe }}</span>
       <span id="spinner-icon" class="button-icon" style="display:none">{{ '/src/svg/spinner.svg' | svgContents | safe }}</span>
       <span id="ok-icon" class="button-icon" style="display:none">{{ '/src/svg/thumbs-o-up.svg' | svgContents | safe }}</span>
       <p id="submit-text">Send</p>
     </button>
-    <span id="error-msg" class="error" role="alert" style="visibility:hidden">&nbsp;</span>
+    <div class="horizontal middle" style="min-height:2em">
+      <span id="error-msg" class="error" role="alert" style="display:none"></span>
+      <span id="info-msg" class="info" role="alert" style="display:none"></span>
+    </div>
   </div>
 </form>
 <noscript>
   <div class="text-center flow" style="margin-top:1em">
-    <p><a href="{{ site.mailto_obf | safe }}?subject={{ section.email_subject or 'Flowers Enquiry' }}" title="Send us a message" aria-label="Send us a message">{{ site.email_obf | safe }}</a></p>
-    <p><a href="tel:{{ site.phone_intl }}" title="Call now" aria-label="Call now">{{ site.phone }}</a></p>
+    <p>Email : <a href="{{ site.mailto_obf | safe }}?subject={{ section.email_subject or 'Flowers Enquiry' }}" title="Send us a message" aria-label="Send us a message">{{ site.email_obf | safe }}</a></p>
+    <p>Phone : <a href="tel:{{ site.phone_intl }}" title="Call now" aria-label="Call now">{{ site.phone }}</a></p>
   </div>
 </noscript>
-<script src="https://www.google.com/recaptcha/api.js?render={{ env.RECAPTCHA_SITE_KEY }}" async defer></script>
+{# <script src="https://www.google.com/recaptcha/api.js?render={{ env.RECAPTCHA_SITE_KEY }}" async defer></script> #}
 {% set js %}
 {% include "js/contact-form-handler.js" %}
 {% endset %}

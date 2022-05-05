@@ -3,21 +3,25 @@ document.addEventListener("DOMContentLoaded",function(){contactFormHandler();},f
 function contactFormHandler() {
 
   const contact_form = document.getElementById("contact-form");
-  const recaptcha_site_key = document.getElementById("recaptcha-site-key");
+  // const recaptcha_site_key = document.getElementById("recaptcha-site-key");
 
   const name_input = contact_form.querySelector("#name");
+  const phone_input = contact_form.querySelector("#phone");
   const email_input = contact_form.querySelector("#email");
   const message_input = contact_form.querySelector("#message");
-  const password_input = contact_form.querySelector("#password");
   const subject_input = contact_form.querySelector("#subject");
   const heading_input = contact_form.querySelector("#heading");
-  const gRecaptchaResponse_input = contact_form.querySelector("#gRecaptchaResponse");
+  // const gRecaptchaResponse_input = contact_form.querySelector("#gRecaptchaResponse");
 
-  disableContactForm();
+  // disableContactForm();
 
-  name_input.onfocus = hideError();
-  email_input.onfocus = hideError();
-  message_input.onfocus = hideError();
+  name_input.addEventListener('focus',function() { hideError(); });
+  email_input.addEventListener('focus',function() { hideError(); });
+  message_input.addEventListener('focus',function() { hideError(); });
+
+  // name_input.onfocus = hideError();
+  // email_input.onfocus = hideError();
+  // message_input.onfocus = hideError();
 
   contact_form.addEventListener("submit", event => {
 
@@ -27,67 +31,85 @@ function contactFormHandler() {
 
     const inputs = contact_form.querySelectorAll("input,textarea");
     for(let i = 0; i < inputs.length; i++) {
-      if((window.getComputedStyle(inputs[i]).display !== "none") && (inputs[i].name !== "password")) {
+      if((window.getComputedStyle(inputs[i]).display !== "none") && (inputs[i].name !== "phone")) {
         if(inputs[i].value.trim().length === 0) {
           showError(inputs[i].dataset.error || "Form Error");
-          enableContactForm();
           return false;
         }
       }
     };
 
+    /*
     grecaptcha.ready(function() {
       grecaptcha.execute(recaptcha_site_key.value, {action: "contactform"}).then(function(token) {
         document.getElementById("gRecaptchaResponse").value = token;
+        */
 
-        let ok = false;
+    let ok = false;
 
-        fetch('/php/contact-form-handler', {
-          method: 'post',
-          body: JSON.stringify({
-            name: name_input.value,
-            email: email_input.value,
-            message: message_input.value,
-            password: password_input.value,
-            subject: subject_input.value,
-            heading: heading_input.value,
-            gRecaptchaResponse: gRecaptchaResponse_input.value
-          })
-        }).then(function(response) {
-          ok = response.ok;
-          return response.json();
-        }).then(function(data) {
-          if(ok) {
-            finishContactForm();
-            return true;
-          } else {
-            showError(data.error);
-            enableContactForm();
-            return false;
-          }
-        }).catch(function(err) {
-          console.error(err);
-        });
+    fetch("{{ site.php_url }}/php/contact-form-handler.php", {
+      method: "POST",
+      body: JSON.stringify({
+        // gRecaptchaResponse: gRecaptchaResponse_input.value,
+        name: name_input.value,
+        phone: phone_input.value,
+        email: email_input.value,
+        message: message_input.value,
+        subject: subject_input.value,
+        heading: heading_input.value
+      })
+    }).then(function(response) {
+      ok = response.ok;
+      return response.json();
+    }).then(function(data) {
+      if(ok) {
+        contact_form.reset();
+        showInfo("Message Sent");
+      } else {
+        showError(data.error);
+      }
+    }).catch(function(err) {
+      console.error(err);
+    });
+    /*
       });
     });
+    */
   },false);
+
+  setTimeout(() => { 
+    enableContactForm();
+  }, 1000);
+}
+
+function showError(message) {
+  const error_msg = document.getElementById("error-msg");
+  const info_msg = document.getElementById("info-msg");
+
+  error_msg.innerText = message;
+  error_msg.style.display = "inline-block";
+  info_msg.style.display = "none";
 
   enableContactForm();
 }
 
-function showError(message) {
-  const error_msg = document.getElementById('error-msg');
-  if(error_msg) {
-    error_msg.innerText = message;
-    error_msg.style.visibility = "visible";
-  }
+function showInfo(message) {
+  const error_msg = document.getElementById("error-msg");
+  const info_msg = document.getElementById("info-msg");
+
+  info_msg.innerText = message;
+  info_msg.style.display = "inline-block";
+  error_msg.style.display = "none";
+
+  enableContactForm();
 }
 
 function hideError() {
-  const error_msg = document.getElementById('error-msg');
-  if(error_msg) {
-    error_msg.style.visibility = "hidden";
-  }
+  const error_msg = document.getElementById("error-msg");
+  const info_msg = document.getElementById("info-msg");
+
+  info_msg.style.display = "none";
+  error_msg.style.display = "none";
 }
 
 function enableContactForm() {
@@ -104,13 +126,5 @@ function disableContactForm() {
   document.getElementById("ok-icon").style.display = "none";
   document.getElementById("email-icon").style.display = "none";
   document.getElementById("submit-text").innerText = "Sending";
-}
-
-function finishContactForm() {
-  document.getElementById("submit-button").disabled = true;
-  document.getElementById("spinner-icon").style.display = "none";
-  document.getElementById("ok-icon").style.display = "inline-block";
-  document.getElementById("email-icon").style.display = "none";
-  document.getElementById("submit-text").innerText = "Message Sent";
 }
 

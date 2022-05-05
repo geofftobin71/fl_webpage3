@@ -1,0 +1,44 @@
+---
+permalink: php/mail-config.php
+sitemap:
+  ignore: true
+---
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require "PHPMailer/src/Exception.php";
+require "PHPMailer/src/PHPMailer.php";
+require "PHPMailer/src/SMTP.php";
+
+$mail = new PHPMailer(true);
+
+$mail->SMTPDebug = 0;
+$mail->isSMTP();
+$mail->SMTPAuth = true;
+$mail->isHTML(true);
+$mail->CharSet = "UTF-8";
+$mail->Encoding = "quoted-printable";
+
+{% if site.dev %}
+
+$mail->Host = "smtp.mailtrap.io";
+$mail->Username = getenv("SMTP_TEST_USER");
+$mail->Password = getenv("SMTP_TEST_PASSWORD");
+$mail->Port = 2525;
+
+$floriade_email = "no-reply@mailgen.js";
+ 
+{% else %}
+
+$mail->Host = "floriade.co.nz";
+$mail->Username = getenv("SMTP_LIVE_USER");
+$mail->Password = getenv("SMTP_LIVE_PASSWORD");
+$mail->Port = 465;
+$mail->SMTPSecure = "ssl";
+
+$floriade_email = "flowers@floriade.co.nz";
+
+{% endif %}
+
+?>

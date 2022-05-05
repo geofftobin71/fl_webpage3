@@ -8,7 +8,7 @@
     "serve": "eleventy --serve",
     "pserve": "MY_ENVIRONMENT=production eleventy --serve",
     "clean": "rm -rf dist/*",
-    "dev": "eleventy",
+    "dev": "eleventy && cp -rv dist/php /var/www/html/",
     "deploy": "MY_ENVIRONMENT=production eleventy",
     "debug": "DEBUG=Eleventy* eleventy"
   },
