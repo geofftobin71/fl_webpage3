@@ -5,8 +5,11 @@ pagination:
   size: 1
   alias: product
 permalink: "shop/products/{{ product.data.title | slug }}/index.html"
+page_sections:
+  - template: shop-product-section
 eleventyComputed:
   title: "{{ product.data.title }}"
   description: "{{ product.data.description }}"
-  header_image: "{{ product.data.header_image or product.data.images[0] }}"
+  header_image: "{{ product.data.header_image or (product.data.images | random) }}"
+  product_images: "{{ product.data.images }}"
 ---

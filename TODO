@@ -1,12 +1,13 @@
-fix caption scroll on phone - modal js
+fix caption scroll on phone
+check for css / js in partials : load once on each page
 
-<a href="/" aria-label="{{ site.name }} - home"> on home links
 SITEMAP
 Check for --step-*
 github daily build
 blog post images template - .eleventy.js
 
+Forestry Templates
 main_menu.json
-regular_shop_hours.json
 reviews.json
+regular_shop_hours.json
 special_shop_hours.json

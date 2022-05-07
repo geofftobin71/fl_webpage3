@@ -3,21 +3,8 @@ title: Floriade
 subheading: fresh & dried flowers for any occasion
 permalink: "/"
 page_sections:
-- template: contact-form-section
-  alternate_background_color: true
-  image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
 - template: text-section
-  text: <p><strong>Lorem aliquam</strong> tempore impedit molestias reprehenderit
-    sit Corporis ipsam assumenda possimus harum dolorem. Est cum vitae ratione eligendi
-    ipsa provident Quia vero minus “quod repellat” assumenda ducimus Expedita cupiditate
-    similique dolorum harum veritatis, est, eius expedita. Praesentium sint dolore
-    itaque ullam asperiores! In <a href="https://google.com" title="Link">voluptatibus</a>
-    ea eveniet minima tempore repellendus quo.</p>
-  button:
-    text: Read more
-    url: http://google.com
-  heading: Text Section
-  image: ''
+  text: <p><strong>Floriade</strong> is a boutique Wellington florist specialising in unique fresh and dried floral arrangements. We believe that flowers delight the senses and bring an emotional response through colour, fragrance, texture and composition. We offer fresh and dried flowers that stand out from the everyday because we like to use unusual flowers and foliage as well as traditional favourites in our designs. Every floral arrangement we create is bespoke and individual.</p>
 - template: reviews-section
   image: "/v1650068671/weddings/Eileen%20and%20Liam%20-%20Jinal%20Govind%20Photography/a1mkzuuymrhphw0vvshr.jpg"
 - template: banner-section
@@ -32,7 +19,7 @@ page_sections:
   alternate_background_color: true
   wedding: true
 - template: text-section
-  text: "<p>Est cum vitae ratione eligendi ipsa provident Quia vero minus quod repellat
+  text: "<p><strong>Est cum vitae</strong> ratione eligendi ipsa provident Quia vero minus quod repellat
     assumenda ducimus Expedita cupiditate similique dolorum harum veritatis, est,
     eius expedita. <em>Praesentium sint dolore</em> itaque ullam asperiores! In voluptatibus
     ea eveniet minima tempore repellendus quo.</p>"

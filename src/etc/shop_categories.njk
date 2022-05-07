@@ -15,7 +15,7 @@ sitemap:
         {% for price in category.data.prices %}
           [
             "id" => "{{ price.id }}",
-            {%- if price.label %}"label" => "{{ price.label }}",{% endif %}
+            {% if price.label %}"label" => "{{ price.label }}",{% endif %}
             "price" => {{ price.price }},
             "disabled" => {{ price.disabled or 'false' }}
           ]{{',' if not loop.last }}

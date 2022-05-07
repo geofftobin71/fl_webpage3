@@ -16,6 +16,15 @@
 .postcard .content > * {
   max-width:50ch;
 }
+.postcard_content strong {
+  color:var(--color-shade2);
+  font-size:120%;
+}
+.postcard_content.alt_bg strong,
+.postcard .content strong {
+  color:var(--color-shade1);
+  font-size:120%;
+}
 .postcard .image {
   display:flex;
   align-items:center;

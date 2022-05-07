@@ -130,6 +130,10 @@ module.exports = eleventyConfig => {
     return array;
   });
 
+  eleventyConfig.addFilter("split", (string, delim) => {
+    return string.split(delim);
+  });
+
   eleventyConfig.addFilter("removeLongReviews", (array, limit) => {
     let filtered = [];
     for (let i = 0; i < array.length; ++i) {

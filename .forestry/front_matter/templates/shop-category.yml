@@ -10,6 +10,9 @@ fields:
   label: id
   hidden: true
   default: XXXXXXXX
+- type: boolean
+  name: disabled
+  label: Disabled
 - type: text
   name: title
   label: Name
@@ -49,6 +52,3 @@ fields:
     max: 
     labelField: label
   label: Prices
-- type: boolean
-  name: disabled
-  label: Disabled

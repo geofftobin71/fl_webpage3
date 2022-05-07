@@ -10,6 +10,9 @@ fields:
   label: id
   hidden: true
   default: XXXXXXXX
+- type: boolean
+  name: disabled
+  label: Disabled
 - type: text
   name: title
   label: Name
@@ -30,9 +33,6 @@ fields:
   type: image_gallery
   config: {}
   label: Images
-- type: boolean
-  name: disabled
-  label: Disabled
 pages:
 - src/shop/products/avant-garde-bouquet.md
 - src/shop/products/original-milk-chocolate.md
