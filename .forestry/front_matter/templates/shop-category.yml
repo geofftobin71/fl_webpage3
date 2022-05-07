@@ -30,6 +30,7 @@ fields:
     config:
       required: false
     label: Label
+    description: Optional. eg. Small / Medium / Large. Defaults to Price if not defined.
   - name: price
     type: number
     label: Price
