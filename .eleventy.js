@@ -30,7 +30,7 @@ markdown.renderer.rules.image = function (tokens, idx, options, env, self) {
   }
 
   const image_info = require("./_cache/image-info.json");
-  const info = image_info.find(element => element.url === image_url);
+  const info = image_info.find(element => element.url == image_url);
   const width = (info && info.width) ? info.width : 800;
   const height = (info && info.height) ? info.height : 800;
 
@@ -60,7 +60,7 @@ module.exports = eleventyConfig => {
     // Create Unique IDs for shop items
     glob('./src/shop/**/*.md', (err, files) => {
       if(err) {
-        console.log(err);
+        console.error(err);
       } else {
         files.forEach((file) => {
           let prevStats = fs.statSync(file);
@@ -204,11 +204,11 @@ module.exports = eleventyConfig => {
   });
 
   eleventyConfig.addFilter("findSpecialDay", (array, date) => {
-    return array.find(element => element.date === date);
+    return array.find(element => element.date == date);
   });
 
   eleventyConfig.addFilter("head", (array, n) => {
-    if(!Array.isArray(array) || array.length === 0) {
+    if(!Array.isArray(array) || array.length == 0) {
       return [];
     }
     if( n < 0 ) {
@@ -329,12 +329,25 @@ module.exports = eleventyConfig => {
     }
   });
 
-  eleventyConfig.addCollection("shop_products", (collection) => {
-    return collection.getFilteredByGlob("src/shop/products/*.md");
+  eleventyConfig.addCollection("shop_categories", (collectionApi) => {
+    const validCategory = (category) => { 
+      const all_products = collectionApi.getFilteredByGlob("src/shop/products/*.md");
+      const category_products = all_products.filter(element => element.data.category == category.inputPath.replace('./',''));
+      const has_valid_products = category_products.find(element => element.data.disabled == false) != null;
+      return (!category.data.disabled && has_valid_products);
+    }
+
+    return collectionApi.getFilteredByGlob("src/shop/categories/*.md").filter(validCategory);
   });
 
-  eleventyConfig.addCollection("shop_categories", (collection) => {
-    return collection.getFilteredByGlob("src/shop/categories/*.md");
+  eleventyConfig.addCollection("shop_products", (collectionApi) => {
+    const validProduct = (product) => { 
+      const categories = collectionApi.getFilteredByGlob("src/shop/categories/*.md");
+      const category = categories.find(element => element.inputPath.replace('./','') == product.data.category);
+      return (!category.data.disabled && !product.data.disabled);
+    }
+
+    return collectionApi.getFilteredByGlob("src/shop/products/*.md").filter(validProduct);
   });
 
   return {

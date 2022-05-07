@@ -1,0 +1,38 @@
+{% extends "layouts/base.njk" %} 
+
+{% block head %}
+  {{ super() }}
+  {% set css %}
+  {% include "css/header.css" %}
+  {% include "css/slider.css" %}
+  {% include "css/postcard.css" %}
+  {% include "css/input.css" %}
+  {% endset %}
+  <style>
+    {{ css | cssmin | safe }}
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% include "partials/header.njk" %}
+  <main>
+  {% asyncAll section in page_sections %}
+  {% ifAsync section.template %}
+    {% set debug = page.fileSlug + ' : ' + section.template %}
+    {{ debug | log }}
+    {% set partial = 'partials/' + section.template + '.njk' %}
+    {% include partial %}
+  {% endif %}
+  {% endall %}
+  </main>
+  {% include "partials/footer.njk" %}
+{% endblock %}
+
+{% block foot %}
+  {{ super() }}
+  {% set js %}
+  {% endset %}
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
+{% endblock %}

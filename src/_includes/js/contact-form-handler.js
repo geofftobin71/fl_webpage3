@@ -79,7 +79,7 @@ function contactFormHandler() {
 
   setTimeout(() => { 
     enableContactForm();
-  }, 1000);
+  }, 3000);
 }
 
 function showError(message) {

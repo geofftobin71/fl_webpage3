@@ -1,7 +1,7 @@
 ---
 id: b3ea08de
 category: src/shop/categories/chocolate.md
-disabled: false
+disabled: true
 title: Original Milk Chocolate
 
 ---
