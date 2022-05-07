@@ -26,6 +26,10 @@ fields:
       file: 
       path: 
   label: Category
+- name: images
+  type: image_gallery
+  config: {}
+  label: Images
 - type: boolean
   name: disabled
   label: Disabled
