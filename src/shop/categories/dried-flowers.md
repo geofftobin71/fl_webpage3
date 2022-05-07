@@ -18,5 +18,8 @@ prices:
 - id: a5819d4f
   price: 250
   label: "$250"
+footer: "<p>Arrangements shown are&nbsp;<em>representative examples</em>&nbsp;only.</p><p>Your
+  order may not look exactly like the photos shown.</p><p>Specific flowers and colours
+  may not be available due to seasonal availability or demand.</p>"
 
 ---
