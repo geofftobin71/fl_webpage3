@@ -55,6 +55,17 @@ fields:
       min: 1
       max: 
       step: 
+  - name: stock
+    type: number
+    label: Initial Stock
+    description: Initial stock count for limited stock products.<br>Leave blank for
+      unlimited.
+    default: -1
+    required: true
+    config:
+      min: 
+      max: 
+      step: 
   - name: disabled
     type: boolean
     label: Disabled
@@ -63,6 +74,7 @@ fields:
     max: 
     labelField: label
   label: Prices
+  description: Each Product must have at least one Price.
 - name: images
   type: image_gallery
   config: {}
