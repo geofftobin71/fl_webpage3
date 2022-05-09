@@ -18,40 +18,6 @@ fields:
   label: Name
   config:
     required: true
-- name: prices
-  type: field_group_list
-  fields:
-  - name: id
-    type: text
-    config:
-      required: false
-    label: id
-    hidden: true
-    default: XXXXXXXX
-  - name: label
-    type: text
-    config:
-      required: false
-    label: Label
-    description: eg. $75 / $100 / $200 or Small / Medium / Large.
-  - name: price
-    type: number
-    label: Price
-    description: ''
-    default: 1
-    required: true
-    config:
-      min: 1
-      max: 
-      step: 
-  - name: disabled
-    type: boolean
-    label: Disabled
-  config:
-    min: 1
-    max: 
-    labelField: label
-  label: Prices
 - name: footer
   type: textarea
   default: ''

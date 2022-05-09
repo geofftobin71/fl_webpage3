@@ -10,17 +10,7 @@ sitemap:
       "id" => "{{ category.data.id }}",
       "title" => "{{ category.data.title }}",
       "disabled" => {{ category.data.disabled or 'false' }},
-      "inputPath" => "{{ category.inputPath | replace('./','') }}",
-      "prices" => [
-        {% for price in category.data.prices %}
-          [
-            "id" => "{{ price.id }}",
-            {% if price.label %}"label" => "{{ price.label }}",{% endif %}
-            "price" => {{ price.price }},
-            "disabled" => {{ price.disabled or 'false' }}
-          ]{{',' if not loop.last }}
-        {% endfor %}
-      ]
+      "inputPath" => "{{ category.inputPath | replace('./','') }}"
     ]{{',' if not loop.last }}
   {% endfor %}
   ];

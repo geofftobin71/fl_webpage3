@@ -10,7 +10,17 @@ $shop_products = [
       "id" => "{{ product.data.id }}",
       "title" => "{{ product.data.title }}",
       "disabled" => {{ product.data.disabled or 'false' }},
-      "category" => "{{ product.data.category }}"
+      "category" => "{{ product.data.category }}",
+      "prices" => [
+        {% for price in product.data.prices %}
+          [
+            "id" => "{{ price.id }}",
+            {% if price.label %}"label" => "{{ price.label }}",{% endif %}
+            "price" => {{ price.price }},
+            "disabled" => {{ price.disabled or 'false' }}
+          ]{{',' if not loop.last }}
+        {% endfor %}
+      ]
     ]{{',' if not loop.last }}
   {% endfor %}
 ];

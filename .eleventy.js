@@ -7,24 +7,27 @@ const UglifyJS = require("uglify-js");
 const jsonminify = require("jsonminify");
 const markdown = require("markdown-it")({ html: true }).disable("code");
 const svgContents = require("eleventy-plugin-svg-contents");
+const fetch = require("node-fetch");
 const EleventyFetch = require("@11ty/eleventy-fetch");
-const juice = require('juice');
-const crypto = require('crypto');
+const juice = require("juice");
+const crypto = require("crypto");
 const glob = require("glob");
 const fs = require("fs");
 
-delete require.cache[require.resolve('./src/_data/site.js')];
+delete require.cache[require.resolve("./src/_data/site.js")];
 const site = require("./src/_data/site.js");
 
 Settings.defaultZoneName = "Pacific/Auckland";
 
+var shop_products = [];
+
 markdown.renderer.rules.image = function (tokens, idx, options, env, self) {
   const image_url = tokens[idx].attrs[0][1];
-  const image_path = image_url.replace(site.cloudinary_url, '');
+  const image_path = image_url.replace(site.cloudinary_url, "");
   const alt_txt = self.renderInlineAsText(tokens, options, env);
   const title_txt = (tokens[idx].attrs[2]) ? tokens[idx].attrs[2][1] : null;
 
-  let caption = '';
+  let caption = "";
   if(title_txt) {
     caption = '<figcaption class="caption">' + markdown.utils.escapeHtml(title_txt) + '</figcaption>';
   }
@@ -50,29 +53,53 @@ markdown.renderer.rules.image = function (tokens, idx, options, env, self) {
 
 function uniqueId(length) {
   const buf = crypto.randomBytes(length/2);
-  return buf.toString('hex');
+  return buf.toString("hex");
 }
 
 module.exports = eleventyConfig => {
 
-  eleventyConfig.on('eleventy.before', () => {
+  eleventyConfig.on("eleventy.before", () => {
+
+    console.log("Create unique shop IDs");
 
     // Create Unique IDs for shop items
-    glob('./src/shop/**/*.md', (err, files) => {
+    glob("./src/shop/**/*.md", (err, files) => {
       if(err) {
         console.error(err);
       } else {
         files.forEach((file) => {
           let prevStats = fs.statSync(file);
-          let data = fs.readFileSync(file, 'utf8');
-          while(data.includes('XXXXXXXX')) {
-            data = data.replace('XXXXXXXX',uniqueId(8));
+          let data = fs.readFileSync(file, "utf8");
+          while(data.includes("XXXXXXXX")) {
+            data = data.replace("XXXXXXXX",uniqueId(8));
           }
           fs.writeFileSync(file, data);
           fs.utimesSync(file, prevStats.atime, prevStats.mtime);
         });
       }
     });
+  });
+
+  eleventyConfig.on("eleventy.after", async () => {
+    console.log("Update Stock");
+
+    fetch(site.php_url + "/php/update-stock.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(shop_products)
+    })
+      .then(response => {
+        if(!response.ok) { throw Error(response.statusText); }
+        return response.json();
+      })
+      .then(json => {
+        if(json.error) { throw Error(json.error); }
+
+        // console.log(JSON.stringify(json));
+      })
+      .catch(error => {
+        console.error(error.message);
+      });
   });
 
   eleventyConfig.setLibrary("md", markdown);
@@ -84,7 +111,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy({"./src/favicon/*.svg" : "/"});
   eleventyConfig.addPassthroughCopy({"./src/favicon/*.xml" : "/"});
   eleventyConfig.addPassthroughCopy({"./src/favicon/*.webmanifest" : "/"});
-  // eleventyConfig.addPassthroughCopy("./src/fonts");
+  eleventyConfig.addPassthroughCopy("./src/fonts");
   // eleventyConfig.addPassthroughCopy("./src/images");
   eleventyConfig.addPassthroughCopy("./src/icons");
   eleventyConfig.addPassthroughCopy("./src/php");
@@ -117,7 +144,7 @@ module.exports = eleventyConfig => {
   });
 
   eleventyConfig.addFilter("idHash", (str) => {
-    crypto.createHash('md5').update(str).digest('hex');
+    crypto.createHash("md5").update(str).digest("hex");
   });
 
   eleventyConfig.addFilter("shuffle", (array) => {
@@ -211,6 +238,10 @@ module.exports = eleventyConfig => {
     return array.find(element => element.date == date);
   });
 
+  eleventyConfig.addFilter("getCategory", (categories, path) => {
+    return categories.find(element => element.inputPath.replace("./","") == path);
+  });
+
   eleventyConfig.addFilter("head", (array, n) => {
     if(!Array.isArray(array) || array.length == 0) {
       return [];
@@ -223,7 +254,7 @@ module.exports = eleventyConfig => {
   });
 
   eleventyConfig.addFilter("urldecode", (string) => {
-    return decodeURIComponent(string.replace(/\+/g, ' '));
+    return decodeURIComponent(string.replace(/\+/g, " "));
   });
 
   eleventyConfig.addFilter("iconTextButton", (svg) => {
@@ -242,7 +273,7 @@ module.exports = eleventyConfig => {
     if(args.sizes) {
       return args.sizes.map(function(size) {
         return `${site.twic_url}${path}?twic=v1/resize-max=${size}${params} ${size}w`;
-      }).join(',');
+      }).join(",");
     } else {
       return `${site.twic_url}${path}?twic=v1${params}`;
     }
@@ -280,7 +311,7 @@ module.exports = eleventyConfig => {
     try {
       return EleventyFetch(lqip_path, {duration:"1y",type:"text",verbose:true})
         .then(data => {
-          const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+          const lqip = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(data);
           return (lqip);
         });
     } catch(err) {
@@ -295,7 +326,7 @@ module.exports = eleventyConfig => {
     try {
       return EleventyFetch(placeholder_path, {duration:"1y",type:"text",verbose:true})
         .then(data => {
-          const placeholder = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+          const placeholder = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(data);
           return (placeholder);
         });
     } catch(err) {
@@ -310,7 +341,7 @@ module.exports = eleventyConfig => {
     if(args.sizes) {
       return args.sizes.map(function(size) {
         return path.replace(site.match_url, site.twic_url + "/instagram").replace("?", "?twic=v1/resize-max=" + size + params + "&").concat(" " + size + "w");
-      }).join(',');
+      }).join(",");
     } else {
       return path.replace(site.match_url, site.twic_url + "/instagram").replace("?", "?twic=v1" + params + "&");
     }
@@ -324,7 +355,7 @@ module.exports = eleventyConfig => {
     try {
       return EleventyFetch(lqip_path, {duration:"1y",type:"text",verbose:true})
         .then(data => {
-          const lqip = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(data);
+          const lqip = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(data);
           return (lqip);
         });
     } catch(err) {
@@ -336,7 +367,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addCollection("shop_categories", (collectionApi) => {
     const validCategory = (category) => { 
       const all_products = collectionApi.getFilteredByGlob("src/shop/products/*.md");
-      const category_products = all_products.filter(element => element.data.category == category.inputPath.replace('./',''));
+      const category_products = all_products.filter(element => element.data.category == category.inputPath.replace("./",""));
       const has_valid_products = category_products.find(element => element.data.disabled == false) != null;
       return (!category.data.disabled && has_valid_products);
     }
@@ -345,22 +376,35 @@ module.exports = eleventyConfig => {
   });
 
   eleventyConfig.addCollection("shop_products", (collectionApi) => {
+    const categories = collectionApi.getFilteredByGlob("src/shop/categories/*.md");
+
     const validProduct = (product) => { 
-      const categories = collectionApi.getFilteredByGlob("src/shop/categories/*.md");
-      const category = categories.find(element => element.inputPath.replace('./','') == product.data.category);
+      const category = categories.find(element => element.inputPath.replace("./","") == product.data.category);
       return (!category.data.disabled && !product.data.disabled);
     }
 
-    return collectionApi.getFilteredByGlob("src/shop/products/*.md").filter(validProduct);
+    const products = collectionApi.getFilteredByGlob("src/shop/products/*.md").filter(validProduct);
+
+    products.forEach((product) => {
+      shop_products.push({
+        title: product.data.title,
+        id: product.data.id,
+        category: product.data.category
+      });
+    });
+
+    // console.log(JSON.stringify(shop_products));
+
+    return products;
   });
 
   return {
-    markdownTemplateEngine: 'njk',
-    dataTemplateEngine: 'njk',
-    htmlTemplateEngine: 'njk',
+    markdownTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
     dir: {
-      input: 'src',
-      output: 'dist'
+      input: "src",
+      output: "dist"
     }
   };
 };

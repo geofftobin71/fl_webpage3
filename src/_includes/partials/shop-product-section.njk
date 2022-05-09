@@ -1,12 +1,12 @@
+{% set category = collections.shop_categories | getCategory(category_path) %}
 <section class="postcard {{ 'left' if section.image_left }} top wrapper page-wrapper">
   <article class="content bg-alt vertical center middle flow">
     <h2 class="heading">Choose a Bouquet Size</h2>
     <ul role="list" class="horizontal">
-      <li>&nbsp;$75&nbsp;</li>
-      <li>&nbsp;$100&nbsp;</li>
-      <li>&nbsp;$150&nbsp;</li>
-      <li>&nbsp;$200&nbsp;</li>
-      <li>&nbsp;$250&nbsp;</li>
+      {% set prices = [] %}
+      {%- for price in prices %}
+      <li>&nbsp;{{ price.label }}&nbsp;</li>
+      {%- endfor %}
     </ul>
     <a role="button" class="button" href="">Add to Cart</a>
   </article>
