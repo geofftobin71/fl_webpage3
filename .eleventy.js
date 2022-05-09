@@ -95,7 +95,7 @@ module.exports = eleventyConfig => {
       .then(json => {
         if(json.error) { throw Error(json.error); }
 
-        // console.log(JSON.stringify(json));
+        console.log(JSON.stringify(json));
       })
       .catch(error => {
         console.error(error.message);
@@ -380,7 +380,10 @@ module.exports = eleventyConfig => {
 
     const validProduct = (product) => { 
       const category = categories.find(element => element.inputPath.replace("./","") == product.data.category);
-      return (!category.data.disabled && !product.data.disabled);
+
+      const has_valid_prices = product.data.prices.find(element => element.disabled == false) != null;
+
+      return (!category.data.disabled && !product.data.disabled && has_valid_prices);
     }
 
     const products = collectionApi.getFilteredByGlob("src/shop/products/*.md").filter(validProduct);
@@ -389,7 +392,8 @@ module.exports = eleventyConfig => {
       shop_products.push({
         title: product.data.title,
         id: product.data.id,
-        category: product.data.category
+        category: product.data.category,
+        prices: product.data.prices
       });
     });
 

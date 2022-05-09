@@ -13,27 +13,27 @@ images:
 - "/v1613862173/shop/avant-garde-bouquet-8.jpg"
 - "/v1613862173/shop/avant-garde-bouquet-6.jpg"
 prices:
-- id: XXXXXXXX
+- id: b3be68d2
   label: "$75"
   price: 75
   stock: -1
   disabled: false
-- id: XXXXXXXX
+- id: 36847711
   label: "$100"
   price: 100
   stock: -1
   disabled: false
-- id: XXXXXXXX
+- id: 74f5e62c
   label: "$150"
   price: 150
   stock: -1
   disabled: false
-- id: XXXXXXXX
+- id: 2add157a
   label: "$200"
   price: 200
   stock: -1
   disabled: false
-- id: XXXXXXXX
+- id: 97eaeb52
   label: "$250"
   price: 250
   stock: -1

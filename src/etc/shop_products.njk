@@ -17,6 +17,7 @@ $shop_products = [
             "id" => "{{ price.id }}",
             {% if price.label %}"label" => "{{ price.label }}",{% endif %}
             "price" => {{ price.price }},
+            "stock" => {{ price.stock }},
             "disabled" => {{ price.disabled or 'false' }}
           ]{{',' if not loop.last }}
         {% endfor %}

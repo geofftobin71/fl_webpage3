@@ -58,7 +58,7 @@ fields:
   - name: stock
     type: number
     label: Initial Stock
-    description: Initial stock count for limited stock products.<br>Leave blank for
+    description: Initial stock count for limited stock products.<br>Defaults to -1 for
       unlimited.
     default: -1
     required: true
