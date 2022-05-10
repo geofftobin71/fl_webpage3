@@ -3,23 +3,18 @@
   <article class="content bg-alt vertical center middle flow">
     <h2 class="heading">Choose a Bouquet Size</h2>
     <ul role="list" class="horizontal">
-      {% set prices = product_prices | split(',') %}
+      {% set prices = [] %}
       {%- for price in prices %}
       <li>&nbsp;{{ price.label }}&nbsp;</li>
       {%- endfor %}
     </ul>
     <a role="button" class="button" href="">Add to Cart</a>
-    {% if category.data.footer %}
-      <footer style="margin-top:auto">
-        {{ category.data.footer | safe }}
-      </footer>
-    {% endif %}
   </article>
   <div class="image">
     {% set images = product_images | split(',') %}
     {% set image_path = images[0] or site.header_image %}
     {% set alt_text = title %}
-    <noscript><img src="{% twic path=image_path, params='/focus=auto/cover=1200x900' %}" alt="{{ alt_text }}"></noscript>
-    <img src="{% lqip path=image_path, params='/focus=auto/cover=4:3' %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover=4:3/max" data-twic-step="40" data-twic-focus="auto" data-twic-bot="cover=1200x900" >
+    <noscript><img src="{% twic path=image_path, params='/focus=auto/cover=1200x800' %}" alt="{{ alt_text }}"></noscript>
+    <img src="{% lqip path=image_path, params='/focus=auto/cover=3:2' %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover=3:2/max" data-twic-step="40" data-twic-focus="auto" data-twic-bot="cover=1200x800" >
   </div>
 </section>

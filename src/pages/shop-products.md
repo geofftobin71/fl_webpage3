@@ -12,5 +12,7 @@ eleventyComputed:
   description: "{{ product.data.description }}"
   header_image: "{{ product.data.header_image or (product.data.images | random) }}"
   product_images: "{{ product.data.images }}"
+  product_prices: "{{ product.data.prices }}"
   category_path: "{{ product.data.category }}"
+header_no_nbsp: true
 ---

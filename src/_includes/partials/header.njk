@@ -33,7 +33,11 @@
       </a>
     </figure>
     <div class="title flow" style="--flow-space:0">
-      <h1>{{ (header_title or title) | addNbsp | safe }}</h1>
+      {% if header_no_nbsp %}
+        <h1>{{ (header_title or title) | safe }}</h1>
+      {% else %}
+        <h1>{{ (header_title or title) | addNbsp | safe }}</h1>
+      {% endif %}
       {% if subheading %}<p class="subheading">{{ subheading | addNbsp | safe }}</p>{% endif %}
     </div>
   </div>

@@ -12,6 +12,7 @@ sections:
   label: Pages
   create: documents
   match: "**/*.md"
+  exclude: "@(shop-products|shop-categories).md"
   templates:
   - page
 - type: directory
