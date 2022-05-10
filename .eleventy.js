@@ -60,7 +60,7 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.on("eleventy.before", () => {
 
-    console.log("Create unique shop IDs");
+    console.log("Assign unique shop IDs");
 
     // Create Unique IDs for shop items
     glob("./src/shop/**/*.md", (err, files) => {
@@ -81,7 +81,7 @@ module.exports = eleventyConfig => {
   });
 
   eleventyConfig.on("eleventy.after", async () => {
-    console.log("Update Stock");
+    console.log("Update Shop Stock");
 
     fetch(site.php_url + "/php/update-stock.php", {
       method: "POST",
@@ -90,12 +90,10 @@ module.exports = eleventyConfig => {
     })
       .then(response => {
         if(!response.ok) { throw Error(response.statusText); }
-        return response.json();
+        return response.text();
       })
-      .then(json => {
-        if(json.error) { throw Error(json.error); }
-
-        console.log(JSON.stringify(json));
+      .then(msg => {
+        console.log(msg);
       })
       .catch(error => {
         console.error(error.message);
