@@ -236,6 +236,10 @@ module.exports = eleventyConfig => {
     return array.find(element => element.date == date);
   });
 
+  eleventyConfig.addFilter("getProduct", (products, id) => {
+    return products.find(element => element.data.id == id);
+  });
+
   eleventyConfig.addFilter("getCategory", (categories, path) => {
     return categories.find(element => element.inputPath.replace("./","") == path);
   });

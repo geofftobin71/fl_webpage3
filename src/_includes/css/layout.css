@@ -215,8 +215,8 @@ section.height100vh {
   max-width:var(--wrapper-width);
   margin-left:auto;
   margin-right:auto;
-  padding-left:var(--size-400);
-  padding-right:var(--size-400);
+  padding-left:var(--size-500);
+  padding-right:var(--size-500);
 }
 
 .wrapper.page-wrapper {
@@ -235,8 +235,8 @@ section.height100vh {
 
 @media screen and (min-width:750px) {
   .wrapper {
-    padding-left:var(--size-600);
-    padding-right:var(--size-600);
+    padding-left:var(--size-800);
+    padding-right:var(--size-800);
   }
 }
 
@@ -274,9 +274,10 @@ section.height100vh {
 }
 .banner-section .subheading {
   background-color:rgba(0,0,0,0.1);
-  border-radius:1em;
+  border-radius:0.5em;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
+  padding:0.3em;
 }
 
 /* ----- Spinner ----- */

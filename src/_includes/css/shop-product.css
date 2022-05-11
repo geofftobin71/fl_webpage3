@@ -1,0 +1,20 @@
+@media screen and (orientation:portrait) and (min-width:750px) {
+  .shop-product.postcard .image img {
+    max-width:75vw;
+  }
+}
+
+@media screen and (min-width:950px) {
+  .shop-product.postcard {
+    --overlap:5vmin;
+  }
+  .shop-product.postcard .content {
+    margin-top:var(--overlap);
+    margin-bottom:var(--overlap);
+  }
+  .shop-product.postcard .content,
+  .shop-product.postcard .image {
+    padding-top:0;
+    padding-bottom:0;
+  }
+}

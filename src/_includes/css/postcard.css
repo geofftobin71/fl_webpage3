@@ -8,14 +8,16 @@
 .postcard .content {
   margin-right:calc(-1 * var(--overlap));
   margin-left:0;
-  padding-right:calc(1em + var(--overlap));
-  padding-left:1em;
+  padding-right:calc(1.5em + var(--overlap));
+  padding-left:1.5em;
   overflow:hidden;
   box-shadow:inset 0 0 20vmin rgba(94,106,101,0.1);
 }
+/*
 .postcard .content > * {
   max-width:50ch;
 }
+*/
 .postcard_content strong {
   font-family:var(--font-family-alt);
   color:var(--color-shade2);
@@ -72,19 +74,29 @@
 .postcard footer p {
   font-size:var(--size-300);
 }
-@media screen and (orientation:landscape) and (min-width:950px) {
+@media screen and (min-width:950px) {
   .postcard.left .content {
     order:2;
     margin-right:0;
     margin-left:calc(-1 * var(--overlap));
-    padding-right:1em;
-    padding-left:calc(1em + var(--overlap));
+    padding-right:1.5em;
+    padding-left:calc(1.5em + var(--overlap));
   }
   .postcard.left .image {
     order:1;
     justify-content:end;
     padding-right:0;
     padding-left:1em;
+  }
+}
+@media screen and (orientation:landscape) and (min-width:1050px) {
+  .postcard .content {
+    padding-right:calc(2.5em + var(--overlap));
+    padding-left:2.5em;
+  }
+  .postcard.left .content {
+    padding-left:calc(2.5em + var(--overlap));
+    padding-right:2.5em;
   }
 }
 @media screen and (max-width:950px) {
@@ -116,14 +128,10 @@
     padding-bottom:var(--overlap);
     margin-top:calc(-1 * var(--overlap));
     padding-top:calc(2 * var(--overlap));
+    padding-bottom:calc(2 * var(--overlap));
   }
 }
 @media screen and (orientation:portrait) and (max-width:750px) {
-  /*
-  .postcard {
-    --overlap:2em;
-  }
-  */
   .postcard .content,
   .postcard .image {
     padding-left:1em;
