@@ -1,7 +1,7 @@
 {% set image_path = section.image or site.header_image %}
-<section class="banner-section">
+<section class="banner-section vertical center middle">
   <div class="wrapper vertical center flow text-center">
-    {% ifAsync section.heading %}<h2 class="heading color-light text-shadow">{{ section.heading | addNbsp | safe }}</h2>{% endif %}
+    {% ifAsync section.heading %}<h2 class="heading color-shade3 text-shadow">{{ section.heading | addNbsp | safe }}</h2>{% endif %}
     {% ifAsync section.subheading %}<p class="subheading color-light text-shadow font-bold">{{ section.subheading | addNbsp | safe }}</p>{% endif %}
     {% ifAsync section.button.text %}
       <a class="button" role="button" href="{{ section.button.url }}"{{ ' target="_blank" rel="noopener"' | safe if (section.button.url | externalLink) }}>{{ section.button.text }}</a>

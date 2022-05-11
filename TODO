@@ -1,3 +1,5 @@
+alt_text audit
+fix overflow on phone
 fix caption scroll on phone
 check for css / js in partials : load once on each page
 

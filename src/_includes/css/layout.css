@@ -264,20 +264,20 @@ section.height100vh {
 
 .banner-section {
   --section-padding:15vmin;
-  --button-bg:var(--color-light);
+  --button-bg:var(--color-alt);
   --button-fg:var(--color-shade1);
-  --button-border:var(--color-light);
+  --button-border:var(--color-alt);
   --button-hover-bg:var(--color-shade1);
-  --button-hover-fg:var(--color-light);
+  --button-hover-fg:var(--color-alt);
   --button-hover-border:var(--color-shade3);
   --button-focus:var(--color-primary);
 }
-.banner-section .subheading {
-  background-color:rgba(0,0,0,0.1);
-  border-radius:0.5em;
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  padding:0.3em;
+.banner-section > div {
+  /* background-color:rgba(0,0,0,0.1); */
+  border-radius:1em;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  padding:1em;
 }
 
 /* ----- Spinner ----- */
