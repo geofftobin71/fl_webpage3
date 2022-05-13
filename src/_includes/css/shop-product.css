@@ -12,7 +12,6 @@
     margin-top:var(--overlap);
     margin-bottom:var(--overlap);
   }
-  .shop-product.postcard .content,
   .shop-product.postcard .image {
     padding-top:0;
     padding-bottom:0;

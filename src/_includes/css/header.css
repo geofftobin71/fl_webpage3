@@ -128,6 +128,7 @@
 }
 
 .banner-error > * {
+  font-size:var(--size-400);
   margin:0 auto;
 }
 
