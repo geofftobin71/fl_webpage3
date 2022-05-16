@@ -35,7 +35,7 @@
   justify-content:start;
   z-index:1;
   padding-left:0;
-  padding-right:1em;
+  padding-right:0;
 }
 .postcard .content,
 .postcard .image {
@@ -75,6 +75,14 @@
   font-size:var(--size-300);
 }
 @media screen and (min-width:950px) {
+  .postcard {
+    padding-left:0;
+    padding-right:1em;
+  }
+  .postcard.left {
+    padding-left:1em;
+    padding-right:0;
+  }
   .postcard.left .content {
     order:2;
     margin-right:0;
@@ -86,7 +94,7 @@
     order:1;
     justify-content:end;
     padding-right:0;
-    padding-left:1em;
+    padding-left:0;
   }
 }
 @media screen and (orientation:landscape) and (min-width:1050px) {
