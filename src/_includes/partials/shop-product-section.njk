@@ -17,50 +17,58 @@
 {{ css | cssmin | safe }}
 </style>
 
-<section class="shop-product postcard {{ 'left' if section.image_left }} top wrapper">
-  <article class="content bg-alt vertical center middle flow" style="--flow-space:2em">
-    <h2 class="heading">Choose a Bouquet Size</h2>
-    <div style="--flow-space:1em">
+<section class="sproduct wrapper">
+  <div class="image-wrapper">
+    {% if images | length > 1 %}
+      {% for image in images -%}
+        <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="image-{{ uid }}" id="image-{{uid }}-{{ loop.index }}" {{ 'checked' if loop.first }}>
+      {% endfor %}
+      <div class="image slider-container">
+        {#
+        <ul role="list" class="slider">
+          {% for image in images %}
+            {% set image_path = image or site.header_image %}
+            <li class="slider-item">
+              <noscript><img src="{% twic path=image_path, params='/focus=auto/cover=1200x1200' %}" alt="{{ alt_text }}"></noscript>
+              <img src="{% lqip path=image_path, params='/focus=auto/cover=1:1' %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-focus="auto" data-twic-bot="cover=1200x1200" >
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="dot-container horizontal center">
+          <div class="horizontal center">
+            {% for image in images %}
+              <label role="button" class="slider-dot" for="image-{{uid }}-{{ loop.index }}">{{ '/src/svg/circle.svg' | svgContents | safe }}</label>
+            {% endfor %}
+          </div>
+        </div>
+        #}
+      </div>
+    {% else %}
+      <div class="image">
+        <div>
+          {#
+          {% set image_path = images[0] or site.header_image %}
+          <noscript><img src="{% twic path=image_path, params='/focus=auto/cover=1200x1200' %}" alt="{{ alt_text }}"></noscript>
+          <img src="{% lqip path=image_path, params='/focus=auto/cover=1:1' %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-focus="auto" data-twic-bot="cover=1200x1200" >
+          #}
+        </div>
+      </div>
+  </div>
+{% endif %}
+<article class="content bg-alt vertical center middle flow" style="--flow-space:2em">
+  <h2 class="heading">Choose a Bouquet Size</h2>
+  <div style="--flow-space:1em">
     <ul role="list" class="horizontal">
       {%- for price in product.data.prices %}
       <li>&nbsp;{{ price.label }}&nbsp;</li>
       {%- endfor %}
     </ul>
-    </div>
-    <a role="button" class="req-js button" href="" style="xargin-top:auto">Add to Cart</a>
-    {% if category.data.footer %}
-      <footer style="xargin-top:auto">
-        {{ category.data.footer | safe }}
-      </footer>
-    {% endif %}
-  </article>
-  {% if images | length > 1 %}
-    {% for image in images -%}
-      <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="image-{{ uid }}" id="image-{{uid }}-{{ loop.index }}" {{ 'checked' if loop.first }}>
-    {% endfor %}
-    <div class="image slider-container">
-      <ul role="list" class="slider">
-        {% for image in images %}
-          {% set image_path = image or site.header_image %}
-          <li class="slider-item">
-            <noscript><img src="{% twic path=image_path, params='/focus=auto/cover=1200x1200' %}" alt="{{ alt_text }}"></noscript>
-            <img src="{% lqip path=image_path, params='/focus=auto/cover=1:1' %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-focus="auto" data-twic-bot="cover=1200x1200" >
-          </li>
-          {% endfor %}
-      </ul>
-      <div class="dot-container horizontal center">
-        <div class="horizontal center">
-        {% for image in images %}
-          <label role="button" class="slider-dot" for="image-{{uid }}-{{ loop.index }}">{{ '/src/svg/circle.svg' | svgContents | safe }}</label>
-        {% endfor %}
-      </div>
-      </div>
-    </div>
-  {% else %}
-    <div class="image">
-      {% set image_path = images[0] or site.header_image %}
-      <noscript><img src="{% twic path=image_path, params='/focus=auto/cover=1200x1200' %}" alt="{{ alt_text }}"></noscript>
-      <img src="{% lqip path=image_path, params='/focus=auto/cover=1:1' %}" alt="{{ alt_text }}" data-twic-src="{% twic_dyn path=image_path %}" data-twic-transform="cover=1:1/max" data-twic-step="40" data-twic-focus="auto" data-twic-bot="cover=1200x1200" >
-    </div>
-    {% endif %}
+  </div>
+  <a role="button" class="req-js button" href="" style="xargin-top:auto">Add to Cart</a>
+  {% if category.data.footer %}
+    <footer style="xargin-top:auto">
+      {{ category.data.footer | safe }}
+    </footer>
+  {% endif %}
+</article>
 </section>
