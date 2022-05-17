@@ -12,10 +12,7 @@
   margin-left:auto;
   margin-right:auto;
   width:100vmin;
-  padding-top:calc(2 * var(--overlap));
-  padding-bottom:calc(2 * var(--overlap));
-  padding-left:var(--overlap);
-  padding-right:var(--overlap);
+  padding:calc(2 * var(--overlap)) var(--overlap);
   box-shadow:inset 0 0 20vmin rgba(94,106,101,0.1);
 }
 
@@ -41,6 +38,20 @@
   background-color:grey;
 }
 
+.sproduct .content .heading {
+  margin-top:auto;
+}
+
+.sproduct .content footer {
+  --flow-space:0.5em;
+  margin-top:2em;
+}
+
+.sproduct .content footer p {
+  text-align:center;
+  font-size:var(--size-300);
+}
+
 @media screen and (min-width:750px) and (max-width:950px) {
   .sproduct {
     --overlap:7.5vmin;
@@ -49,6 +60,10 @@
   }
   .sproduct .content {
     width:calc(100vmin - 2 * var(--overlap));
+    padding:var(--overlap);
+  }
+  .sproduct .content .heading {
+    margin-top:1em;
   }
   .sproduct .image-wrapper {
     max-width:calc(100vmin - 4 * var(--overlap));
@@ -61,11 +76,18 @@
     padding-left:1em
   }
   .sproduct .content {
-    padding-top:var(--overlap);
-    padding-bottom:var(--overlap);
+    padding:var(--overlap);
+    padding-left:calc(2 * var(--overlap));
     margin:0;
     margin-left:calc(-1 * var(--overlap));
     width:calc(100% + var(--overlap));
+  }
+  .sproduct .content .button {
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+  .sproduct .content footer {
+    margin-bottom:2em;
   }
   .sproduct .image-wrapper {
     margin-top:var(--overlap);
