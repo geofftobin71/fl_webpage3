@@ -39,22 +39,26 @@ input[type='radio'] {
 
 .radio-label-wrapper {
   display:flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   flex-direction:row;
   justify-content:center;
-  margin-left:-4px;
-  margin-right:-4px;
-  margin-bottom:-4px;
+  width:100%;
 }
 
 .radio-label {
   font-family:var(--font-family-alt);
+  font-weight:700;
   background-color:var(--button-bg);
   color:var(--button-fg);
-  padding:var(--size-200) var(--size-300);
-  /* border:2px solid var(--button-border); */
-  margin:4px;
-  /* box-shadow:0 8px 16px rgba(0, 0, 0, 0.15); */
+  padding:var(--size-100) var(--size-200);
+  margin:1px;
+}
+
+@media screen and (min-width:370px) {
+  .radio-label {
+    padding:var(--size-200) var(--size-300);
+    margin:4px;
+  }
 }
 
 @media (hover:hover) {

@@ -24,7 +24,7 @@
 {{ css | cssmin | safe }}
 </style>
 
-<section class="sproduct wrapper">
+<section class="shop-product wrapper">
   <div class="image-wrapper">
     {% for image in images -%}
       <input class="slider-selector slider-selector-{{ uid }}" type="radio" name="image-{{ uid }}" id="image-{{uid }}-{{ loop.index }}" {{ 'checked' if loop.first }}>
@@ -54,12 +54,11 @@
       {% endif %}
     </div>
   </div>
-  <article class="content bg-alt vertical center middle flow" style="--flow-space:2em">
-    <input name="product-id" type="hidden" value="{{ product.id }}">
+  <article class="content bg-alt vertical center middle flow">
     <h2 class="heading">{{ product.data.title }}</h2>
     {% if prices | length > 1 %}
       <h3 class="heading">Bouquet Size</h3>
-      <div class="radio-label-wrapper" style="--flow-space:1em">
+      <div class="radio-label-wrapper">
         {%- for price in prices %}
         <input id="price-{{ price.id }}" name="price-id" type="radio" value="{{ price.id }}" onclick="showAddToCart()">
         <label class="radio-label text-center round" for="price-{{ price.id }}" x-apple-data-detectors="false">{{ price.label }}</label>
@@ -76,5 +75,6 @@
         {{ category.data.footer | safe }}
       </footer>
     {% endif %}
+    <input name="product-id" type="hidden" value="{{ product.id }}">
   </article>
 </section>

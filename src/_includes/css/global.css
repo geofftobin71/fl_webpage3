@@ -9,6 +9,7 @@
 }
 
 :root {
+  --size-100:0.51rem;
   --size-200:0.64rem;
   --size-300:0.8rem;
   --size-400:1rem;
