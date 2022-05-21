@@ -6,8 +6,11 @@
   .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .slider-container .slider {
     transform: translateX({{ -loop.index0 * 100 }}%);
   }
-  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .dot-container .slider-dot:nth-of-type({{ loop.index }}) {
-    opacity:1;
+  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .dot-container .slider-dot:nth-of-type({{ loop.index }}) .closed {
+  display:block;
+  }
+  .slider-selector-{{ uid }}:nth-of-type({{ loop.index }}):checked ~ .dot-container .slider-dot:nth-of-type({{ loop.index }}) .open {
+  display:none;
   }
 {% endfor %}
 {% endset %}
@@ -34,7 +37,7 @@
 </div>
 <div class="dot-container horizontal center">
   {% for review in slider_reviews %}
-    <label role="button" class="slider-dot" for="review-{{uid }}-{{ loop.index }}">{{ '/src/svg/circle.svg' | svgContents | safe }}</label>
+    <label role="button" class="slider-dot" for="review-{{uid }}-{{ loop.index }}"><span class="open">{{ '/src/svg/circle-o.svg' | svgContents | safe }}</span><span class="closed">{{ '/src/svg/circle.svg' | svgContents | safe }}</span></label>
   {% endfor %}
 </div>
 <a class="button" role="button" href="/reviews/">Read more Reviews</a>

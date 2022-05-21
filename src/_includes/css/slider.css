@@ -90,9 +90,11 @@
 .slider-dot {
   cursor:pointer;
   color:var(--color-shade1);
-  opacity:0.25;
   margin-left:0.5em;
   margin-right:0.5em;
+}
+.slider-dot .closed {
+  display:none;
 }
 .slider-link {
   cursor:pointer;
