@@ -99,7 +99,9 @@
 }
 
 .sproduct .slider-dot {
-  color:var(--color-light);
+  color:white;
+  background-color:rgba(0,0,0,0.3);
+  border-radius:50%;
 }
 
 .shop-product.postcard .image > div {
