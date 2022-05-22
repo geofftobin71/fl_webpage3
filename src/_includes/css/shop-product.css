@@ -38,6 +38,11 @@
   margin-top:auto;
 }
 
+.shop-product .content h3 {
+  text-transform:lowercase;
+  color:var(--color-shade1);
+}
+
 .shop-product .content footer {
   --flow-space:0.5em;
   margin-top:2em;

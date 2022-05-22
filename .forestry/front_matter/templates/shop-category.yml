@@ -18,6 +18,16 @@ fields:
   label: Name
   config:
     required: true
+- type: text
+  name: price_heading
+  label: Price Heading
+  config:
+    required: false
+- type: text
+  name: button_message
+  label: Button Message
+  config:
+    required: false
 - name: footer
   type: textarea
   default: ''
