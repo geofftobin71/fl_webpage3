@@ -294,3 +294,31 @@ section.height100vh {
   margin:0;
 }
 
+/* ----- Buttons ----- */
+
+.buttons {
+  display:flex;
+  justify-content:space-between;
+}
+
+@media screen and (max-width:450px) {
+  .buttons {
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .buttons > * + * {
+    margin-top:1.5em;
+    margin-bottom:0;
+  }
+
+  .buttons.swap {
+    flex-direction:column-reverse;
+  }
+
+  .buttons.swap > * + * {
+    margin-top:0;
+    margin-bottom:1.5em;
+  }
+}
+

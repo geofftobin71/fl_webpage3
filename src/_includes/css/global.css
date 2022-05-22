@@ -18,16 +18,6 @@
   --size-700:1.95rem;
   --size-800:2.44rem;
   --size-900:3.05rem;
-  /*
-  --size-200:0.56rem;
-  --size-300:0.75rem;
-  --size-400:1rem;
-  --size-500:1.33rem;
-  --size-600:1.77rem;
-  --size-700:2.36rem;
-  --size-800:3.15rem;
-  --size-900:4.2rem;
-   */
 
   --font-family-base:Quicksand,sans-serif;
   --font-family-alt:-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
@@ -238,6 +228,7 @@ text-decoration:underline;
     background-repeat:no-repeat;
   }
 
+  .font-size-100 { font-size:var(--size-100); }
   .font-size-200 { font-size:var(--size-200); }
   .font-size-300 { font-size:var(--size-300); }
   .font-size-400 { font-size:var(--size-400); }

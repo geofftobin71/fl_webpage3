@@ -71,3 +71,12 @@ function addToCart(product_id) {
   window.location.href = "/cart/";
 }
 
+function formatMoney(price) {
+  if(price === 0) { return 'free'; }
+  if(Math.floor(price) === (price)) {
+    return '$' + (price);
+  } else {
+    return '$' + (price).toFixed(2);
+  }
+}
+
