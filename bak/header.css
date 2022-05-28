@@ -3,10 +3,32 @@
 }
 
 .header .content {
-  padding:7.5vmin;
+  padding:1em 7.5vmin 1em 5vmin;
   display:grid;
   grid-template-columns:max-content 1fr;
   align-items:center;
+  min-height:67vw;
+}
+
+@media screen and (orientation:portrait) and (min-width:750px) {
+  .header .content {
+    min-height:50vw;
+  }
+}
+
+@media screen and (min-aspect-ratio:1/1) {
+  .header .content {
+    min-height:33vw;
+  }
+}
+
+@media screen and (min-aspect-ratio:155/100) {
+  .header .content {
+    min-height:25vw;
+  }
+}
+
+.header .logo {
 }
 
 .logo img {

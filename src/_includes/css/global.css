@@ -22,11 +22,6 @@
   --font-family-base:Quicksand,sans-serif;
   --font-family-alt:-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 
-  /*
-  --font-family-base:-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-  --font-family-alt:-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-  */
-
   --radius:0.5rem;
 
   --disabled-bg:transparent;
@@ -227,6 +222,9 @@ text-decoration:underline;
     background-position:center center;
     background-repeat:no-repeat;
   }
+
+  .font-family-base { font-family:var(--font-family-base); }
+  .font-family-alt { font-family:var(--font-family-alt); }
 
   .font-size-100 { font-size:var(--size-100); }
   .font-size-200 { font-size:var(--size-200); }

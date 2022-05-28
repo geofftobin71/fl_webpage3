@@ -87,9 +87,8 @@
         <h3 class="heading">{{ prices[0].label }}</h3>
         <input name="price-id" type="hidden" value="{{ prices[0].id }}">
       {% endif %}
-      <button id="add-to-cart-button" disabled class="button" onclick="addToCart('{{ product.data.id }}')"><span>{{ '/src/svg/cart-plus.svg' | svgContents | safe }}</span>&nbsp;&nbsp;Add to Cart</button>
-      </div>
-      <noscript style="margin-bottom:auto"></noscript>
+      <button id="add-to-cart-button" disabled class="button" onclick="addToCart('{{ product.data.id }}', {{ product | isFinite }})"><span>{{ '/src/svg/cart-plus.svg' | svgContents | safe }}</span>&nbsp;&nbsp;Add to Cart</button>
+      <span id="error-msg" class="error" role="alert" style="visibility:hidden">&nbsp;</span>
       {% if category.data.footer %}
         <footer class="flow">
           {{ category.data.footer | safe }}

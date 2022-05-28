@@ -13,8 +13,8 @@
 
     {% set css %}
     {% include "css/reset.css" %}
+    {% include "css/colors.css" %}
     {% include "css/global.css" %}
-    {% include "css/colors.njk" %}
     {% include "css/layout.css" %}
     {% include "css/button.css" %}
     {% include "css/hamburger-menu.css" %}
@@ -40,7 +40,7 @@
 
     {% include "partials/hamburger-menu.njk" %}
     {% set js %}
-    {% include "js/init_cookieconsent.njk" %}
+    {% include "js/init_cookieconsent.js" %}
     {% endset %}
 
     <script async src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>

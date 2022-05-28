@@ -45,12 +45,16 @@
 
 .shop-product .content footer {
   --flow-space:0.5em;
-  margin-top:2em;
+  margin-top:1em;
 }
 
 .shop-product .content footer p {
   text-align:center;
   font-size:var(--size-300);
+}
+
+.shop-product .content .error {
+  margin-top:1em;
 }
 
 @media screen and (min-width:750px) and (max-width:950px) {
@@ -87,9 +91,12 @@
     margin-top:auto;
     margin-bottom:auto;
   }
-  .shop-product .content footer {
-    margin-bottom:2em;
-  }
+.shop-product .content .error {
+  margin-top:0;
+}
+.shop-product .content footer {
+  margin-top:auto;
+}
   .shop-product .image-wrapper {
     margin-top:var(--overlap);
     margin-bottom:var(--overlap);

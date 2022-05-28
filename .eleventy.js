@@ -245,6 +245,16 @@ module.exports = eleventyConfig => {
     return categories.find(element => element.inputPath.replace("./","") == path);
   });
 
+  eleventyConfig.addFilter("isFinite", (product) => {
+    let is_finite = false;
+
+    product.data.prices.forEach(price => {
+      if(price.stock >= 0) { is_finite = true; }
+    });
+
+    return is_finite;
+  });
+
   eleventyConfig.addFilter("head", (array, n) => {
     if(!Array.isArray(array) || array.length == 0) {
       return [];
