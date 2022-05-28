@@ -41,10 +41,10 @@ $items = acquireStock($product_id, $price_id, $product_count);
 if($items) {
   foreach($items as $key => $item) {
     $cart[] = array(
-      "cart_id" => uniqueId(),
-      "product_id" => $item["product-id"],
-      "price_id" => $item["price-id"],
-      "stock_id" => $item["stock-id"],
+      "cart-id" => uniqueId(),
+      "product-id" => $item["product-id"],
+      "price-id" => $item["price-id"],
+      "stock-id" => $item["stock-id"],
       "updated" => $item["updated"]
     );
   }

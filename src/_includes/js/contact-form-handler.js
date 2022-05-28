@@ -49,6 +49,7 @@ function contactFormHandler() {
 
     fetch("{{ site.php_url }}/php/contact-form-handler.php", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         // gRecaptchaResponse: gRecaptchaResponse_input.value,
         name: name_input.value,

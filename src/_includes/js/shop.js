@@ -79,6 +79,7 @@ function addToCart(product_id, is_finite) {
   if(is_finite) {
     fetch("{{ site.php_url }}/php/get-stock.php", {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         "product-id": product_id,
         "price-id": price_id,
@@ -86,7 +87,6 @@ function addToCart(product_id, is_finite) {
       })
     })
       .then(response => {
-        console.log(response);
         if(!response.ok) {
           throw Error(response.statusText);
         }
@@ -112,9 +112,9 @@ function addToCart(product_id, is_finite) {
 
     for(let i = 0; i < product_count; ++i) {
       cart.push({
-        "cart_id": uid(),
-        "product_id": product_id,
-        "price_id": price_id
+        "cart-id": uid(),
+        "product-id": product_id,
+        "price-id": price_id
       });
     }
 

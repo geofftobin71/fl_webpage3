@@ -23,9 +23,9 @@ $result = [];
 
 foreach($cart as $cart_item) {
   foreach($shop_products as $product) {
-    if(strval($product["id"]) == strval($cart_item["product_id"])) {
+    if(strval($product["id"]) == strval($cart_item["product-id"])) {
       foreach($product["prices"] as $price) {
-        if(strval($price["id"]) == strval($cart_item["price_id"])) {
+        if(strval($price["id"]) == strval($cart_item["price-id"])) {
           array_push($result, [
             "title" => strval($product["title"]),
             "label" => strval($price["label"]),

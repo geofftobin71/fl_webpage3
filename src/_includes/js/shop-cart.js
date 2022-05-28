@@ -23,6 +23,7 @@ function displayCart() {
 
   fetch("{{ site.php_url }}/php/get-cart.php", {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(cart)
   }).then(function(response) {
     ok = response.ok;
